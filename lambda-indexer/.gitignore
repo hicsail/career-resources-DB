@@ -1,0 +1,55 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Output of build tools
+dist/
+build/
+tmp/
+temp/
+*.log
+
+# dotenv environment files
+.env
+.env.*  # for .env.development, .env.local etc.
+
+# OS system files
+.DS_Store
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Testing coverage
+coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Zip and compiled files
+*.zip
+*.tgz
+*.gz
+*.tar
+*.exe
+*.dll
+*.out
+
+# TypeScript output
+*.tsbuildinfo
+
+# PM2 process files
+pids/
+*.pid
+*.seed
+
+# Mac-specific files
+.AppleDouble
+.LSOverride

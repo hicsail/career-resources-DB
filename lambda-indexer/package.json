@@ -1,0 +1,20 @@
+{
+  "name": "lambda-indexer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.848.0",
+    "@aws-sdk/client-s3": "^3.850.0",
+    "aws-sdk": "^2.1692.0",
+    "keyword-extractor": "^0.0.28",
+    "pdf-parse": "^1.1.1",
+    "uuid": "^11.1.0"
+  }
+}
