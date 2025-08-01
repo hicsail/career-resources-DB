@@ -43,16 +43,29 @@ export class ResourceService {
     return allItems;
   }*/
   
-  async searchByKeyword(phrase: string): Promise<any[]> {    
+  async searchByKeyword(phrase: string, tag?: string): Promise<any[]> {
+    console.log("phrase, tag" , phrase, tag)
     const keywords = extractKeywordsFromPhrase(phrase);
-    const uniqueWords = Array.from(new Set(keywords)); 
+    const uniqueWords = Array.from(new Set(keywords));
 
     const expressionAttributeValues: AWS.DynamoDB.DocumentClient.ExpressionAttributeValueMap = {};
-    uniqueWords.forEach((word, index) => {
-      expressionAttributeValues[`:kw${index}`] = word;
-    });
+    const filterParts: string[] = [];
 
-    const filterExpression = `keyword IN (${uniqueWords.map((_, i) => `:kw${i}`).join(', ')})`;
+    // Add keyword filtering
+    uniqueWords.forEach((word, index) => {
+      const key = `:kw${index}`;
+      expressionAttributeValues[key] = word;
+    });
+    const keywordPlaceholders = uniqueWords.map((_, i) => `:kw${i}`).join(', ');
+    filterParts.push(`keyword IN (${keywordPlaceholders})`);
+
+    // Add tag filtering (optional)
+    if (tag) {
+      expressionAttributeValues[":tag"] = tag;
+      filterParts.push("tag = :tag");
+    }
+
+    const filterExpression = filterParts.join(" AND ");
 
     let allItems: AWS.DynamoDB.DocumentClient.ItemList = [];
     let lastKey: AWS.DynamoDB.DocumentClient.Key | undefined = undefined;
@@ -75,16 +88,21 @@ export class ResourceService {
       s3Key: string;
       s3Bucket: string;
       matchedKeywords: string[];
+      tag?: string;
+      link?: string;
     }> = {};
 
     for (const item of allItems) {
-      const { documentId, title, s3Key, s3Bucket, keyword } = item;
+      const { documentId, title, s3Key, s3Bucket, keyword, tag, link } = item;
+
       if (!groupedByDocument[documentId]) {
         groupedByDocument[documentId] = {
           title,
           s3Key,
           s3Bucket,
           matchedKeywords: [],
+          tag,
+          link,
         };
       }
       groupedByDocument[documentId].matchedKeywords.push(keyword as string);

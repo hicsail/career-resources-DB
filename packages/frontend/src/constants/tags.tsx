@@ -1,0 +1,26 @@
+export const tags = [
+    "Definitions of Common Career Terms.",
+    "Career Exploration",
+    "Role of Industry in Supporting Workforce Dev.",
+    "Coalition for Career Dev. Information",
+    "Gap Analysis/Loopholes",
+    "Individualized Learning Plan/PCAP",
+    "Community Engagement in Career Readiness",
+    "Condition of Caree\"&\"r Readiness",
+    "SEL and Career Readiness",
+    "Career Counseling Resources",
+    "Intersectional Resources",
+    "Legislative",
+    "International Resources",
+    "Administrative Guides",
+    "Webinars",
+    "Financial Literacy",
+    "Training",
+    " Professional Development",
+    "Career Dev. Practices",
+    "Career and Workforce D\"&\"ev.",
+    "Researcher/Practitioner",
+    "Mental Health",
+    "Life Design"
+];
+  

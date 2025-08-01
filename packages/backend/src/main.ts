@@ -9,6 +9,6 @@ async function bootstrap() {
     credentials: true,
     exposedHeaders: ['Content-Range']
   });
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
 }
 bootstrap();

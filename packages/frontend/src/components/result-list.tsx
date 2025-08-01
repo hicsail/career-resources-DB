@@ -6,6 +6,7 @@ import {
   Typography,
   Pagination,
   Link,
+  Chip,
 } from '@mui/material';
 
 interface Props {
@@ -27,9 +28,20 @@ export const ResultsList: React.FC<Props> = ({ data }) => {
             <Typography variant="h6" gutterBottom>
               {item.title || 'Untitled Document'}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {item.summary || item.content?.slice(0, 150) || 'No summary available.'}
-            </Typography>
+
+            {item.tag ? (
+              <Chip
+                label={item.tag}
+                color="primary"
+                size="small"
+                sx={{ mb: 1 }}
+              />
+            ) : (
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                No tag available.
+              </Typography>
+            )}
+
             {item.link && (
               <Box mt={1}>
                 <Link
