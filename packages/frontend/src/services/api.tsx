@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/';
 
 const API_ENDPOINTS = {
-  SEARCH_RESOURCES: `${API_BASE_URL}resources/search`,
+  SEARCH_RESOURCES: `${API_BASE_URL}search`,
 };
 
 export interface SearchResultType {
@@ -12,17 +12,17 @@ export interface SearchResultType {
 }
 
 export async function searchResources(
-  keyword: string, 
+  phrase: string, 
   subject?: string, 
   format?: string, 
   source?: string
 ): Promise<SearchResultType[]> {
   const params: { 
-    keyword: string; 
+    phrase: string; 
     subject?: string; 
     format?:string; 
     source?:string; 
-  } = { keyword };
+  } = { phrase };
   if (subject) {
     params.subject = subject;
   }
