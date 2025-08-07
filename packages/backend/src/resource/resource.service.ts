@@ -20,98 +20,94 @@ export class ResourceService {
     this.tableName = this.configService.get<string>('DYNAMODB_TABLE_NAME');
   }
 
-  /*async searchByKeyword(keyword: string): Promise<any[]> {
-    let allItems: AWS.DynamoDB.DocumentClient.ItemList = [];
-    let lastKey: AWS.DynamoDB.DocumentClient.Key | undefined = undefined;
-
-    do {
-      const params: AWS.DynamoDB.DocumentClient.ScanInput = {
-        TableName: this.tableName,
-        FilterExpression: 'keyword = :keyword',
-        ExpressionAttributeValues: {
-          ':keyword': keyword,
-        },
-        ExclusiveStartKey: lastKey,
-      };
-
-      const result = await this.docClient.scan(params).promise();
-
-      allItems = allItems.concat(result.Items || []);
-      lastKey = result.LastEvaluatedKey;
-    } while (lastKey);
-    
-    return allItems;
-  }*/
-  
-  async searchByKeyword(phrase: string, tag?: string): Promise<any[]> {
-    console.log("phrase, tag" , phrase, tag)
+  async searchByKeyword(
+    phrase: string, 
+    subject?: string, 
+    format?: string, 
+    source?: string
+  ): Promise<any[]> {
     const keywords = extractKeywordsFromPhrase(phrase);
     const uniqueWords = Array.from(new Set(keywords));
+    const docMatchesPerKeyword: Record<string, Set<string>> = {};
+    const documentIdToKeywordMap: Record<string, Set<string>> = {};
 
-    const expressionAttributeValues: AWS.DynamoDB.DocumentClient.ExpressionAttributeValueMap = {};
-    const filterParts: string[] = [];
-
-    // Add keyword filtering
-    uniqueWords.forEach((word, index) => {
-      const key = `:kw${index}`;
-      expressionAttributeValues[key] = word;
-    });
-    const keywordPlaceholders = uniqueWords.map((_, i) => `:kw${i}`).join(', ');
-    filterParts.push(`keyword IN (${keywordPlaceholders})`);
-
-    // Add tag filtering (optional)
-    if (tag) {
-      expressionAttributeValues[":tag"] = tag;
-      filterParts.push("tag = :tag");
-    }
-
-    const filterExpression = filterParts.join(" AND ");
-
-    let allItems: AWS.DynamoDB.DocumentClient.ItemList = [];
-    let lastKey: AWS.DynamoDB.DocumentClient.Key | undefined = undefined;
-
-    do {
-      const params: AWS.DynamoDB.DocumentClient.ScanInput = {
-        TableName: this.tableName,
-        FilterExpression: filterExpression,
-        ExpressionAttributeValues: expressionAttributeValues,
-        ExclusiveStartKey: lastKey,
+    // Step 1: Query `resource-index` table for each keyword
+    for (const keyword of uniqueWords) {
+      const params: AWS.DynamoDB.DocumentClient.QueryInput = {
+        TableName: 'keyword-index',
+        KeyConditionExpression: 'keyword = :kw',
+        ExpressionAttributeValues: {
+          ':kw': keyword
+        }
       };
 
-      const result = await this.docClient.scan(params).promise();
-      allItems = allItems.concat(result.Items || []);
-      lastKey = result.LastEvaluatedKey;
-    } while (lastKey);
+      const result = await this.docClient.query(params).promise();
+      const docIds = new Set<string>();
 
-    const groupedByDocument: Record<string, {
-      title: string;
-      s3Key: string;
-      s3Bucket: string;
-      matchedKeywords: string[];
-      tag?: string;
-      link?: string;
-    }> = {};
+      for (const item of result.Items || []) {
+        docIds.add(item.documentId);
 
-    for (const item of allItems) {
-      const { documentId, title, s3Key, s3Bucket, keyword, tag, link } = item;
-
-      if (!groupedByDocument[documentId]) {
-        groupedByDocument[documentId] = {
-          title,
-          s3Key,
-          s3Bucket,
-          matchedKeywords: [],
-          tag,
-          link,
-        };
+        if (!documentIdToKeywordMap[item.documentId]) {
+          documentIdToKeywordMap[item.documentId] = new Set();
+        }
+        documentIdToKeywordMap[item.documentId].add(keyword);
       }
-      groupedByDocument[documentId].matchedKeywords.push(keyword as string);
+
+      docMatchesPerKeyword[keyword] = docIds;
+    }    
+    // Step 2: Intersect all sets to find documents containing all keywords
+    const matchingDocumentIds = uniqueWords.reduce((acc, word) => {
+      const currentSet = docMatchesPerKeyword[word];
+      if (!currentSet) return new Set(); // fail early if one keyword has no match
+
+      return acc
+        ? new Set([...acc].filter(x => currentSet.has(x)))
+        : new Set(currentSet);
+    }, null as Set<string> | null) || new Set();
+
+    // Step 3: Fetch document metadata from `document-metadata` table
+       
+    const matchingSet = new Set(matchingDocumentIds);
+    const queryParams: AWS.DynamoDB.DocumentClient.QueryInput = {
+      TableName: 'document-metadata',
+      IndexName: 'queryAll-uploadedAt-index',
+      KeyConditionExpression: '#queryAll = :queryAll',
+      ExpressionAttributeNames: {
+        '#queryAll': 'queryAll'
+      },
+      ExpressionAttributeValues: {
+        ':queryAll': 'true'  
+      },            
+      ScanIndexForward: false
+    };
+
+    const metadataResult = await this.docClient.query(queryParams).promise();    
+    const results: any[] = []; 
+
+    // step 4: Apply filters
+    for (const metadata of metadataResult.Items || []) {
+      if (!matchingSet.has(metadata.documentId)) continue; // filter by documentId in memory
+      if (subject && metadata.subject && metadata.subject !== subject)  continue; // filter by subject in memory
+      if (source && metadata.source && metadata.source !== source)  continue; // filter by source in memory
+      if (format && metadata.format && metadata.format !== format)  continue; // filter by format in memory
+      
+      results.push({
+        documentId: metadata.documentId,
+        title: metadata.title,
+        s3Key: metadata.s3Key,
+        s3Bucket: metadata.s3Bucket,
+        uploadedAt: metadata.uploadedAt,
+        subject: metadata.subject,
+        link: metadata.link,
+        source: metadata.source,
+        format: metadata.format,
+        slnMonthYear: metadata.slnMonthYear,
+        sln: metadata.sln,
+        countryState: metadata.countryState,
+        matchedKeywords: Array.from(documentIdToKeywordMap[metadata.documentId] || []),
+      });
     }
 
-    const matchingDocuments = Object.values(groupedByDocument).filter(doc =>
-      uniqueWords.every(word => doc.matchedKeywords.includes(word))
-    );
-
-    return matchingDocuments;
+    return results;
   }
 }

@@ -3,7 +3,9 @@ import { Container, Typography, CircularProgress } from '@mui/material';
 import { SearchForm } from '../components/search-form';
 import { ResultsList } from '../components/result-list';
 import { searchResources } from '../services/api';
-import { tags } from '../constants/tags';
+import { subjects } from '../constants/subjects';
+import { formats } from '../constants/formats';
+import { sources } from '../constants/sources';
 
 import type { SearchResultType } from '../services/api';
 
@@ -13,15 +15,18 @@ export const HomePage: FC = () => {
 
   const handleSearch = async ({
     keyword,
-    tag,
+    subject,
+    format,
+    source
   }: {
     keyword: string;
-    tag?: string;
-  }) => {
-    console.log('keyword:', keyword, 'tag:', tag);
+    subject?: string;
+    format?: string;
+    source?:string;
+  }) => {    
     setLoading(true);
     try {
-      const data = await searchResources(keyword, tag); 
+      const data = await searchResources(keyword, subject, format, source); 
       setResults(data);
     } catch (error) {
       console.error('Search error:', error);
@@ -36,7 +41,12 @@ export const HomePage: FC = () => {
         🔍 Career Resource Search
       </Typography>
 
-      <SearchForm onSearch={handleSearch} tags={tags} />
+      <SearchForm 
+        onSearch={handleSearch} 
+        subjects={subjects}
+        formats={formats}
+        sources={sources} 
+      />
 
       {loading && (
         <Typography align="center" mt={4}>

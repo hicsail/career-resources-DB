@@ -12,13 +12,15 @@ export class ResourceController {
   @Get('search')
   async search (
     @Query('keyword') keyword: string, 
-    @Query('tag') tag?: string
+    @Query('subject') subject?: string,
+    @Query('format') format?: string,
+    @Query('source') source?: string
   ) {
     if (!keyword) {
       return { message: 'Keyword is required' };
     }
 
-    const results = await this.ResourceService.searchByKeyword(keyword, tag);
+    const results = await this.ResourceService.searchByKeyword(keyword, subject, format, source);
     //const region = this.configService.get<string>('AWS_REGION');
 
     // Map to relevant fields
@@ -26,7 +28,9 @@ export class ResourceController {
       title: item.title,
       //count: item.count,
       //link: `https://${item.s3Bucket}.s3.${region}.amazonaws.com/${item.s3Key}`
-      tag: item.tag,
+      format: item.format,
+      source: item.source,
+      subject: item.subject,
       link: item.link
     }));
   }

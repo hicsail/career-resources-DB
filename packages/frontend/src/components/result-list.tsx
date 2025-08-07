@@ -8,9 +8,18 @@ import {
   Link,
   Chip,
 } from '@mui/material';
+import Badge from './badge';
+
+interface ResultItem {
+  title?: string;
+  subject?: string;
+  source?: string;
+  format?: string;
+  link?: string;
+}
 
 interface Props {
-  data: any[];
+  data: ResultItem[];
 }
 
 export const ResultsList: React.FC<Props> = ({ data }) => {
@@ -29,18 +38,11 @@ export const ResultsList: React.FC<Props> = ({ data }) => {
               {item.title || 'Untitled Document'}
             </Typography>
 
-            {item.tag ? (
-              <Chip
-                label={item.tag}
-                color="primary"
-                size="small"
-                sx={{ mb: 1 }}
-              />
-            ) : (
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                No tag available.
-              </Typography>
-            )}
+            <Box display="flex" flexWrap="wrap" gap={1}>
+              <Badge label={item.subject} fallback="No subject available" />
+              <Badge label={item.source} fallback="No source available" />
+              <Badge label={item.format} fallback="No format available" />
+            </Box>
 
             {item.link && (
               <Box mt={1}>

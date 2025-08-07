@@ -11,10 +11,26 @@ export interface SearchResultType {
   title: string;
 }
 
-export async function searchResources(keyword: string, tag?: string): Promise<SearchResultType[]> {
-  const params: { keyword: string; tag?: string } = { keyword };
-  if (tag) {
-    params.tag = tag;
+export async function searchResources(
+  keyword: string, 
+  subject?: string, 
+  format?: string, 
+  source?: string
+): Promise<SearchResultType[]> {
+  const params: { 
+    keyword: string; 
+    subject?: string; 
+    format?:string; 
+    source?:string; 
+  } = { keyword };
+  if (subject) {
+    params.subject = subject;
+  }
+  if (format) {
+    params.format = format;
+  }
+  if (source) {
+    params.source = source
   }
   const response = await axios.get<SearchResultType[]>(API_ENDPOINTS.SEARCH_RESOURCES, {
     params,

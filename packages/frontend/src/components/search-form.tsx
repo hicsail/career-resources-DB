@@ -5,30 +5,46 @@ import {
   Card,
   CardContent,
   TextField,
-  Autocomplete, 
+  Autocomplete,
 } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import FilterDropdown from './filter-dropdown';
+import type { SearchFilters } from './filter-dropdown';
 
 interface Props {
-  onSearch: (filters: { keyword: string; tag?: string }) => void; 
-  tags: string[]; 
+  onSearch: (filters: SearchFilters) => void;
+  subjects: string[];
+  sources: string[];
+  formats: string[];
 }
 
 export const validationSchema = Yup.object().shape({
   keyword: Yup.string().trim().required('Please enter a search keyword'),
-  tag: Yup.string().optional(), 
+  subject: Yup.string().optional(),
+  format: Yup.string().optional(),
+  source: Yup.string().optional(),
 });
 
-export const initialValues = { keyword: '', tag: '' }; 
+export const initialValues: SearchFilters = {
+  keyword: '',
+  subject: '',
+  format: '',
+  source: '',
+};
 
-export const SearchForm: React.FC<Props> = ({ onSearch, tags }) => {
-  const handleSubmit = (values: { keyword: string; tag?: string }) => {
-    onSearch(values); 
+export const SearchForm: React.FC<Props> = ({
+  onSearch,
+  subjects,
+  formats,
+  sources,
+}) => {
+  const handleSubmit = (values: SearchFilters) => {
+    onSearch(values);
   };
 
   return (
-    <Card sx={{ maxWidth: 600, mx: 'auto', mt: 4 }}>
+    <Card sx={{ maxWidth: '1000px', width: '95%', mx: 'auto', mt: 4, p: 3 }}>
       <CardContent>
         <Formik
           initialValues={initialValues}
@@ -37,11 +53,13 @@ export const SearchForm: React.FC<Props> = ({ onSearch, tags }) => {
         >
           {({ values, setFieldValue, errors, touched }) => (
             <Form>
+              {/* Row 1: Search bar + button */}
               <Box
                 display="flex"
                 flexDirection={{ xs: 'column', sm: 'row' }}
-                gap={2}
+                gap={3}
                 alignItems="center"
+                mb={3}
               >
                 <Field
                   as={TextField}
@@ -52,25 +70,38 @@ export const SearchForm: React.FC<Props> = ({ onSearch, tags }) => {
                   error={touched.keyword && Boolean(errors.keyword)}
                   helperText={touched.keyword && errors.keyword}
                 />
-
-                <Autocomplete
-                  fullWidth
-                  options={tags}
-                  value={values.tag || ''}
-                  onChange={(_, value) => setFieldValue('tag', value || '')}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Tag (optional)"
-                      name="category"
-                      variant="outlined"
-                    />
-                  )}
-                />
-
                 <Button type="submit" variant="contained" color="primary">
                   Search
                 </Button>
+              </Box>
+
+              {/* Row 2: Dropdown filters */}
+              <Box
+                display="flex"
+                flexDirection={{ xs: 'column', sm: 'row' }}
+                gap={3}
+              >                
+                <FilterDropdown
+                  label="Subject (optional)"
+                  name="subject"
+                  options={subjects}
+                  value={values.subject || ''}
+                  setFieldValue={setFieldValue}
+                />
+                <FilterDropdown
+                  label="Format (optional)"
+                  name="format"
+                  options={formats}
+                  value={values.format || ''}
+                  setFieldValue={setFieldValue}
+                />
+                <FilterDropdown
+                  label="Source (optional)"
+                  name="source"
+                  options={sources}
+                  value={values.source || ''}
+                  setFieldValue={setFieldValue}
+                />                
               </Box>
             </Form>
           )}
