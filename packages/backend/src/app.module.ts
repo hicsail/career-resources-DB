@@ -11,8 +11,6 @@ import { KeywordIndexModule } from './keyword-index/keyword-index.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }), 
     ResourceModule, SearchModule, KeywordIndexModule, DocumentMetadataModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+  ]
 })
 export class AppModule {}
