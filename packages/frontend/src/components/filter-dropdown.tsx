@@ -1,17 +1,10 @@
-// components/FilterDropdown.tsx
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
-
-export interface SearchFilters {
-  keyword: string;
-  subject?: string;
-  format?: string;
-  source?: string;
-}
+import type { SearchFiltersType } from '../types/search';
 
 interface FilterDropdownProps {
   label: string;
-  name: keyof SearchFilters;
+  name: keyof SearchFiltersType;
   options: string[];
   value: string;
   setFieldValue: (field: string, value: any) => void;

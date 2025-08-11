@@ -1,15 +1,11 @@
 import axios from 'axios';
+import type { SearchResultType } from '../types/search';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/';
 
 const API_ENDPOINTS = {
   SEARCH_RESOURCES: `${API_BASE_URL}search`,
 };
-
-export interface SearchResultType {
-  link: string;
-  title: string;
-}
 
 export async function searchResources(
   phrase: string, 

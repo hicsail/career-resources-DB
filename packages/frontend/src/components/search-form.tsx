@@ -10,24 +10,24 @@ import {
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import FilterDropdown from './filter-dropdown';
-import type { SearchFilters } from './filter-dropdown';
+import type { SearchFiltersType } from '../types/search';
 
 interface Props {
-  onSearch: (filters: SearchFilters) => void;
+  onSearch: (filters: SearchFiltersType) => void;
   subjects: string[];
   sources: string[];
   formats: string[];
 }
 
 export const validationSchema = Yup.object().shape({
-  keyword: Yup.string().trim().required('Please enter a search keyword'),
+  phrase: Yup.string().trim().required('Please enter a search phrase'),
   subject: Yup.string().optional(),
   format: Yup.string().optional(),
   source: Yup.string().optional(),
 });
 
-export const initialValues: SearchFilters = {
-  keyword: '',
+export const initialValues: SearchFiltersType = {
+  phrase: '',
   subject: '',
   format: '',
   source: '',
@@ -39,7 +39,7 @@ export const SearchForm: React.FC<Props> = ({
   formats,
   sources,
 }) => {
-  const handleSubmit = (values: SearchFilters) => {
+  const handleSubmit = (values: SearchFiltersType) => {
     onSearch(values);
   };
 
@@ -64,11 +64,11 @@ export const SearchForm: React.FC<Props> = ({
                 <Field
                   as={TextField}
                   fullWidth
-                  name="keyword"
+                  name="phrase"
                   label="Search for a document"
                   variant="outlined"
-                  error={touched.keyword && Boolean(errors.keyword)}
-                  helperText={touched.keyword && errors.keyword}
+                  error={touched.phrase && Boolean(errors.phrase)}
+                  helperText={touched.phrase && errors.phrase}
                 />
                 <Button type="submit" variant="contained" color="primary">
                   Search

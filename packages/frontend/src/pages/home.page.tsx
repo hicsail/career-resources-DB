@@ -6,27 +6,22 @@ import { searchResources } from '../services/api';
 import { subjects } from '../constants/subjects';
 import { formats } from '../constants/formats';
 import { sources } from '../constants/sources';
-
-import type { SearchResultType } from '../services/api';
+import type { SearchFiltersType } from '../types/search';
+import type { SearchResultType } from '../types/search';
 
 export const HomePage: FC = () => {
   const [results, setResults] = useState<[SearchResultType[]]>([]);
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async ({
-    keyword,
+    phrase,
     subject,
     format,
     source
-  }: {
-    keyword: string;
-    subject?: string;
-    format?: string;
-    source?:string;
-  }) => {    
+  }: SearchFiltersType) => {    
     setLoading(true);
     try {
-      const data = await searchResources(keyword, subject, format, source); 
+      const data = await searchResources(phrase, subject, format, source); 
       setResults(data);
     } catch (error) {
       console.error('Search error:', error);
