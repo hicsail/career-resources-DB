@@ -10,14 +10,14 @@ import {
 import { Formik, Form } from "formik";
 import type { FormikHelpers } from "formik";
 import * as Yup from "yup";
-import type { UploadedResource } from "../../pages/admin.page";
 import { FilterDropdown } from "../filter-dropdown";
 import { subjects } from "../../constants/subjects";
 import { formats } from "../../constants/formats";
 import { sources } from "../../constants/sources";
+import { uploadFile } from "../../services/api";  // <-- import the upload API function
 
 interface UploadFormProps {
-  addUpload: (upload: UploadedResource) => void;
+  addUpload: (upload: any) => void; // adjust type as needed
 }
 
 interface FormValues {
@@ -58,25 +58,28 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
     setSubmitting(true);
 
     try {
-      // Simulate upload delay
-      await new Promise((res) => setTimeout(res, 1000));
-
       if (!values.file) {
         alert("Please select a file.");
         setSubmitting(false);
         return;
       }
 
-      const newUpload: UploadedResource = {
+      const data = await uploadFile(values.file, {
+        title: values.title,
+        subject: values.subject,
+        format: values.format,
+        source: values.source,
+      });
+
+      addUpload({
         title: values.title,
         subject: values.subject,
         format: values.format,
         source: values.source,
         fileName: values.file.name,
         uploadDate: new Date().toISOString().split("T")[0],
-      };
-
-      addUpload(newUpload);
+        // optionally add anything from returned `data` if useful
+      });
 
       resetForm();
       alert("File uploaded successfully!");
