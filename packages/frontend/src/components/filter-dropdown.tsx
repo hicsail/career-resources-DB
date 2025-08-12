@@ -10,7 +10,7 @@ interface FilterDropdownProps {
   setFieldValue: (field: string, value: any) => void;
 }
 
-const FilterDropdown: React.FC<FilterDropdownProps> = ({
+export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   label,
   name,
   options,
@@ -35,5 +35,3 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     />
   );
 };
-
-export default FilterDropdown;   
