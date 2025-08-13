@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import {
   Box,
   Button,
@@ -14,10 +15,11 @@ import { FilterDropdown } from "../filter-dropdown";
 import { subjects } from "../../constants/subjects";
 import { formats } from "../../constants/formats";
 import { sources } from "../../constants/sources";
-import { uploadFile } from "../../services/api";  // <-- import the upload API function
+import { uploadFile } from "../../services/api"; 
+import { useSnackbar } from '../../contexts/snackbar.context.tsx'; 
 
 interface UploadFormProps {
-  addUpload: (upload: any) => void; // adjust type as needed
+  addUpload: (upload: any) => void; 
 }
 
 interface FormValues {
@@ -51,6 +53,7 @@ const initialValues: FormValues = {
 };
 
 export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
+  const { push } = useSnackbar();
   const handleSubmit = async (
     values: FormValues,
     { resetForm, setSubmitting }: FormikHelpers<FormValues>
@@ -59,7 +62,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
 
     try {
       if (!values.file) {
-        alert("Please select a file.");
+        push({ message: 'Please select a file.', type: 'error' });
         setSubmitting(false);
         return;
       }
@@ -77,15 +80,18 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
         format: values.format,
         source: values.source,
         fileName: values.file.name,
-        uploadDate: new Date().toISOString().split("T")[0],
-        // optionally add anything from returned `data` if useful
+        uploadDate: new Date().toISOString().split("T")[0],        
       });
 
       resetForm();
-      alert("File uploaded successfully!");
-    } catch (error) {
-      console.error(error);
-      alert("Error uploading file.");
+      push({ message: 'File uploaded successfully!', type: 'success' });
+    } catch (err) {
+        if (axios.isAxiosError(err)) {
+          const backendMsg = err.response?.data?.message || 'Error uploading file';
+          push({ message: backendMsg, type: 'error' });
+        } else {
+          push({ message: 'Unexpected error occurred', type: 'error' });
+        }
     } finally {
       setSubmitting(false);
     }
