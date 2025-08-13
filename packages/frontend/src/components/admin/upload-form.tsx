@@ -87,7 +87,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
       push({ message: 'File uploaded successfully!', type: 'success' });
     } catch (err) {
         if (axios.isAxiosError(err)) {
-          const backendMsg = err.response?.data?.message || 'Error uploading file';
+          const backendMsg = err.response?.data?.message;
           push({ message: backendMsg, type: 'error' });
         } else {
           push({ message: 'Unexpected error occurred', type: 'error' });

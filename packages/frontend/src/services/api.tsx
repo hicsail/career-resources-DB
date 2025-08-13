@@ -5,6 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
 const API_ENDPOINTS = {
   UPLOAD_FILE: `${API_BASE_URL}upload`,
   SEARCH_RESOURCES: `${API_BASE_URL}search`,
+  GET_ALL_METADATA: `${API_BASE_URL}documents-metadata`
 };
 
 export async function uploadFile(
@@ -43,4 +44,14 @@ export async function searchResources(
 
   const response = await axios.get(API_ENDPOINTS.SEARCH_RESOURCES, { params });
   return response.data;
+}
+
+export async function getAllDocumentMetadata() {
+  try {
+    const response = await axios.get(API_ENDPOINTS.GET_ALL_METADATA);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching document metadata:', error);
+    throw error;
+  }
 }

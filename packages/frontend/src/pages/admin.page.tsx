@@ -7,9 +7,9 @@ import {
   Paper,
   TableContainer,
 } from "@mui/material";
-import { initialUploads } from "../constants/dummy-uploads";
 import { UploadForm } from "../components/admin/upload-form";
 import { ResourcesTable } from "../components/admin/resources-table";
+import { getAllDocumentMetadata } from "../services/api"
 
 export interface UploadedResource {
   title: string;
@@ -22,14 +22,29 @@ export interface UploadedResource {
 
 export const AdminPage: React.FC = () => {
   const [uploads, setUploads] = useState<UploadedResource[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    setUploads(initialUploads);
-  }, []);
+  const fetchMetadata = async () => {
+    try {
+      setLoading(true);
+      const data = await getAllDocumentMetadata();
+      setUploads(data); 
+    } catch (err) {
+      console.error(err);
+      setError("Failed to fetch document metadata.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const addUpload = (newUpload: UploadedResource) => {
     setUploads((prev) => [newUpload, ...prev]);
   };
+
+  useEffect(() => {   
+    fetchMetadata();
+  }, []);
 
   return (
     <Container maxWidth="md" sx={{ py: 6 }}>
