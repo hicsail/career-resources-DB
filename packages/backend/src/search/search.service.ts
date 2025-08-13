@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-//import { extractKeywordsFromPhrase } from './utils/keyword.utils';
 import { KeywordIndexService } from '../keyword-index/keyword-index.service';
 import { DocumentMetadataService } from '../document-metadata/document-metadata.service';
 import { getDocumentIntersection, filterAndFormatResults, extractKeywordsFromPhrase } from './utils/document-utils';
@@ -34,7 +33,7 @@ export class SearchService {
     }
 
     const matchingDocIds = getDocumentIntersection(keywords, docMatchesPerKeyword);
-    const metadata = await this.metadataService.fetchAllMetadata();
+    const metadata = await this.metadataService.getAllMetadata();
 
     return filterAndFormatResults(metadata, matchingDocIds, docIdToKeywordMap, {
       subject,

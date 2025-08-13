@@ -10,7 +10,7 @@ export class DocumentMetadataService {
     @Inject(DYNAMO_CLIENT) private readonly docClient: DocumentClient
   ) {}
 
-  async fetchAllMetadata(): Promise<DocumentClient.ItemList> {
+  async getAllMetadata(): Promise<DocumentClient.ItemList> {
     const params: DocumentClient.QueryInput = {
       TableName: this.tableName,
       IndexName: 'queryAll-uploadedAt-index',

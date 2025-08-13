@@ -4,14 +4,19 @@ import {
   UploadedFile,
   UseInterceptors,
   Body,
+  BadRequestException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { S3Service } from '../s3/s3.service';
 import { memoryStorage } from 'multer';
+import { DocumentMetadataService } from '../document-metadata/document-metadata.service';
 
 @Controller('upload')
 export class UploadController {
-  constructor(private readonly s3Service: S3Service) {}
+  constructor(
+    private readonly s3Service: S3Service,
+    private readonly documentMetadataService: DocumentMetadataService
+  ) {}
 
   @Post()
   @UseInterceptors(
@@ -27,10 +32,20 @@ export class UploadController {
   )
   async uploadFile(
     @UploadedFile() file: Express.Multer.File,
-    @Body() body: Record<string, string>, // metadata sent in form fields
+    @Body() body: Record<string, string>,
   ) {
     if (!file) {
-      return { message: 'File is required' };
+      throw new BadRequestException('File is required');
+    }
+
+    //Check if file already exists in DynamoDB
+    const allMetadata = await this.documentMetadataService.getAllMetadata();
+    const duplicate = allMetadata.find(
+      (doc) => doc.PDFName?.toLowerCase() === file.originalname.toLowerCase()
+    );
+
+    if (duplicate) {      
+      throw new BadRequestException('File already exists in the system');
     }
 
     const metadata = {
@@ -41,12 +56,12 @@ export class UploadController {
     };
 
     const bucket = process.env.AWS_S3_BUCKET_NAME;
+    const filename = file.originalname;
 
-    const filename = file.originalname;    
     await this.s3Service.uploadFile(
       bucket,
       filename,
-      file.buffer, //contains the uploaded file as a Buffer in memory
+      file.buffer,
       file.mimetype,
       metadata,
     );
