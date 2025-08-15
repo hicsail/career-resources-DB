@@ -3,6 +3,7 @@ import { HomePage } from './pages/home.page.tsx';
 import { AdminPage } from './pages/admin.page.tsx';
 import { AuthCallbackPage } from './pages/auth-callback.page.tsx';
 import { PermissionRequiredPage } from './pages/permission-required.page.tsx';
+import { LogoutPage } from './pages/logout.page.tsx';
 import { Paths } from './constants/paths';
 import { SnackbarProvider } from './contexts/snackbar.context.tsx';
 import { AdminGuard } from './guards/admin.guard';
@@ -20,6 +21,7 @@ function App() {
               <Route path={Paths.HOME} element={<HomePage />} />
               <Route path={Paths.AUTH_CALLBACK} element={<AuthCallbackPage />} />
               <Route path={Paths.PERMISSION_REQUIRED} element={<PermissionRequiredPage />} />
+              <Route path={Paths.LOGOUT} element={<LogoutPage />} />
               {/* Protected routes */}
               <Route element={<AdminGuard />}>
                 <Route path={Paths.ADMIN} element={<AdminPage />} />
