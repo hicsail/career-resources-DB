@@ -1,250 +1,1623 @@
-{
-  "A ROADMAP FOR INDUSTRY ENGAGEMENT & ACTION ACROSS SECTORS": {
-    "link": "https://docs.google.com/document/d/18D1pcjqgU8OEzadaFsktAGlIf2FsIqtc/export?format=pdf",
-    "tag": "Coalition for Career Dev. Information"
+export const resourcesDict = {
+  "A Roadmap for Industry Engagement and Action across sectors. ": {
+    "Subject": "Coalition for Career Dev. Information",
+    "Resource Title": "A Roadmap for Industry Engagement and Action across sectors. ",
+    "Resource Link": "https://docs.google.com/document/d/18D1pcjqgU8OEzadaFsktAGlIf2FsIqtc/export?format=pdf",
+    "Format": "Information Brief",
+    "Source": "CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2023-10-19T00:00:00",
+    "Summary of resource": "Coalition for Career Development Center Five Pillars of their work. "
   },
   "Industry and Business Opportunities From Federal Funding Sources for Supporting Career Readiness and": {
-    "link": "https://docs.google.com/document/d/1DNrurWI8m_AsZf-x4Lkl84BoOFNDldry/export?format=pdf",
-    "tag": "Role of Industry in Supporting Workforce Dev."
+    "Subject": "Role of Industry in Supporting Workforce Dev.",
+    "Resource Title": "Industry and Business Opportunities From Federal Funding Sources for Supporting Career Readiness and",
+    "Resource Link": "https://docs.google.com/document/d/1DNrurWI8m_AsZf-x4Lkl84BoOFNDldry/export?format=pdf",
+    "Format": "Practice Brief",
+    "Source": "CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2023-11-01T00:00:00",
+    "Summary of resource": "CCD Center Practice Brief about opportunities to fund and support career readiness and workforce development. "
   },
   "BLFP 2023 Speaker Series: Empowering Employers to Share Career Readiness": {
-    "link": "https://docs.google.com/presentation/d/1UzQeNpkSPJSPRaWXYvY9g5G7fz_DSjGi/export/pdf",
-    "tag": "Role of Industry in Supporting Workforce Dev."
+    "Subject": "Role of Industry in Supporting Workforce Dev.",
+    "Resource Title": "BLFP 2023 Speaker Series: Empowering Employers to Share Career Readiness",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1o3M2br1jBpwuaTHiv9saFUFgbogQpGUc",
+    "Format": "PPT (PDF)",
+    "Source": "CFR & CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2023-11-02T00:00:00",
+    "Summary of resource": "Powerpoint presentation covering how employers can be involved in career readiness efforts, and why they should be. "
   },
-  "PROVIDING QUALITY CAREER DEVELOPMENT WITHIN YOUTH DEVELOPMENT & LEADERSHIP PROGRAMS": {
-    "link": "https://drive.google.com/uc?export=download&id=1JrxXqzlar63-iFYVrZxL3kTMJb34Y0QK",
-    "tag": "Role of Industry in Supporting Workforce Dev."
+  "Providing quality career development within youth development & leadership programs ": {
+    "Subject": "Role of Industry in Supporting Workforce Dev.",
+    "Resource Title": "Providing quality career development within youth development & leadership programs ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1JrxXqzlar63-iFYVrZxL3kTMJb34Y0QK",
+    "Format": "Information Brief",
+    "Source": "Center (CFR)",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2017-09-01T00:00:00",
+    "Summary of resource": "This brief describes how organizations can assess the extent they provide quality career development opportunities and identify ways to integrate more career development skills-building into their programs."
+  },
+  "Youth - I'm Determined: Identity and Self Awareness template": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Youth - I'm Determined: Identity and Self Awareness template",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1SNWhL9sYfx27QtKbRE-pTdPLz13AuyBY",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "Affiliated with James Madison University, VA",
+    "Summary of resource": "Activity template for identity and self awareness building via I Am Determined. "
+  },
+  "Youth - I'm Determined: Identity and Self Awareness": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Youth - I'm Determined: Identity and Self Awareness",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1T9XU43m_kmHBKIIdxfZtC9B2E8Nt6Jc4",
+    "Format": "Information (PDF)",
+    "Source": "External",
+    "Summary of resource": "One-pager implementation guide for the building identity and self awareness activity via I Am Determined. "
+  },
+  "Youth - I'm Determined: Good Day Plan template": {
+    "Subject": "Life Design",
+    "Resource Title": "Youth - I'm Determined: Good Day Plan template",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1FIKoULo0hgVePF1yMvUxLwo2OyLnVPfb",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "Affiliated with James Madison University, VA",
+    "Summary of resource": "\"Good Day Plan\" activity template via I Am Determined. "
+  },
+  "Youth - I'm Determined: Good Day Plan": {
+    "Subject": "Life Design",
+    "Resource Title": "Youth - I'm Determined: Good Day Plan",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=11Doe2w4UdKU6T3GbdNG1jbu1uFbVYn4_",
+    "Format": "Information (PDF)",
+    "Source": "External",
+    "Summary of resource": "\"Good Day Plan\" implementation guide via I Am Determined. "
+  },
+  "Youth - I'm Determined: Goal Plan template": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Youth - I'm Determined: Goal Plan template",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1HwGXr4Z6noFy6rMAmvFUEvugohpmdrSx",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "Affiliated with James Madison University, VA",
+    "Summary of resource": "\"Goal Plan\" activity template via I Am Determined. "
+  },
+  "Youth - I'm Determined: Goal Plan": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Youth - I'm Determined: Goal Plan",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Bi3fWRSWarqLrK4AuSiNiJWHttAoN-ye",
+    "Format": "Information (PDF)",
+    "Source": "External",
+    "Summary of resource": "\"Goal Plan\" implementation guide via I Am Determined. "
+  },
+  "In-Depth Impact Assessment Study of the Career Counseling in Pre-University Education in Romania": {
+    "Subject": "International Resources",
+    "Resource Title": "In-Depth Impact Assessment Study of the Career Counseling in Pre-University Education in Romania",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1v5-TwKbUesEYA5w0QC8W0ImlOYzQwa34",
+    "Format": "Report",
+    "Source": "External",
+    "Country/State": "Romania",
+    "Misc. Notes/Publication Year": 2023.0
   },
   "Resource Materials": {
-    "link": "https://drive.google.com/uc?export=download&id=1xXyhqBcj-Ldx1PjIg5hOUIJeNnjzYJdV",
-    "tag": "International Resources"
+    "Subject": "International Resources",
+    "Resource Title": "Resource Materials",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1xXyhqBcj-Ldx1PjIg5hOUIJeNnjzYJdV",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Misc. Notes/Publication Year": "2023-12-15T00:00:00"
+  },
+  "Opinion article: BPS are exposing students to career options as early as middle school, and it's paying off. ": {
+    "Subject": "Career Exploration",
+    "Resource Title": "Opinion article: BPS are exposing students to career options as early as middle school, and it's paying off. ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1jsQBXrhcuw1UtCmLlFBIBcdMwLu6G5by",
+    "Format": "Website",
+    "Source": "External",
+    "Misc. Notes/Publication Year": 2023.0
+  },
+  "CareerOnStop": {
+    "Subject": "Career Exploration",
+    "Resource Title": "CareerOnStop",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ZnlI4HN8Ha2IVFljSS32m07MqKd_7Svn",
+    "Format": "Resource Brief",
+    "Source": "External"
+  },
+  "CareerOnStop- Spanish Language": {
+    "Subject": "Career Exploration",
+    "Resource Title": "CareerOnStop- Spanish Language",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1wtwkYpjTEXh_7_JYH6anGoOWhag5gl1v",
+    "Format": "Resource Brief",
+    "Source": "External"
   },
   "Guideposts for success 2.0": {
-    "link": "https://drive.google.com/uc?export=download&id=1K6CV_sVXZGiuvrnYWJCabShKTZqv3Yor",
-    "tag": "Career Exploration"
+    "Subject": "Career Exploration",
+    "Resource Title": "Guideposts for success 2.0",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1K6CV_sVXZGiuvrnYWJCabShKTZqv3Yor",
+    "Format": "Information (PDF)",
+    "Source": "Center (CFR)"
   },
   "Implementing ILP, How to Guide V3": {
-    "link": "https://docs.google.com/document/d/1wtfX18thnJpMUuDI2o-_mLTdqVTTZeMx/export?format=pdf",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Implementing ILP, How to Guide V3",
+    "Resource Link": "https://docs.google.com/document/d/1wtfX18thnJpMUuDI2o-_mLTdqVTTZeMx/export?format=pdf",
+    "Format": "Toolkit/Activity",
+    "Source": "Center (CFR)"
   },
   "Implementing ILP, How to Guide V2": {
-    "link": "https://drive.google.com/uc?export=download&id=1p0KtT_NIvavjcNdlQBdSuwCSsnwt0cxA",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Implementing ILP, How to Guide V2",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1p0KtT_NIvavjcNdlQBdSuwCSsnwt0cxA",
+    "Format": "Toolkit/Activity",
+    "Source": "Center (CFR)"
   },
   "ILP - Meaning, Best Practices, Relevance for Stakeholders": {
-    "link": "https://drive.google.com/uc?export=download&id=1TlY3xMcFQ8zRbeovShsVhpuqCOyQRgDf",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "ILP - Meaning, Best Practices, Relevance for Stakeholders",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1TlY3xMcFQ8zRbeovShsVhpuqCOyQRgDf",
+    "Format": "Policy Brief",
+    "Source": "Center (CFR)"
   },
   "Past Presentations by Scott on ILP/PCAP [Presentation] [Center]": {
-    "link": null,
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Past Presentations by Scott on ILP/PCAP [Presentation] [Center]",
+    "Resource Link": null,
+    "Format": "PPT (Editable)",
+    "Source": "Center (CFR)"
   },
   "Implementing MyCAP": {
-    "link": "https://docs.google.com/document/d/1jF_vS6NwU3JRkilfVLQG9sHpWH88H4iG/export?format=pdf",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Implementing MyCAP",
+    "Resource Link": "https://docs.google.com/document/d/1jF_vS6NwU3JRkilfVLQG9sHpWH88H4iG/export?format=pdf",
+    "Format": "Toolkit/Activity",
+    "Source": "Center (CFR)",
+    "Country/State": "Massachusetts"
   },
   "Best Practices for Implementing PCAP": {
-    "link": "https://drive.google.com/uc?export=download&id=1zAJScNNll7SOcodEAf6NZ9le_47O0sAn",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Best Practices for Implementing PCAP",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1zAJScNNll7SOcodEAf6NZ9le_47O0sAn",
+    "Format": "Resource Brief",
+    "Source": "Center (CFR)"
   },
   "Importance of PCAP": {
-    "link": "https://drive.google.com/uc?export=download&id=1hVMwcjtUBrqeCVpp3cS_5imA_FsC7gS8",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Importance of PCAP",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1hVMwcjtUBrqeCVpp3cS_5imA_FsC7gS8",
+    "Format": "Resource Brief",
+    "Source": "Center (CFR)"
   },
   "MA Report on Implementing ILP": {
-    "link": "https://drive.google.com/uc?export=download&id=164jdq0WQe29mvtjtKeqLIJ6A-XGsWEbm",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "MA Report on Implementing ILP",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=164jdq0WQe29mvtjtKeqLIJ6A-XGsWEbm",
+    "Format": "Policy Brief",
+    "Source": "Center (CFR)",
+    "Country/State": "Massachusetts"
   },
   "Using ILPs - Findings & Recommendations": {
-    "link": "https://drive.google.com/uc?export=download&id=181nbFldDvfeDc0_tgp9DDcjwaeBp1d_Q",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Using ILPs - Findings & Recommendations",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=181nbFldDvfeDc0_tgp9DDcjwaeBp1d_Q",
+    "Format": "Information (PDF)",
+    "Source": "Center (CFR)"
   },
   "NCWDYouth-ILP-How-to-Guide-Feb2013.pdf": {
-    "link": "https://drive.google.com/uc?export=download&id=1Nl9Xg2vJe2wPiEBbs_bpOqe8aluU-Rhf",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "NCWDYouth-ILP-How-to-Guide-Feb2013.pdf",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Nl9Xg2vJe2wPiEBbs_bpOqe8aluU-Rhf",
+    "Format": "Information (PDF)",
+    "Source": "Center (CFR)"
   },
   "2022 Coalition for Career Development Center, Condition of Career Readiness report": {
-    "link": "https://drive.google.com/uc?export=download&id=1DGhOePV3tXmJbdYSotVV0N7hRspbF165",
-    "tag": "Condition of Career Readiness"
+    "Subject": "Condition of Career Readiness",
+    "Resource Title": "2022 Coalition for Career Development Center, Condition of Career Readiness report",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1DGhOePV3tXmJbdYSotVV0N7hRspbF165",
+    "Format": "Report",
+    "Source": "CFR & CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": 2022.0
   },
   "2023 Coalition for Career Development Center, Condition of Career Readiness report": {
-    "link": "https://drive.google.com/uc?export=download&id=1h6qf5N2-bJ_-TNlrOKsZ2g-5e5-zeM9E",
-    "tag": "Condition of Career Readiness"
+    "Subject": "Condition of Career Readiness",
+    "Resource Title": "2023 Coalition for Career Development Center, Condition of Career Readiness report",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1h6qf5N2-bJ_-TNlrOKsZ2g-5e5-zeM9E",
+    "Format": "Report",
+    "Source": "CFR & CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": 2023.0
+  },
+  "College and Career Readiness: The Outlook for Youth": {
+    "Subject": "Condition of Career Readiness",
+    "Resource Title": "College and Career Readiness: The Outlook for Youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1wbtve-exPENlhX3a-5T2xfUk-o9zWCgh",
+    "Format": "Policy Brief",
+    "Source": "CFR & CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2023-09-01T00:00:00"
+  },
+  "America's Economic Future: The Outlook for Young Adults": {
+    "Subject": "Condition of Career Readiness",
+    "Resource Title": "America's Economic Future: The Outlook for Young Adults",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1GcZONLxJhq_YuQANOBR6tR3pSw5HpRT1",
+    "Format": "Policy Brief",
+    "Source": "CFR & CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2023-10-01T00:00:00"
+  },
+  "Pathways to Social Mobility: The Outlook for Adults": {
+    "Subject": "Condition of Career Readiness",
+    "Resource Title": "Pathways to Social Mobility: The Outlook for Adults",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1wbtve-exPENlhX3a-5T2xfUk-o9zWCgh",
+    "Format": "Policy Brief",
+    "Source": "CFR & CCD Center",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2023-09-01T00:00:00"
   },
   "Roadmap for SEL+Career Readiness Education": {
-    "link": "https://drive.google.com/uc?export=download&id=1IN6mg4Im3hNEPpIBFsKicr7ETYaRYphP",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Roadmap for SEL+Career Readiness Education",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1IN6mg4Im3hNEPpIBFsKicr7ETYaRYphP",
+    "Format": "Policy Brief",
+    "Source": "CCD Center"
+  },
+  "Building Employable SEL Skills in Youth": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Building Employable SEL Skills in Youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1g-5rcCgGVi_e613p3jPP5W7rV7fnmrSM",
+    "Format": "Paper (PDF)",
+    "Source": "External"
   },
   "Quality Learning Experiences, Self-\nDetermination, & Academic Success: A Path Analytic Study Among Youth With Disabilities": {
-    "link": "https://drive.google.com/uc?export=download&id=1nUtP-LwRuZVuQecMVqm9ggMJp44hHzRU",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Quality Learning Experiences, Self-\nDetermination, & Academic Success: A Path Analytic Study Among Youth With Disabilities",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1nUtP-LwRuZVuQecMVqm9ggMJp44hHzRU",
+    "Format": "Research",
+    "Source": "Center (CFR)",
+    "Misc. Notes/Publication Year": 2012.0
+  },
+  "Efficacy of a group career construction intervention with early adolescent youth": {
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Efficacy of a group career construction intervention with early adolescent youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1gBEvbS8Md9rqoUw63rJNeMax5EqjpBMI",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
+  },
+  "A Systematic Review of Factors That Influence Youths Career Choices\u2014the Role of Culture": {
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "A Systematic Review of Factors That Influence Youths Career Choices\u2014the Role of Culture",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1FQQ_00DtrJhO4m64Os3yAUS_jlUzVKi2",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
+  },
+  "From Traditional to Tailored: How School Counselors Should Consider the Career Development Needs of Minoritized Youth": {
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "From Traditional to Tailored: How School Counselors Should Consider the Career Development Needs of Minoritized Youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=10iXi4sWmWLFrgC2dNd79065Q5biTIv5X",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "ILO/OECD resources international quality career guidance": {
-    "link": "https://drive.google.com/uc?export=download&id=1xXyhqBcj-Ldx1PjIg5hOUIJeNnjzYJdV",
-    "tag": "Career Counseling Resources"
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "ILO/OECD resources international quality career guidance",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1xXyhqBcj-Ldx1PjIg5hOUIJeNnjzYJdV",
+    "Format": "Resource Brief",
+    "Source": "External"
   },
   "ACRP standards implementation handbook: for career information systems": {
-    "link": "https://drive.google.com/uc?export=download&id=1NX1JI3b3Tsk6QX1CRZaICr3zKI19ehaJ",
-    "tag": "Intersectional Resources"
-  },
-  "Individual Success Planning: Individual Learning Plans. Presentation to Ohio and New York District leaders on behalf of Harvard University\u2019s National Center for Rural Education Networks (Virtual).": {
-    "link": null,
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Intersectional Resources",
+    "Resource Title": "ACRP standards implementation handbook: for career information systems",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1aCwPaknSa-SMoFNd2CSCAD8jZ-KAFkHc",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Misc. Notes/Publication Year": 2016.0,
+    "Summary of resource": "The 2016 Standards Implementation Guide from the Alliance of Career Resource Professionals (ACRP), covering quality standards for computer-based career information, implementation checklists and instructions and benchmarks. "
   },
   "Coalition for Psychology in Schools and Education": {
-    "link": "https://drive.google.com/uc?export=download&id=1HjVy34DChUU81zolnJVf7Ax1Gg-DQRTV",
-    "tag": "Training, Professional Development"
+    "Subject": "Training, Professional Development",
+    "Resource Title": "Coalition for Psychology in Schools and Education",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1HjVy34DChUU81zolnJVf7Ax1Gg-DQRTV",
+    "Format": "Article (PDF)",
+    "Source": "External",
+    "Country/State": "United States",
+    "Misc. Notes/Publication Year": "2006-08-01T00:00:00"
   },
   "Career Readiness for All": {
-    "link": "https://drive.google.com/uc?export=download&id=1ZCbM0ewGzYJtuqRjQrVyEqTDFWSgZFSF",
-    "tag": "Career Exploration"
+    "Subject": "Career Exploration",
+    "Resource Title": "Career Readiness for All",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ZCbM0ewGzYJtuqRjQrVyEqTDFWSgZFSF",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Promoting Quality Individualized Learning Plans Throughout the Lifespan: A Revised and Updated ILP How To Guide 2.0": {
-    "link": "https://drive.google.com/uc?export=download&id=1oytqSevdY0eVDZH-UWb8LatCYy-Umb7X",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Promoting Quality Individualized Learning Plans Throughout the Lifespan: A Revised and Updated ILP How To Guide 2.0",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1oytqSevdY0eVDZH-UWb8LatCYy-Umb7X",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Paper prepared for the 2017 International Symposium, International Center for Career Development Policy and Practice, Seoul, Korea": {
-    "link": "https://drive.google.com/uc?export=download&id=1sqDmprJbS01A6BnccOynf9bp5whOQz9t",
-    "tag": "Career Dev. Practices"
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Paper prepared for the 2017 International Symposium, International Center for Career Development Policy and Practice, Seoul, Korea",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1sqDmprJbS01A6BnccOynf9bp5whOQz9t",
+    "Format": "Article (PDF)",
+    "Source": "External",
+    "Country/State": "Seoul, Korea"
   },
   "Helping Youth Become the Drivers of Their Own College and Career Readiness Success: Nature, Promise, and Implementation Recommendations for Supporting Districts to Adopt Individual Learning Plans": {
-    "link": "https://drive.google.com/uc?export=download&id=1yhJm3iBVKIeY54G1_vJeaeVVgqXosyzu",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Helping Youth Become the Drivers of Their Own College and Career Readiness Success: Nature, Promise, and Implementation Recommendations for Supporting Districts to Adopt Individual Learning Plans",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1yhJm3iBVKIeY54G1_vJeaeVVgqXosyzu",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Guide for Designing State-Wide Career Development Strategies and Programs": {
-    "link": "https://drive.google.com/uc?export=download&id=18_ZH51FAKQFThFRtbr0BpeDpZ-BWAP3f",
-    "tag": "Career Dev. Practices"
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Guide for Designing State-Wide Career Development Strategies and Programs",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=18_ZH51FAKQFThFRtbr0BpeDpZ-BWAP3f",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Use of individualized learning plans as a promising practice for driving college and career readiness efforts: Findings and recommendations from a multi-method, multi-study effort": {
-    "link": "https://drive.google.com/uc?export=download&id=1PPcaT-RtecLYZTcgvvXoW1tepZRJADIf",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Use of individualized learning plans as a promising practice for driving college and career readiness efforts: Findings and recommendations from a multi-method, multi-study effort",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1PPcaT-RtecLYZTcgvvXoW1tepZRJADIf",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Policy Brief: Using individualized learning plans to produce college and career ready high school graduates": {
-    "link": "https://drive.google.com/uc?export=download&id=1qZsJpG3uC42bDFGRNxoCyJrtfQTfYsud",
-    "tag": "Legislative"
+    "Subject": "Legislative",
+    "Resource Title": "Policy Brief: Using individualized learning plans to produce college and career ready high school graduates",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1qZsJpG3uC42bDFGRNxoCyJrtfQTfYsud",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Promoting Quality Individualized Learning Plans: A \u201cHow to Guide\u201d Focused on the High School Years": {
-    "link": "https://drive.google.com/uc?export=download&id=1eyYNNEmAPgCYIIwR7Jo3UCWGl5rbgn08",
-    "tag": "Career Dev. Practices"
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Promoting Quality Individualized Learning Plans: A \u201cHow to Guide\u201d Focused on the High School Years",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1eyYNNEmAPgCYIIwR7Jo3UCWGl5rbgn08",
+    "Format": "Article (PDF)",
+    "Source": "External"
   },
   "Careers for Students with Special Educational Needs: Perspectives on Development and Transitions from the Asia-Pacific Region": {
-    "link": "https://drive.google.com/uc?export=download&id=1kyEjZSj9p7yyAkg_ftSRoHHCfx51HrJn",
-    "tag": "Career Counseling Resources"
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Careers for Students with Special Educational Needs: Perspectives on Development and Transitions from the Asia-Pacific Region",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1kyEjZSj9p7yyAkg_ftSRoHHCfx51HrJn",
+    "Format": "Book",
+    "Source": "External"
   },
   "Assessing Career Search Expectations: Development and Validation of the Career Search Efficacy Scale": {
-    "link": "https://drive.google.com/uc?export=download&id=1N_ikJg7rho6fxbAchmaolVL6n7WvicaE",
-    "tag": "Career and Workforce Dev."
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Assessing Career Search Expectations: Development and Validation of the Career Search Efficacy Scale",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1N_ikJg7rho6fxbAchmaolVL6n7WvicaE",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Self-efficacy, stress, and social support as predictors of Hispanic college adjustment": {
-    "link": "https://drive.google.com/uc?export=download&id=1R9jc2eJconKBv3rdubZhZvRFDCVZ21rX",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Self-efficacy, stress, and social support as predictors of Hispanic college adjustment",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1R9jc2eJconKBv3rdubZhZvRFDCVZ21rX",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Family dysfunction, parental attachment, and career search self-efficacy among community college students": {
-    "link": "https://drive.google.com/uc?export=download&id=18XxEy90FA06MVcIucf9WsZd-K37b_PxN",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Family dysfunction, parental attachment, and career search self-efficacy among community college students",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=18XxEy90FA06MVcIucf9WsZd-K37b_PxN",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Relative effects of career search self-efficacy and human agency upon career development": {
-    "link": "https://drive.google.com/uc?export=download&id=14e0r6AjLvUaV8Qvg_Q7xMATtx94JoxaM",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Relative effects of career search self-efficacy and human agency upon career development",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=14e0r6AjLvUaV8Qvg_Q7xMATtx94JoxaM",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Career development in the schools: Connecting school to work to life": {
-    "link": "https://drive.google.com/uc?export=download&id=1mchMD3JTge1ZoPCy2eCHLFK1gOfhR0u7",
-    "tag": "Career and Workforce Dev."
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Career development in the schools: Connecting school to work to life",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1mchMD3JTge1ZoPCy2eCHLFK1gOfhR0u7",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "The myth of sameness among Latino men and their machismo": {
-    "link": "https://drive.google.com/uc?export=download&id=1DCnrJKWj-1wPDM3K6XO4Ap65yPefbbOj",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "The myth of sameness among Latino men and their machismo",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1DCnrJKWj-1wPDM3K6XO4Ap65yPefbbOj",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Role of Self-Efficacy, Stress, Social Integration, and Family Support in Latino College Student Persistence and Health": {
-    "link": "https://drive.google.com/uc?export=download&id=1LTg3xasBnN-Rb7WWD9jMebermqvo6MHi",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Role of Self-Efficacy, Stress, Social Integration, and Family Support in Latino College Student Persistence and Health",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1LTg3xasBnN-Rb7WWD9jMebermqvo6MHi",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "The Adaptive Success Identity Plan (ASIP): A career intervention for college students": {
-    "link": "https://drive.google.com/uc?export=download&id=114OslNSEY9lC4TLQsVupqw1svsfjIsvb",
-    "tag": "Career Exploration"
+    "Subject": "Career Exploration",
+    "Resource Title": "The Adaptive Success Identity Plan (ASIP): A career intervention for college students",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=114OslNSEY9lC4TLQsVupqw1svsfjIsvb",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Predicting achievement, distress, and retention among Lower Income Latino Youth": {
-    "link": "https://drive.google.com/uc?export=download&id=1lwUGdOnNjDoi-_rQuJyipSyZ6GhnnX7L",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Predicting achievement, distress, and retention among Lower Income Latino Youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1lwUGdOnNjDoi-_rQuJyipSyZ6GhnnX7L",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Career search self-efficacy, family support, and vocational decision-making: Replication and extension with Italian youth": {
-    "link": "https://drive.google.com/uc?export=download&id=1tERMF9X3wz9RR3LWaW9x8uwuvUdwPC2x",
-    "tag": "International Resources"
+    "Subject": "International Resources",
+    "Resource Title": "Career search self-efficacy, family support, and vocational decision-making: Replication and extension with Italian youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1tERMF9X3wz9RR3LWaW9x8uwuvUdwPC2x",
+    "Format": "Journal Article (PDF)",
+    "Source": "External",
+    "Country/State": "United States/Italy"
   },
   "Classifying youth at-risk for high school non-completion: Role of exposure to violence and resilience on 9th grade outcomes": {
-    "link": "https://drive.google.com/uc?export=download&id=1ZJsD9P2e6sEghPD0jfF1zRGWACJbRSed",
-    "tag": "Career Exploration"
+    "Subject": "Career Exploration",
+    "Resource Title": "Classifying youth at-risk for high school non-completion: Role of exposure to violence and resilience on 9th grade outcomes",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ZJsD9P2e6sEghPD0jfF1zRGWACJbRSed",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "School-Based Social Justice: The Achieving Success Identity Pathways Program": {
-    "link": "https://drive.google.com/uc?export=download&id=1bc9ikXas7JR1bIq9L2sfSzOfz1UWZv2R",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "School-Based Social Justice: The Achieving Success Identity Pathways Program",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1bc9ikXas7JR1bIq9L2sfSzOfz1UWZv2R",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Promoting Vocational Development: Methods of Intervention and Techniques Used in the Italian Context": {
-    "link": "https://drive.google.com/uc?export=download&id=18wTcXQWcIHWeNFQibT7csxQu3-rAsMhN",
-    "tag": "International Resources"
+    "Subject": "International Resources",
+    "Resource Title": "Promoting Vocational Development: Methods of Intervention and Techniques Used in the Italian Context",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=18wTcXQWcIHWeNFQibT7csxQu3-rAsMhN",
+    "Format": "Journal Article (PDF)",
+    "Source": "External",
+    "Country/State": "United States/Italy"
   },
   "Designing culturally responsive school counseling career development programming for youth": {
-    "link": "https://drive.google.com/uc?export=download&id=1mFpMS38JqbbPGD-KHWRoF0GiqX3IEgF_",
-    "tag": "Career Counseling Resources"
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Designing culturally responsive school counseling career development programming for youth",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1mFpMS38JqbbPGD-KHWRoF0GiqX3IEgF_",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
   },
   "The Relation of Cultural Context and Social Relationships to Career Development in Middle School": {
-    "link": "https://drive.google.com/uc?export=download&id=14-X8nUTs4tY8Stw087AXpnuDBaHRB4DT",
-    "tag": "Career Dev. Practices"
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "The Relation of Cultural Context and Social Relationships to Career Development in Middle School",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=14-X8nUTs4tY8Stw087AXpnuDBaHRB4DT",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "The composition of the STEMM workforce": {
-    "link": "https://drive.google.com/uc?export=download&id=1S8t9FCR8FkvYU2v7EJqJDMPmZ2e9H1oE",
-    "tag": "Career and Workforce Dev."
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "The composition of the STEMM workforce",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1S8t9FCR8FkvYU2v7EJqJDMPmZ2e9H1oE",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "The nature and use of individualized learning plans as a career intervention strategy": {
-    "link": "https://drive.google.com/uc?export=download&id=1lUjfV9g8u8RR3V1JZXQFX_nPpd9KV2Eh",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "The nature and use of individualized learning plans as a career intervention strategy",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1lUjfV9g8u8RR3V1JZXQFX_nPpd9KV2Eh",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Personalized career and academic planning - A promising policy and practice": {
-    "link": "https://drive.google.com/uc?export=download&id=1lMdsOyc_5vaxAq6eYY1FINPf65CXMLfA",
-    "tag": "Individualized Learning Plan/PCAP"
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Personalized career and academic planning - A promising policy and practice",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1lMdsOyc_5vaxAq6eYY1FINPf65CXMLfA",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Pathways from caring and engaging adults to youth vocational identity: The mediational roles of career search self-efficacy and goal capacity": {
-    "link": "https://drive.google.com/uc?export=download&id=1DoqTAVeTha3JrQq-zrbDfcEMDcxiF7EJ",
-    "tag": "Career Exploration"
+    "Subject": "Career Exploration",
+    "Resource Title": "Pathways from caring and engaging adults to youth vocational identity: The mediational roles of career search self-efficacy and goal capacity",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1DoqTAVeTha3JrQq-zrbDfcEMDcxiF7EJ",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Career and Workforce Development Research, Practice, and Policy: Synthesis and Future Directions": {
-    "link": "https://drive.google.com/uc?export=download&id=1WCHrJgeVXL-7e8-UOvk1R1TwF5YtFAvM",
-    "tag": "Career and Workforce Dev."
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Career and Workforce Development Research, Practice, and Policy: Synthesis and Future Directions",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1WCHrJgeVXL-7e8-UOvk1R1TwF5YtFAvM",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
   },
   "Career development and its role in maintaining a competitive global economy": {
-    "link": "https://drive.google.com/uc?export=download&id=1B_wdH7glJbyYt1yYS-v90ZVIBVfH7Izu",
-    "tag": "Career and Workforce Dev."
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Career development and its role in maintaining a competitive global economy",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1B_wdH7glJbyYt1yYS-v90ZVIBVfH7Izu",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
   },
   "Concluding remarks and some ideas for the next future of counseling and inclusion (pp. 283-291)": {
-    "link": "https://drive.google.com/uc?export=download&id=1SXaAYd-5of_MkqO5vKjQMJ8PknrqDq-K",
-    "tag": "Career Counseling Resources"
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Concluding remarks and some ideas for the next future of counseling and inclusion (pp. 283-291)",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1SXaAYd-5of_MkqO5vKjQMJ8PknrqDq-K",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
   },
   "Personal Reflections on a Career Spent Creating and Sustaining Researcher-Practitioner Collaborations (pp. 108-129)": {
-    "link": "https://drive.google.com/uc?export=download&id=1pvOURu4OV4nw-AGUh9rwTHCOW5OMcWAN",
-    "tag": "Researcher/Practitioner"
+    "Subject": "Researcher/Practitioner",
+    "Resource Title": "Personal Reflections on a Career Spent Creating and Sustaining Researcher-Practitioner Collaborations (pp. 108-129)",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1pvOURu4OV4nw-AGUh9rwTHCOW5OMcWAN",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
   },
   "The Importance of Social Emotional Learning Skills in Assisting Youth to Successfully Transition into the Professional World": {
-    "link": "https://drive.google.com/uc?export=download&id=1sMweuUtCrbpTr6Txn1lffaV3Xt4aGQgB",
-    "tag": "SEL and Career Readiness"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "The Importance of Social Emotional Learning Skills in Assisting Youth to Successfully Transition into the Professional World",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1sMweuUtCrbpTr6Txn1lffaV3Xt4aGQgB",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Teacher Support and Guidelines for Diverse Student Learners during COVID-19": {
-    "link": "https://drive.google.com/uc?export=download&id=1yrD1W6XJzRi-LqtmLgtAodROM0msRBo4",
-    "tag": "Career Dev. Practices"
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Teacher Support and Guidelines for Diverse Student Learners during COVID-19",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1yrD1W6XJzRi-LqtmLgtAodROM0msRBo4",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "A Longitudinal and Multi-National Study in Impact of Community Well-being on Individual Well-being": {
-    "link": "https://drive.google.com/uc?export=download&id=1rdGGn8fuUypc5Zg8o-QF4WWbDMqfJIb3",
-    "tag": "Researcher/Practitioner"
+    "Subject": "Researcher/Practitioner",
+    "Resource Title": "A Longitudinal and Multi-National Study in Impact of Community Well-being on Individual Well-being",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1rdGGn8fuUypc5Zg8o-QF4WWbDMqfJIb3",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Designing Elite Football Programs that Produce Quality Athletes and Future Ready Adults: Incorporating Social Emotional Learning and Career Development": {
-    "link": "https://drive.google.com/uc?export=download&id=1HQ8DN9sMgbKdqSjusbyUBpvCfArVYE6f",
-    "tag": "Financial Literacy"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Designing Elite Football Programs that Produce Quality Athletes and Future Ready Adults: Incorporating Social Emotional Learning and Career Development",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1x5XCrPbPK8bJUIgY0ZHCtRQd4n2qBw9_",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "The Role of Empathy in Improving SEL Skills Among Educators and Students in Era of COVID-19": {
-    "link": "https://drive.google.com/uc?export=download&id=1yI-caeNjbIg4I3JTjZwrfmxALoXtMzwm",
-    "tag": "Mental Health"
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "The Role of Empathy in Improving SEL Skills Among Educators and Students in Era of COVID-19",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1FmsxItj6UT017Lc8cnz327h-1OesCJF8",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
   },
   "Career Guidance for Children and Youth with Disabilities. In International Handbook of Career Guidance (pp. 343\u2013357)": {
-    "link": "https://drive.google.com/uc?export=download&id=1chAaXrAnroiLPRmmOJZ2JZoazaa-qtQX",
-    "tag": "Life Design"
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Career Guidance for Children and Youth with Disabilities. In International Handbook of Career Guidance (pp. 343\u2013357)",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1aSUsmzCR8NQ4pN44hJPrBYzfQ-ENa9gf",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
+  },
+  "Career planning courses increase career readiness of graduate and postdoctoral trainees": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Career planning courses increase career readiness of graduate and postdoctoral trainees",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1E606zOvrIQMBbHuIL--6bcfO3xJZEeTU",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
+  },
+  "Designing Quality Programs that Promote Hope, Purpose and Future Readiness Among High Need, High Risk Youth: Recommendations for Shifting Perspective and Practice": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Designing Quality Programs that Promote Hope, Purpose and Future Readiness Among High Need, High Risk Youth: Recommendations for Shifting Perspective and Practice",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ZE4bMrs_j0xgBLWZPxZIiTP0Ip4Jsown",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
+  },
+  "Career Development Policy Strategies for Supporting Transition of Students with Education Needs and Disabilities. In Careers for Students with Special Educational Needs: Perspectives on Development and Transitions from the Asia-Pacific Region. (pp. 3-16)": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Career Development Policy Strategies for Supporting Transition of Students with Education Needs and Disabilities. In Careers for Students with Special Educational Needs: Perspectives on Development and Transitions from the Asia-Pacific Region. (pp. 3-16)",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ggjTBc4_CiM-Uwp3_kFLxP1OlhdhQOl8",
+    "Format": "Book/Chapter (PDF)",
+    "Source": "External"
+  },
+  "Chinese Youth Career Adaptability: Contextual Influences and Pathways to Positive Youth Development": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Chinese Youth Career Adaptability: Contextual Influences and Pathways to Positive Youth Development",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1RLGtdWykJqdICxEEEk5IgOpQ0rXBi11r",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
+  },
+  "USA Educator Perspectives Regarding the Nature and Value of Social and Emotional Learning": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "USA Educator Perspectives Regarding the Nature and Value of Social and Emotional Learning",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1y1UuyV0woi_Ea4K6IgnxAcrTCVEQJAYC",
+    "Format": "Journal Article (PDF)",
+    "Source": "External"
+  },
+  "Washington, DC Early Learning Standards": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Washington, DC Early Learning Standards",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Cc8AMBxw0NvSb_2OHLP8jBOtJdjwD17v",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "Washington, DC"
+  },
+  "Washington, DC State Plan 2019 ": {
+    "Subject": "Legislative",
+    "Resource Title": "Washington, DC State Plan 2019 ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1eqXJ3lUS7JNGI99HH_uCjQImSEQ_6oU8",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Washington, DC",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Washington, DC Public School guide for students": {
+    "Subject": "Life Design",
+    "Resource Title": "Washington, DC Public School guide for students",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1SN-1qmm-fvQn8msu83wdTQvpPGIHXwz3",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Washington, DC"
+  },
+  "DC Public Schools Parent Information: Graduation Portfolios": {
+    "Subject": "Community Engagement in Career Readiness",
+    "Resource Title": "DC Public Schools Parent Information: Graduation Portfolios",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1WbRRuPT1a7IDq1yXjSlwgFXWAScy_oAD",
+    "Format": "PPT (PDF)",
+    "Source": "External",
+    "Country/State": "Washington, DC"
+  },
+  "Hawaii State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "Hawaii State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1DW1mSr-KOeEkzanL2Of64-hBmor8M9zP",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Hawaii",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Utah Bill definitions August 2024": {
+    "Subject": "Legislative",
+    "Resource Title": "Utah Bill definitions August 2024",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1GEzmRDSRQ7rQqDK5Y70VIKvgyQQ0rKGB",
+    "Format": "Information Brief",
+    "Source": "External",
+    "Country/State": "Utah",
+    "Misc. Notes/Publication Year": 2024.0
+  },
+  "Wyoming WBL Guide 2020": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Wyoming WBL Guide 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1vCugcVCvj_RFNt_4wB9BHLeVriQqepbL",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "Wyoming",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Wyoming State Plan 2021": {
+    "Subject": "Legislative",
+    "Resource Title": "Wyoming State Plan 2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1xb8XJHkgJy4Eg5hfZfXnJysM63ujTi9r",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Wyoming",
+    "Misc. Notes/Publication Year": 2021.0
+  },
+  "Nebraska State Plan 2024": {
+    "Subject": "Legislative",
+    "Resource Title": "Nebraska State Plan 2024",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=13iP3jo6rjfXSiRH1bUNv4hsF80bnW-tI",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Nebraska",
+    "Misc. Notes/Publication Year": 2024.0
+  },
+  "Minnesota Career and College Readiness Program Planning Guide ": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Minnesota Career and College Readiness Program Planning Guide ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1h31zN-b30fUSxay_VQsqz5x6Nek8RL7S",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Minnesota"
+  },
+  "Minnesota WBL Framework 2021": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Minnesota WBL Framework 2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1kZ89xSOvavtSe74HeGfHf5NlnULSL242",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Minnesota",
+    "Misc. Notes/Publication Year": 2021.0
+  },
+  "Minnesota State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Minnesota State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1c5-ySems6BdEIHpyRc_ahtVWnEy3kyPY",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Minnesota",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Minnesota Career and College Readiness Resources": {
+    "Subject": "Career Exploration",
+    "Resource Title": "Minnesota Career and College Readiness Resources",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=125Ho2_Y-922WIkxr4yB_gOxG5syfkfqt",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Minnesota"
+  },
+  "Wisconsin State Plan 2020/2021": {
+    "Subject": "Legislative",
+    "Resource Title": "Wisconsin State Plan 2020/2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1FDEIbFuTrqd_HUXFvTyVpdNARQSOoveY",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Wisconsin",
+    "Misc. Notes/Publication Year": "2020-2021"
+  },
+  "Texas WBL Framework": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Texas WBL Framework",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ipfQOJbHFxJpgda45OyYa4zAZuhNvmso",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Texas"
+  },
+  "Texas State Plan 2020-23": {
+    "Subject": "Legislative",
+    "Resource Title": "Texas State Plan 2020-23",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Hl1mZmiTzwDl2DMgmkB8fu9SpHPuytv2",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Texas",
+    "Misc. Notes/Publication Year": "2020-2023"
+  },
+  "Arkansas State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Arkansas State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1amNTZ8oLm_DNQpesGAGHuEyvt5IVQsuZ",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Arkansas",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Arkansas Social Emotion Learning 2020": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Arkansas Social Emotion Learning 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1BHAMlxRHrW44atuStEKqGtiEOOxvu-Dy",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Arkansas",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Illinois WBL Manual": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Illinois WBL Manual",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=13XKVxTi_h1tj9AEdsq7nWwl4IEf1rmwr",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Illinois"
+  },
+  "Illinois State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "Illinois State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1g4Ogg1avTAk2GZoAgkiuxCLNmnOHzTa_",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Illinois"
+  },
+  "Illinois ESSA Amendment ": {
+    "Subject": "Legislative",
+    "Resource Title": "Illinois ESSA Amendment ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1DQHg_uQW3tQpXc-9UzlPHhCMjRDJVPO7",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Illinois"
+  },
+  "Kansas SEL-WBL Crosswalk": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Kansas SEL-WBL Crosswalk",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=15ojUslt_O4G3xRXDzl4twHIMtfUcK5Ny",
+    "Format": "Information (PDF)",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas Measuring and Reflecting Student Learning": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Kansas Measuring and Reflecting Student Learning",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=17o5BAmlpnTQ7mBMMf1gNUdpKjU2XHsNo",
+    "Format": "Research",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Kansas State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1qfr_2NIsjd-yyZzFO1DLoHQjiIwu0Jqp",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Kansas",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Kansas Can Competency Sequence PreK-12": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Kansas Can Competency Sequence PreK-12",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Ex7I7VTqdekNq3YMkW829bHwg2CrWal8",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas Can Competency Framework Overview ": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Kansas Can Competency Framework Overview ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Jb2VxidsS5OqCCHOA1KPjdnpHkKn9WyW",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas Guide for Individual Plan of Study": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Kansas Guide for Individual Plan of Study",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1PJQ98WTZdGKJgVpeMnqLTQjaMdwD9Cw2",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas WBL Personalized Learning Plans": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Kansas WBL Personalized Learning Plans",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1TvAxeIS1Q-p6kqcMa03dLSJJ4qblO2Qj",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas Comprehensive School Counseling Programs": {
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Kansas Comprehensive School Counseling Programs",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1nN1nS9Bt3tpHmXOqGdTfU76D8Uax5hw8",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "Kansas Individual Plan of Study Reference Guide ": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Kansas Individual Plan of Study Reference Guide ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1yF0rDO57d46Km80pnxs2K1ArQsi-l-Tz",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kansas"
+  },
+  "WV State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "WV State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1vhen08GlVnz4ELH9T53eMRWLfde0LSsO",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "West Virginia",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "NJ State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "NJ State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=14Z--73cKG28Yu8OSS1fwiqmlykBqeM0k",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "New Jersey",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "MA WBL plan, resource guide": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "MA WBL plan, resource guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1HzPMaUI_KmHLZnRFT-FdktWtF5u33VvM",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "Massachussetts"
+  },
+  "Maryland WBL Research, Common Practices": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Maryland WBL Research, Common Practices",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Zr_Ciwv8zWsbFN5Az2PTl7Vg8Sm09bk2",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Maryland"
+  },
+  "Maryland State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Maryland State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ak54VDqxYrb0mgYp7FXqBiisciZdsjJJ",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Maryland",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Ohio State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "Ohio State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Y-pfsLx1mN5rymwcPFIDacVci017IwuG",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Ohio"
+  },
+  "Ohio Work Based Learning ": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Ohio Work Based Learning ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1kS7P6pycT-Q2Tne3abu7KgX9GK4aRzHf",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Ohio"
+  },
+  "Indiana K-12 WBL Manual": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Indiana K-12 WBL Manual",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1at8hUU45tOAHMl1Rt5qscxA9IcZGdpPz",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Indiana"
+  },
+  "Indiana State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "Indiana State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1dX71WiA9y18nrWz2keLIM6LlCQodP7DZ",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Indiana",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Montana WBL Manual 2020": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Montana WBL Manual 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=11JZWLyfKRiChK00Vd0pLIHQRwyW1ezCz",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Montana",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Montana State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Montana State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=19WR6Q4__n6-SQNIvT4_5eQBPWsFCJlRs",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Montana",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "RI Section C ILP Toolkit": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "RI Section C ILP Toolkit",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1gUFNHhZOY9jFoxqoCmt2yySfwA52YdsA",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Rhode Island"
+  },
+  "RI Governors Workforce Board WBL guidance 2018": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "RI Governors Workforce Board WBL guidance 2018",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1TuARD1CwH0eWs9Cb1OU3krpTgwGg_MUR",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Rhode Island",
+    "Misc. Notes/Publication Year": 2018.0
+  },
+  "RI Section B ILP Toolkit": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "RI Section B ILP Toolkit",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=15dPkBHK1RVdjNw8MnlsB0UtmApZmrKap",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Rhode Island"
+  },
+  "Rhode Island WBL Implementation Toolkit 2021": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Rhode Island WBL Implementation Toolkit 2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1sKzTvH3GMHg5L4MthzhVp6DrFn2sQ6ch",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Rhode Island",
+    "Misc. Notes/Publication Year": 2021.0
+  },
+  "Rhode Island State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "Rhode Island State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Ih0ZcQaCcH9JrE6dfnT8Q7q707nGDzV9",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Rhode Island",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Rhode Island ILP Toolkit ": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Rhode Island ILP Toolkit ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1swvBUdpeLgQSu-UJ7vZZ0lhep-RM4oAp",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Rhode Island"
+  },
+  "California State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "California State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ykn5lEnyQ0UL_fx1CsMNHsxXLoisGsHT",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "California",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "California Career Planning Guide ": {
+    "Subject": "Career Exploration",
+    "Resource Title": "California Career Planning Guide ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1rXgBifjKscZQH49oFg_jU5TXb6KPIx_C",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "California"
+  },
+  "Oregon Perkins WBL Handbook 2021": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Oregon Perkins WBL Handbook 2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1v29KugBYc70kR2A-TAXbRE76orCt96UZ",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Oregon",
+    "Misc. Notes/Publication Year": 2021.0
+  },
+  "Oregon CTE State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "Oregon CTE State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1h9mTXW-mzo-e1EuwFB3aKBK-mQ6ah2K-",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Oregon"
+  },
+  "Washington State SEL Implementation Guide ": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Washington State SEL Implementation Guide ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1hd5jwV9kLCBms61Xk5DcEyCoZmsZ1dCG",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Washington "
+  },
+  "Washington State WBL Guide": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Washington State WBL Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1lhIJHKH2SpjzPNxnFb02vFCWvy3OklFk",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Washington"
+  },
+  "Washington State Plan for comment 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Washington State Plan for comment 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1u2YmwRazhT8o-nl2pma23BK3M90Uf8YS",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Washington",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Oklahoma State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Oklahoma State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1GwFFh0QlCxaX44qWSPp3apsLiO87R0_v",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Oklahoma",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Oklahoma ICAP Toolkit 2019": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Oklahoma ICAP Toolkit 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Y-cyiRZte_kXxyxBeocb_Uek2d7yAhrj",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Oklahoma",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Louisiana High School Planning Guide 2020-21": {
+    "Subject": "Career Counseling Resources",
+    "Resource Title": "Louisiana High School Planning Guide 2020-21",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Ay4Jq47oNgINVxI4T8oLGmxfsbXntblT",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Louisiana",
+    "Misc. Notes/Publication Year": "2020-2021"
+  },
+  "Louisiana WBL Guidelines ": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Louisiana WBL Guidelines ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1AyFbEKzOgGLVG1dnX8KJJgsUfMh3-gCn",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Louisiana"
+  },
+  "Louisiana Individual Graduation and Diploma Pathway Resource": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Louisiana Individual Graduation and Diploma Pathway Resource",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1nQApr8IID2VtjYoOv_JFemIhCktJ1yQq",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "Louisiana"
+  },
+  "Louisiana State Plan 2020-23": {
+    "Subject": "Legislative",
+    "Resource Title": "Louisiana State Plan 2020-23",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1rI2VT5vjbjLbvQ9fHwX54Ah2b9ITrtNg",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Louisiana",
+    "Misc. Notes/Publication Year": "2020-2023"
+  },
+  "Vermont WBL Manual ": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Vermont WBL Manual ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=17xZjHgcZi3NKFA0v1fCnSgVr0rYu2jWE",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Vermont"
+  },
+  "Vermont Restorative Practices and SEL": {
+    "Subject": "Mental Health",
+    "Resource Title": "Vermont Restorative Practices and SEL",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1DZMNj0PxWCe9Xu-JQxyYUOocPbc4kBaD",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Vermont"
+  },
+  "Vermont State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Vermont State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1AJPVs_Z6An7IGnTpPqYAD0ZAgP7J-0j3",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Vermont",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Vermont Personalized Learning Plan Manual": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Vermont Personalized Learning Plan Manual",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1nno0uxv9j-YmM4ymnuRyiuLSpu86ezgB",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Vermont"
+  },
+  "New Hampshire State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "New Hampshire State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1HAZxzQR8InBskpqpPx62Zdf3q-k-Wm3P",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "New Hampshire",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Michigan Educational Development Plans": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Michigan Educational Development Plans",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1EpPYrLMFKy-0NoiTSD62z_eA4BaFUJWk",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Michigan"
+  },
+  "Maine State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Maine State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1bKPDCFb1qg5OJppPLkqvuxF_HQGWWiRt",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Maine",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Kentucky ILP Guidance document": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Kentucky ILP Guidance document",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1mOFjGE3izCZTSKkydC0xP0-m3nnnMQtX",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Kentucky"
+  },
+  "Kentucky State Plan 2024-27": {
+    "Subject": "Legislative",
+    "Resource Title": "Kentucky State Plan 2024-27",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1wv8Cy23sONudi3O6k7BwEZSnXrpT13ME",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Kentucky",
+    "Misc. Notes/Publication Year": "2024-2027"
+  },
+  "Idaho Career Readiness Standards": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Idaho Career Readiness Standards",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1HJsf8_QQMvjbH3edTwVRZlXOnyEq-ouI",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Idaho"
+  },
+  "Iowa State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Iowa State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1gVUyQvVakWARHaZndxHI3_Ueh8UB60ma",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Iowa",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Iowa IEP and ICAP Assessment tool 2023": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Iowa IEP and ICAP Assessment tool 2023",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1M0o7DV-53R46YIb8WNmbGDguODOSO95G",
+    "Format": "Toolkit/Activity",
+    "Source": "External",
+    "Country/State": "Iowa",
+    "Misc. Notes/Publication Year": 2023.0
+  },
+  "Connecticut WBL Manual 2019": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Connecticut WBL Manual 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1QfopApjsKo3hWiY5sta15oOK5Ko9vLKn",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Connecticut",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Connecticut State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Connecticut State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1C5M_REsZqn7b7O5-Ux3k0iqgIEExhM8y",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Connecticut",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Alabama Success Counselors Guide": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Alabama Success Counselors Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1EUBOugG-GKvNFcT8R7K_pnTBG-AgUliG",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Alabama"
+  },
+  "Alabama WBL Manual": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Alabama WBL Manual",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1EupPtH9SNj11MGoNGBLzo2gSw8hPxyL_",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Alabama"
+  },
+  "Alabama State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Alabama State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1TO5QXA1Yl1rTfJc4O6UTKN0-vD8r29ye",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Alabama",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Arizona WBL Guide": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Arizona WBL Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1J1Bf0UJmOTq9nLk0rJRjidH3KAmG9IaI",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Arizona"
+  },
+  "Arizona ECAP FAQs": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Arizona ECAP FAQs",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1mX6WYsNw082BO_fDRQxFvFIUlDOzRbaX",
+    "Format": "Information Brief",
+    "Source": "External",
+    "Country/State": "Arizona"
+  },
+  "Arizona ECAP overview": {
+    "Subject": "Individualized Learning Plan/PCAP",
+    "Resource Title": "Arizona ECAP overview",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1o656YOzoGMdNiRC42j947e_5LX5jliLO",
+    "Format": "Information Brief",
+    "Source": "External",
+    "Country/State": "Arizona"
+  },
+  "Arizona State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Arizona State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1rjbp0GWfMs9sHFt-8ccz4rzme8ngc888",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Arizona",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Alaska Content/Performance standards ": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Alaska Content/Performance standards ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Hy_EELK88HrHmu96Iv5_-Qi0ghnjmI0q",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Alaska"
+  },
+  "Alaska State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "Alaska State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1mOiumykDEhT5eUDlsoMIjBlUhX1ILhBD",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Alaska"
+  },
+  "Alaska WBL Guide": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Alaska WBL Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Ui8GjkHnPGMpMj4ybee0rfdXSw8OVP-D",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Alaska"
+  },
+  "Virginia State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "Virginia State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=12KnPdjT4OHTewvLISt12dlJ4rEjeyx-4",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Virgnia",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "Delaware ESSA Framework 2017": {
+    "Subject": "Legislative",
+    "Resource Title": "Delaware ESSA Framework 2017",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1dxesb2DVmXHh2gZfZRlvbZOJAA5vNDi2",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Delaware",
+    "Misc. Notes/Publication Year": 2017.0
+  },
+  "Delaware SEL Competencies 2020": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Delaware SEL Competencies 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1fDyC-wSn5dJR3sAsrhQaapILifSNtolD",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Delaware",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Missouri State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "Missouri State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1fRwo9HxREPXgnebbjgMCOsnHfBZDMlfS",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Missouri",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "New York Updated WBL Manual 2021": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "New York Updated WBL Manual 2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=15E4htqOYfznGmGw1CpMzyh-epvdVVqJH",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "New York",
+    "Misc. Notes/Publication Year": 2021.0
+  },
+  "New York State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "New York State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1_fGpY9JLlyVZIHsEem10dr6Es1KL8itN",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "New York"
+  },
+  "New Mexico State Plan": {
+    "Subject": "Legislative",
+    "Resource Title": "New Mexico State Plan",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1BfuXUb5GKQ9nqmCQ_eyBTdib-_7bl216",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "New Mexico",
+    "Misc. Notes/Publication Year": "2020-2024"
+  },
+  "Florida Experiental Learning Framework": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Florida Experiental Learning Framework",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1FvX03HOALPWqvuDzq2XSwEf_M5hWbP96",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Florida"
+  },
+  "Florida State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "Florida State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ox9LThtLXZecE9nJ28GPtq6BvALTPVKC",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Florida"
+  },
+  "Georgia HB 402 Booklet - WBL 2023": {
+    "Subject": "Legislative",
+    "Resource Title": "Georgia HB 402 Booklet - WBL 2023",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1I2q9M8ozQcfhqDtEqPKQtIIbUSxrgX9I",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Georgia",
+    "Misc. Notes/Publication Year": 2023.0
+  },
+  "Georgia State Plan 2021": {
+    "Subject": "Legislative",
+    "Resource Title": "Georgia State Plan 2021",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1TExnrQARX4LAJtxh8q67xQeaA4Jm60w6",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Georgia",
+    "Misc. Notes/Publication Year": 2021.0
+  },
+  "Georgia Career Cluster Pathways": {
+    "Subject": "Career Exploration",
+    "Resource Title": "Georgia Career Cluster Pathways",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1xen6vMatvaK-maznoygcV0BdDpVBLYxw",
+    "Format": "Information (PDF)",
+    "Source": "External",
+    "Country/State": "Georgia"
+  },
+  "Colorado Quality WBL": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Colorado Quality WBL",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=15g_j7B7dkjwSSS_e2GZFVBnocMFmcDmV",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Colorado"
+  },
+  "Colorado State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Colorado State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=16I1pluFxysU4yLaFj2FZeNxPGRz5VOZA",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Colorado",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Colorado SE Wellness standards": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Colorado SE Wellness standards",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1bU5WfvqUVVAru71b7pg1fgNOzP5Vl7vV",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "Colorado"
+  },
+  "Tennessee WBL Policy Guide": {
+    "Subject": "Legislative",
+    "Resource Title": "Tennessee WBL Policy Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=13jRPT4bseifMzalAl_qCAdJqzEwWdQdm",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Tennessee"
+  },
+  "Tennessee Social/Personal Competencies Guide": {
+    "Subject": "SEL and Career Readiness",
+    "Resource Title": "Tennessee Social/Personal Competencies Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1YZGI58_Z14viz25mOWEZZiR3vINTs4Xe",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Tennessee"
+  },
+  "Tennessee State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "Tennessee State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1ixUdAXryAJvKm2N7rko8SL7Cb8wx-sby",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Tennessee",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Tennessee Safe School Toolkit ": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Tennessee Safe School Toolkit ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1l6aWF2qWzblMoiMVllzzZ3V6MjKHSsWt",
+    "Format": "Toolkit/Activity",
+    "Source": "External",
+    "Country/State": "Tennessee"
+  },
+  "North Carolina State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "North Carolina State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1N4-5n5nrVOW7h3rFLIBvvJbBTBTrm7QY",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "North Carolina",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "South Carolina State Plan 2020": {
+    "Subject": "Legislative",
+    "Resource Title": "South Carolina State Plan 2020",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=11tqpaHfjPfRBRAQZ1cEeHMGOzgq-xWuR",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "South Carolina",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "South Carolina Compre. School and Career Guidance": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "South Carolina Compre. School and Career Guidance",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1SmFdB-EPVgLnwjIY5GELUcqMQjKX6OA2",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "South Carolina"
+  },
+  "South Carolina WBL Implementation Guide 2020-21": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "South Carolina WBL Implementation Guide 2020-21",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1Z2gcnIFG9vmvr3aXQuiKYE6lEln5HlgD",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "South Carolina",
+    "Misc. Notes/Publication Year": "2020-2021"
+  },
+  "Mississippi State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "Mississippi State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1edLHliB1ibFwc6Qwgtx-qftOTNiswUAR",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "Mississippi"
+  },
+  "Mississippi WBL Teacher Resource Guide": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "Mississippi WBL Teacher Resource Guide",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1kpRJtkMlEoJ-DdaHprGtlINN6p5Psb6I",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "Mississippi",
+    "Misc. Notes/Publication Year": 2020.0
+  },
+  "Mississippi Career Dev. Resources ": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Mississippi Career Dev. Resources ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1yrIz-MRfd6Zy240x3ESq5fvGRWcO2M_z",
+    "Format": "Resource Brief",
+    "Source": "External",
+    "Country/State": "Mississippi"
+  },
+  "North Dakota State Plan ": {
+    "Subject": "Legislative",
+    "Resource Title": "North Dakota State Plan ",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1colMmKAwLh5zrln2V2_amozIvYxZwQCJ",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "North Dakota"
+  },
+  "North Dakota WBL Guidance": {
+    "Subject": "Career and Workforce Dev.",
+    "Resource Title": "North Dakota WBL Guidance",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1nu1Rde9WHcRAKy520DFsi2iBcyEF6w78",
+    "Format": "Guide, Handbook",
+    "Source": "External",
+    "Country/State": "North Dakota"
+  },
+  "South Dakota State Plan 2019": {
+    "Subject": "Legislative",
+    "Resource Title": "South Dakota State Plan 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1S8gq6Kv8fL9FiaJmFLM_nC82Pf-lO8lg",
+    "Format": "Policy Brief",
+    "Source": "External",
+    "Country/State": "South Dakota",
+    "Misc. Notes/Publication Year": 2019.0
+  },
+  "South Dakota Foundations Standards": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "South Dakota Foundations Standards",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1_RDJ9Kd9HssifyNeuMA2-6bPrlygZokC",
+    "Format": "Practice Brief",
+    "Source": "External",
+    "Country/State": "South Dakota"
+  },
+  "Nevada CCCR Framework": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Nevada CCCR Framework",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=17xspp7KS2jknHVKOSGAD2SwItG_36Kdy",
+    "Format": "Information (PDF)",
+    "Source": "External",
+    "Country/State": "Nevada"
+  },
+  "Pennsylvania WBL Toolkit 2017": {
+    "Subject": "Career Dev. Practices",
+    "Resource Title": "Pennsylvania WBL Toolkit 2017",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1E4LCrx0APGSYcrZoxA-T73leY7KBBzUg",
+    "Format": "Toolkit/Activity",
+    "Source": "External",
+    "Country/State": "Pennsylvania",
+    "Misc. Notes/Publication Year": 2017.0
+  },
+  "Pennsylvania CTE Brochure 2019": {
+    "Subject": "Administrative Guides",
+    "Resource Title": "Pennsylvania CTE Brochure 2019",
+    "Resource Link": "https://drive.google.com/uc?export=download&id=1JeTqrfcpMZdVTGdHMlbvFGoCeZh4MHuw",
+    "Format": "Information Brief",
+    "Source": "External",
+    "Country/State": "Pennsylvania",
+    "Misc. Notes/Publication Year": 2019.0
   }
 }
