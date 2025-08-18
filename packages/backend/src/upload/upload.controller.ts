@@ -10,6 +10,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { S3Service } from '../s3/s3.service';
 import { memoryStorage } from 'multer';
 import { DocumentMetadataService } from '../document-metadata/document-metadata.service';
+import { toHeaderSafe } from './utils/upload-utils';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { UseGuards } from '@nestjs/common';
 
@@ -53,7 +54,7 @@ export class UploadController {
 
     const metadata = {
       subject: body.subject || '',
-      title: body.title || '',
+      title: toHeaderSafe(body.title) || '',
       format: body.format || '',
       source: body.source || '',
     };
