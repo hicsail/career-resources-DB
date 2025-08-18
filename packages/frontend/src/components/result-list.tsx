@@ -5,8 +5,7 @@ import {
   CardContent,
   Typography,
   Pagination,
-  Link,
-  Chip,
+  Link
 } from '@mui/material';
 import Badge from './badge';
 
