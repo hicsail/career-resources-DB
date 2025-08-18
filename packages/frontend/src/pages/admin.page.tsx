@@ -9,15 +9,15 @@ import {
 } from "@mui/material";
 import { UploadForm } from "../components/admin/upload-form";
 import { ResourcesTable } from "../components/admin/resources-table";
-import { getAllDocumentMetadata } from "../services/api"
+import { getAllDocumentMetadata } from "../services/api";
 
 export interface UploadedResource {
   title: string;
   subject: string;
   format: string;
   source: string;
-  fileName: string;
-  uploadDate: string;
+  PDFName: string;
+  uploadedAt: string;
 }
 
 export const AdminPage: React.FC = () => {
@@ -45,7 +45,7 @@ export const AdminPage: React.FC = () => {
   useEffect(() => {   
     fetchMetadata();
   }, []);
-
+  
   return (
     <Container maxWidth="md" sx={{ py: 6 }}>
       <Typography variant="h4" align="center" gutterBottom>
