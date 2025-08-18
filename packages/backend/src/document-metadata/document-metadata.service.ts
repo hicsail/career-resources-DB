@@ -10,7 +10,7 @@ export class DocumentMetadataService {
     @Inject(DYNAMO_CLIENT) private readonly docClient: DocumentClient
   ) {}
 
-  async getAllMetadata(): Promise<DocumentClient.ItemList> {
+  /*async getAllMetadata(): Promise<DocumentClient.ItemList> {
     const params: DocumentClient.QueryInput = {
       TableName: this.tableName,
       IndexName: 'queryAll-uploadedAt-index',
@@ -22,5 +22,26 @@ export class DocumentMetadataService {
 
     const result = await this.docClient.query(params).promise();
     return result.Items || [];
+  }*/
+
+  async getAllMetadata(): Promise<DocumentClient.ItemList> {
+    let items: DocumentClient.ItemList = [];
+    let ExclusiveStartKey: DocumentClient.Key | undefined = undefined;
+
+    do {
+      const params: DocumentClient.ScanInput = {
+        TableName: this.tableName,
+        ExclusiveStartKey, // <-- pagination key
+      };
+
+      const result = await this.docClient.scan(params).promise();
+      if (result.Items) {
+        items = items.concat(result.Items); // accumulate items
+      }
+
+      ExclusiveStartKey = result.LastEvaluatedKey; // <-- set for next scan if available
+    } while (ExclusiveStartKey); // loop until all pages retrieved
+
+    return items;
   }
 }

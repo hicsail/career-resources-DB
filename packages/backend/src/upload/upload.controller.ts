@@ -10,6 +10,8 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { S3Service } from '../s3/s3.service';
 import { memoryStorage } from 'multer';
 import { DocumentMetadataService } from '../document-metadata/document-metadata.service';
+import { AuthGuard } from '../auth/guards/auth.guard';
+import { UseGuards } from '@nestjs/common';
 
 @Controller('upload')
 export class UploadController {
@@ -18,6 +20,7 @@ export class UploadController {
     private readonly documentMetadataService: DocumentMetadataService
   ) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @UseInterceptors(
     FileInterceptor('file', {

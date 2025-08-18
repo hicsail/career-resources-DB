@@ -9,6 +9,7 @@ import { SnackbarProvider } from './contexts/snackbar.context.tsx';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthProvider } from './contexts/auth.context';
 import { SettingsProvider } from './contexts/settings.context';
+import { ApiProvider } from './services/api';
 
 function App() {
   return (
@@ -16,17 +17,19 @@ function App() {
       <SnackbarProvider>
         <SettingsProvider>
           <AuthProvider>
-            <Routes>
-              {/* Public routes */}
-              <Route path={Paths.HOME} element={<HomePage />} />
-              <Route path={Paths.AUTH_CALLBACK} element={<AuthCallbackPage />} />
-              <Route path={Paths.PERMISSION_REQUIRED} element={<PermissionRequiredPage />} />
-              <Route path={Paths.LOGOUT} element={<LogoutPage />} />
-              {/* Protected routes */}
-              <Route element={<AdminGuard />}>
-                <Route path={Paths.ADMIN} element={<AdminPage />} />
-              </Route>
-            </Routes>
+            <ApiProvider>
+              <Routes>
+                {/* Public routes */}
+                <Route path={Paths.HOME} element={<HomePage />} />
+                <Route path={Paths.AUTH_CALLBACK} element={<AuthCallbackPage />} />
+                <Route path={Paths.PERMISSION_REQUIRED} element={<PermissionRequiredPage />} />
+                <Route path={Paths.LOGOUT} element={<LogoutPage />} />
+                {/* Protected routes */}
+                <Route element={<AdminGuard />}>
+                  <Route path={Paths.ADMIN} element={<AdminPage />} />
+                </Route>
+              </Routes>
+            </ApiProvider>
           </AuthProvider>
         </SettingsProvider>
       </SnackbarProvider>

@@ -7,7 +7,8 @@ async function bootstrap() {
     origin: ['http://localhost:5173', 'http://localhost:5174'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-    exposedHeaders: ['Content-Range']
+    exposedHeaders: ['Content-Range'],
+    allowedHeaders: 'Content-Type, Authorization'
   });
   await app.listen(3000, '0.0.0.0');
 }
