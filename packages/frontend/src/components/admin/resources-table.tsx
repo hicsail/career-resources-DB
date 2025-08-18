@@ -66,7 +66,7 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedUploads && paginatedUploads.map((upload, idx) => (
+            {Array.isArray(paginatedUploads) && paginatedUploads.map((upload, idx) => (
               <TableRow key={idx}>
                 <TableCell>{upload.title}</TableCell>
                 <TableCell>
