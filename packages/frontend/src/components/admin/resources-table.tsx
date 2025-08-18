@@ -11,6 +11,7 @@ import {
   TablePagination,
 } from "@mui/material";
 import type { UploadedResource } from "../../pages/admin.page";
+import Badge from '../badge';
 
 interface ResourcesTableProps {
   uploads: UploadedResource[];
@@ -65,14 +66,20 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedUploads.map((upload, idx) => (
+            {paginatedUploads && paginatedUploads.map((upload, idx) => (
               <TableRow key={idx}>
                 <TableCell>{upload.title}</TableCell>
-                <TableCell>{upload.subject}</TableCell>
-                <TableCell>{upload.format}</TableCell>
-                <TableCell>{upload.source}</TableCell>
-                <TableCell>{upload.fileName}</TableCell>
-                <TableCell>{upload.uploadDate}</TableCell>
+                <TableCell>
+                  <Badge label={upload.subject} fallback="No subject available" />
+                </TableCell>
+                <TableCell>
+                  <Badge label={upload.format} fallback="No subject available" />
+                </TableCell>
+                <TableCell>
+                  <Badge label={upload.source} fallback="No subject available" />
+                </TableCell>
+                <TableCell>{upload.PDFName}</TableCell>
+                <TableCell>{upload.uploadedAt}</TableCell>
               </TableRow>
             ))}
           </TableBody>
