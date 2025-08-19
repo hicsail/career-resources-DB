@@ -7,7 +7,6 @@ import { UseGuards } from '@nestjs/common';
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
-  @UseGuards(AuthGuard)
   @Get()
   async search(
     @Query('phrase') phrase: string,
