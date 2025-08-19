@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: career-db
     image: hicsail/career-db-backend:unstable
-    restart: unless-stopped
+    restart: always
     ports:
       - "3000:3000"
     env_file:
-      - ./stack.env
+      - ../../stack.env
