@@ -1,25 +1,27 @@
+# Stage 1: Build React app
 FROM node:22-alpine AS build
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and lock file first for caching
+# Copy package files
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci --legacy-peer-deps
 
-# Copy rest of the project files
+# Copy source code
 COPY . .
 
-# Build the React app
+# Build TypeScript and Vite
 RUN npm run build
 
-# Use a lightweight web server to serve the app
+# Stage 2: Serve with Nginx
 FROM nginx:alpine
 
-# Copy build output to Nginx html directory
-COPY --from=build /app/build /usr/share/nginx/html
+# Copy built files from build stage
+COPY --from=build /app/dist /usr/share/nginx/html
+# Vite outputs build to /dist by default
 
 # Expose port 80
 EXPOSE 80
