@@ -5,7 +5,8 @@ import {
 } from "@mui/material";
 import { UploadForm } from "../components/admin/upload-form";
 import { ResourcesTable } from "../components/admin/resources-table";
-import { getAllDocumentMetadata } from "../services/api";
+import { useApiServices } from '../services/api';
+//import { getAllDocumentMetadata } from "../services/api";
 
 export interface UploadedResource {
   title: string;
@@ -20,6 +21,7 @@ export const AdminPage: React.FC = () => {
   const [uploads, setUploads] = useState<UploadedResource[]>([]);
   const [, setLoading] = useState(true);
   const [, setError] = useState<string | null>(null);
+  const { getAllDocumentMetadata } = useApiServices();
 
   const fetchMetadata = async () => {
     try {

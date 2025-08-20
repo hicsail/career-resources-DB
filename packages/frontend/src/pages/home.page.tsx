@@ -2,16 +2,18 @@ import { FC, useState } from 'react';
 import { Container, Typography, CircularProgress } from '@mui/material';
 import { SearchForm } from '../components/search-form';
 import { ResultsList } from '../components/result-list';
-import { searchResources } from '../services/api';
+//import { searchResources } from '../services/api';
 import { subjects } from '../constants/subjects';
 import { formats } from '../constants/formats';
 import { sources } from '../constants/sources';
 import type { SearchFiltersType } from '../types/search';
 import type { SearchResultType } from '../types/search';
+import { useApiServices } from '../services/api';
 
 export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
+  const { searchResources } = useApiServices();
 
   const handleSearch = async ({
     phrase,

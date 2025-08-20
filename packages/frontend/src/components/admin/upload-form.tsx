@@ -15,7 +15,8 @@ import { FilterDropdown } from "../filter-dropdown";
 import { subjects } from "../../constants/subjects";
 import { formats } from "../../constants/formats";
 import { sources } from "../../constants/sources";
-import { uploadFile } from "../../services/api"; 
+//import { uploadFile } from "../../services/api"; 
+import { useApiServices } from '../../services/api';
 import { useSnackbar } from '../../contexts/snackbar.context.tsx'; 
 
 interface UploadFormProps {
@@ -54,6 +55,7 @@ const initialValues: FormValues = {
 
 export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
   const { push } = useSnackbar();
+  const { uploadFile } = useApiServices();
   const handleSubmit = async (
     values: FormValues,
     { resetForm, setSubmitting }: FormikHelpers<FormValues>
