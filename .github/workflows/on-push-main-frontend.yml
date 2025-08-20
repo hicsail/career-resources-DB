@@ -29,7 +29,7 @@ jobs:
         with:
           images: hicsail/career-db-frontend
 
-      # Build and push the frontend Docker image
+      # Build and push the frontend Docker image with Vite envs
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
@@ -37,3 +37,7 @@ jobs:
           file: ./packages/frontend/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
+            VITE_SAIL_PROJECT_ID=${{ secrets.VITE_SAIL_PROJECT_ID }}
+            VITE_SAIL_AUTH_CLIENT=${{ secrets.VITE_SAIL_AUTH_CLIENT }}
