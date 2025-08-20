@@ -1,13 +1,12 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useAuth } from '../contexts/auth.context';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Paths } from '../constants/paths';
 import { useSettings } from '../contexts/settings.context';
 
 export const AdminGuard: FC = () => {
   const { token, decodedToken, initialized } = useAuth();  
-  const { VITE_SAIL_PROJECT_ID, VITE_SAIL_AUTH_CLIENT } = useSettings();
-  const navigate = useNavigate();
+  const { VITE_SAIL_PROJECT_ID, VITE_SAIL_AUTH_CLIENT } = useSettings()
 
   useEffect(() => {
     if (initialized && !token && !!VITE_SAIL_AUTH_CLIENT && !!VITE_SAIL_PROJECT_ID) {

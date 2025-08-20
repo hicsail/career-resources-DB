@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Container,
   Typography,
-  Box,
-  CircularProgress,
-  Paper,
-  TableContainer,
 } from "@mui/material";
 import { UploadForm } from "../components/admin/upload-form";
 import { ResourcesTable } from "../components/admin/resources-table";
@@ -22,8 +18,8 @@ export interface UploadedResource {
 
 export const AdminPage: React.FC = () => {
   const [uploads, setUploads] = useState<UploadedResource[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [, setLoading] = useState(true);
+  const [, setError] = useState<string | null>(null);
 
   const fetchMetadata = async () => {
     try {

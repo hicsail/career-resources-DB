@@ -29,7 +29,7 @@ export const SettingsProvider: FC<SettingsProviderProps> = ({ children }) => {
           if (data.VITE_SAIL_PROJECT_ID) setVITE_SAIL_PROJECT_ID(data.VITE_SAIL_PROJECT_ID);
           if (data.VITE_SAIL_AUTH_CLIENT) setVITE_SAIL_AUTH_CLIENT(data.VITE_SAIL_AUTH_CLIENT);
         })
-        .catch((error) => {
+        .catch((_error) => {
           console.error('Unable to parse data.json');
         });
     });

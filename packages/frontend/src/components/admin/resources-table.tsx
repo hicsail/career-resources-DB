@@ -21,7 +21,7 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5); // default rows per page
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { Container, Typography, CircularProgress } from '@mui/material';
 import { SearchForm } from '../components/search-form';
 import { ResultsList } from '../components/result-list';
@@ -10,7 +10,7 @@ import type { SearchFiltersType } from '../types/search';
 import type { SearchResultType } from '../types/search';
 
 export const HomePage: FC = () => {
-  const [results, setResults] = useState<[SearchResultType[]]>([]);
+  const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async ({

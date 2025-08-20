@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Box, Button, Container, Grow, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ShieldTwoTone } from '@mui/icons-material';

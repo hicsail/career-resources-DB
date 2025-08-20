@@ -1,8 +1,7 @@
 import { FC, useEffect } from 'react';
-import { Box, Button, CircularProgress, Container, Grow, Stack, Typography } from '@mui/material';
+import { CircularProgress, Stack } from '@mui/material';
 import { Paths } from '../constants/paths';
 import { useNavigate } from 'react-router-dom';
-import { QuestionMarkTwoTone } from '@mui/icons-material';
 
 export const LogoutPage: FC = () => {
   const navigate = useNavigate();

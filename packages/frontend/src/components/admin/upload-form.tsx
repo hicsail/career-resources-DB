@@ -35,13 +35,13 @@ const validationSchema = Yup.object({
   subject: Yup.string().required("Subject is required"),
   format: Yup.string().required("Format is required"),
   source: Yup.string().required("Source is required"),
-  file: Yup.mixed()
-    .required("A file is required")
-    .test(
-      "fileFormat",
-      "Only PDF files are allowed",
-      (value) => value && value.type === "application/pdf"
-    ),
+  file: Yup.mixed<File>()
+  .required("A file is required")
+  .test(
+    "fileFormat",
+    "Only PDF files are allowed",
+    (value) => value instanceof File && value.type === "application/pdf"
+  )
 });
 
 const initialValues: FormValues = {
@@ -67,7 +67,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
         return;
       }
 
-      const data = await uploadFile(values.file, {
+      await uploadFile(values.file, {
         title: values.title,
         subject: values.subject,
         format: values.format,
