@@ -1,7 +1,8 @@
 import { FC, useState } from 'react';
-import { Container, Typography, CircularProgress } from '@mui/material';
-import { SearchForm } from '../components/search-form';
-import { ResultsList } from '../components/result-list';
+import { Container, Typography, CircularProgress, Box } from '@mui/material';
+import SearchOffIcon from '@mui/icons-material/SearchOff';
+import { SearchForm } from '../components/home/search-form';
+import { ResultsList } from '../components/home/result-list';
 //import { searchResources } from '../services/api';
 import { subjects } from '../constants/subjects';
 import { formats } from '../constants/formats';
@@ -14,6 +15,27 @@ export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
   const { searchResources } = useApiServices();
+  const [selectedFilters, setSelectedFilters] = useState({
+    subject: [] as string[],
+    format: [] as string[],
+    source: [] as string[],
+  });
+
+  const handleToggle = (type, value) => {
+    setSelectedFilters((prev) => {
+      const exists = prev[type].includes(value);
+      return {
+        ...prev,
+        [type]: exists
+          ? prev[type].filter((v) => v !== value)
+          : [...prev[type], value],
+      };
+    });
+  };
+
+  const handleClearAll = () => {
+    setSelected({ subject: [], format: [], source: [] });
+  };
 
   const handleSearch = async ({
     phrase,
@@ -33,7 +55,7 @@ export const HomePage: FC = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 6 }}>
+    <Container maxWidth="md" sx={{ pt: 2, pb:2  }}>
       <Typography variant="h3" align="center" gutterBottom>
         🔍 Career Resource Search
       </Typography>
@@ -54,9 +76,12 @@ export const HomePage: FC = () => {
       {!loading && results.length > 0 && <ResultsList data={results} />}
 
       {!loading && results.length === 0 && (
-        <Typography align="center" mt={4} color="text.secondary">
-          No results to display.
-        </Typography>
+        <Box textAlign="center" mt={6}>
+          <SearchOffIcon sx={{ fontSize: 60, color: "grey.500" }} />
+          <Typography mt={2} color="text.secondary">
+            No results found.
+          </Typography>
+        </Box>
       )}
     </Container>
   );

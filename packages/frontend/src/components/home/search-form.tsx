@@ -8,8 +8,8 @@ import {
 } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { FilterDropdown } from './filter-dropdown';
-import type { SearchFiltersType } from '../types/search';
+import { FilterDropdown } from '../filter-dropdown';
+import type { SearchFiltersType } from '../../types/search';
 
 interface Props {
   onSearch: (filters: SearchFiltersType) => void;

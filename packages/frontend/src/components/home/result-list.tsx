@@ -7,7 +7,7 @@ import {
   Pagination,
   Link
 } from '@mui/material';
-import Badge from './badge';
+import Badge from '../badge';
 
 interface ResultItem {
   title?: string;
