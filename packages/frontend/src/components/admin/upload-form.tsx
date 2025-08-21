@@ -142,7 +142,14 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
                 <Button
                   variant="outlined"
                   component="label"
-                  sx={{ whiteSpace: "nowrap", flexShrink: 0 }}
+                  sx={{
+                    whiteSpace: "nowrap",
+                    width: 140,
+                    flexShrink: 0,
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    display: "block",
+                  }}
                   color={errors.file && touched.file ? "error" : "primary"}
                 >
                   {values.file ? values.file.name : "Choose File"}
@@ -151,10 +158,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
                     hidden
                     accept="application/pdf"
                     onChange={(e) => {
-                      if (
-                        e.currentTarget.files &&
-                        e.currentTarget.files.length > 0
-                      ) {
+                      if (e.currentTarget.files && e.currentTarget.files.length > 0) {
                         setFieldValue("file", e.currentTarget.files[0]);
                       }
                     }}
