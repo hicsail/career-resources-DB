@@ -77,7 +77,17 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
                 <TableCell sx={{ maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   <Tooltip title={upload.title || ""} arrow>
                     <Box component="div" sx={{ display: "block" }}>
-                      {upload.title}
+                      <a
+                        href={upload.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "inherit",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {upload.title}
+                      </a>
                     </Box>
                   </Tooltip>
                 </TableCell>
