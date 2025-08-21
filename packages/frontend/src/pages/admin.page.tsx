@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   Container,
   Typography,
+  CircularProgress
 } from "@mui/material";
 import { UploadForm } from "../components/admin/upload-form";
 import { ResourcesTable } from "../components/admin/resources-table";
@@ -19,7 +20,7 @@ export interface UploadedResource {
 
 export const AdminPage: React.FC = () => {
   const [uploads, setUploads] = useState<UploadedResource[]>([]);
-  const [, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [, setError] = useState<string | null>(null);
   const { getAllDocumentMetadata } = useApiServices();
 
@@ -56,7 +57,15 @@ export const AdminPage: React.FC = () => {
         Uploaded Resources
       </Typography>
 
-      <ResourcesTable uploads={uploads} />
+      {loading && (
+        <Typography align="center" mt={4}>
+          <CircularProgress />
+        </Typography>
+      )}
+
+      {!loading && (
+        <ResourcesTable uploads={uploads} />
+      )}
     </Container>
   );
 };
