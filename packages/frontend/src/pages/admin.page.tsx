@@ -52,7 +52,7 @@ export const AdminPage: React.FC = () => {
 
       <UploadForm addUpload={addUpload} />
 
-      <Typography variant="h5" gutterBottom sx={{ mt: 6 }}>
+      <Typography variant="h4" gutterBottom sx={{ mt: 6 }} align="center">
         Uploaded Resources
       </Typography>
 
