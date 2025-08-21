@@ -5,9 +5,9 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 const pdf = require("pdf-parse");
 const keywordExtractor = require("keyword-extractor");
 
-const METADATA_TABLE = "document-metadata";
-const KEYWORD_INDEX_TABLE = "keyword-index";
-const LOG_TABLE = "document-index-log"; 
+const METADATA_TABLE = "document-metadata"; // Partition key: documentId
+const KEYWORD_INDEX_TABLE = "keyword-index"; // Partition key: keyword, Sort key: documentId
+const LOG_TABLE = "document-index-log"; // Partition key: documentId, Sort key: uploadedAt
 
 // Helper function to log status
 async function logStatus(documentId, fileName, status, errorMessage = "") {
@@ -17,7 +17,7 @@ async function logStatus(documentId, fileName, status, errorMessage = "") {
       documentId,
       uploadedAt: new Date().toISOString(),
       fileName,
-      status,         // "success" or "failure"
+      status,
       errorMessage
     }
   }).promise();
@@ -35,15 +35,11 @@ exports.handler = async (event) => {
   const bucket = record.s3.bucket.name;
   const key = decodeURIComponent(record.s3.object.key.replace(/\+/g, " "));
 
-  console.log("Bucket:", bucket);
-  console.log("Key:", key);
-
   if (!key.toLowerCase().endsWith(".pdf")) {
-    console.warn("Not a PDF file:", key);
+    await logStatus(generateDocumentId(key), key.split("/").pop(), "failure", "Not a PDF file");
     return { statusCode: 400, body: "File is not a PDF." };
   }
 
-  // Deterministic documentId to avoid duplicates
   const documentId = generateDocumentId(key);
   const title = key.split("/").pop();
   const uploadedAt = new Date().toISOString();
@@ -51,17 +47,17 @@ exports.handler = async (event) => {
   try {
     const { Body, Metadata } = await s3.getObject({ Bucket: bucket, Key: key }).promise();
 
+    // Extract PDF text
     let text;
     try {
       const pdfData = await pdf(Body);
       text = pdfData.text;
-      console.log("PDF text extracted successfully");
     } catch (parseError) {
-      console.error("Failed to parse PDF", parseError);
       await logStatus(documentId, title, "failure", "Invalid or corrupt PDF");
       return { statusCode: 400, body: "Invalid or corrupt PDF file." };
     }
 
+    // Extract keywords
     const keywords = keywordExtractor.extract(text, {
       language: "english",
       remove_digits: true,
@@ -74,31 +70,49 @@ exports.handler = async (event) => {
       [word]: (acc[word] || 0) + 1
     }), {});
 
-    // Insert into document-metadata table
-    const documentMetadata = {      
-      documentId, // deterministic hash ID
-      PDFName: title,
-      s3Key: key,
-      s3Bucket: bucket,
-      uploadedAt,    
-      title: Metadata.title || "",
-      subject: Metadata.subject || "",
-      format: Metadata.format || "",
-      source: Metadata.source || "",
-      publicationYear: Metadata.publication_year || "",
-      countryState: Metadata.country_state || "",
-      link: Metadata.link || "",
-      queryAll: "true"        
-    };
-
-    console.log("Storing document metadata...");
-    await dynamodb.put({
+    // Upsert document metadata
+    await dynamodb.update({
       TableName: METADATA_TABLE,
-      Item: documentMetadata
+      Key: { documentId },
+      UpdateExpression: `
+        SET PDFName = :pdfName,
+            s3Key = :s3Key,
+            s3Bucket = :s3Bucket,
+            uploadedAt = :uploadedAt,
+            title = :title,
+            #subject = :subject,
+            #format = :format,
+            #source = :source,
+            publicationYear = :publicationYear,
+            countryState = :countryState,
+            link = :link,
+            queryAll = :queryAll,
+            keywords = :keywords
+      `,
+      ExpressionAttributeNames: {
+        "#format": "format",
+        "#subject": "subject",
+        "#source": "source"
+      },
+      ExpressionAttributeValues: {
+        ":pdfName": title,
+        ":s3Key": key,
+        ":s3Bucket": bucket,
+        ":uploadedAt": uploadedAt,
+        ":title": Metadata.title || "",
+        ":subject": Metadata.subject || "",
+        ":format": Metadata.format || "",
+        ":source": Metadata.source || "",
+        ":publicationYear": Metadata.publication_year || "",
+        ":countryState": Metadata.country_state || "",
+        ":link": Metadata.link || "",
+        ":queryAll": "true",
+        ":keywords": keywords.length > 0 ? keywords : []
+      },
+      ReturnValues: "ALL_NEW"
     }).promise();
 
-    // Insert keyword entries
-    console.log("Indexing keywords...");
+    // Index each keyword in keyword-index table
     await Promise.all(
       Object.entries(keywordCounts).map(([keyword, count]) =>
         dynamodb.put({
@@ -108,17 +122,16 @@ exports.handler = async (event) => {
             documentId,
             count,
             title,
-            uploadedAt,            
+            uploadedAt,
             s3Key: key,
-            s3Bucket: bucket,
+            s3Bucket: bucket
           }
         }).promise()
       )
     );
 
-    // log success
+    // Log success
     await logStatus(documentId, title, "success");
-    console.log("Successfully indexed document:", documentId);
 
     return {
       statusCode: 200,
