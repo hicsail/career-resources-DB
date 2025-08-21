@@ -15,28 +15,6 @@ export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
   const { searchResources } = useApiServices();
-  const [selectedFilters, setSelectedFilters] = useState({
-    subject: [] as string[],
-    format: [] as string[],
-    source: [] as string[],
-  });
-
-  const handleToggle = (type, value) => {
-    setSelectedFilters((prev) => {
-      const exists = prev[type].includes(value);
-      return {
-        ...prev,
-        [type]: exists
-          ? prev[type].filter((v) => v !== value)
-          : [...prev[type], value],
-      };
-    });
-  };
-
-  const handleClearAll = () => {
-    setSelected({ subject: [], format: [], source: [] });
-  };
-
   const handleSearch = async ({
     phrase,
     subject,
