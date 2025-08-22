@@ -13,6 +13,7 @@ import { DocumentMetadataService } from '../document-metadata/document-metadata.
 import { toHeaderSafe } from './utils/upload-utils';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { UseGuards } from '@nestjs/common';
+import * as crypto from 'crypto';
 
 @Controller('upload')
 export class UploadController {
@@ -42,15 +43,23 @@ export class UploadController {
       throw new BadRequestException('File is required');
     }
 
+    // Generate documentId based on PDF content (same as Lambda)
+    const documentId = crypto.createHash('sha256').update(file.buffer).digest('hex');
+    // Check if file already exists in DynamoDB by documentId
+    const duplicate = await this.documentMetadataService.getMetadataByDocumentId(documentId);
+    if (duplicate) {
+      throw new BadRequestException('File already exists in the system');
+    }
+
     //Check if file already exists in DynamoDB
-    const allMetadata = await this.documentMetadataService.getAllMetadata();
+    /*const allMetadata = await this.documentMetadataService.getAllMetadata();
     const duplicate = allMetadata.find(
       (doc) => doc.PDFName?.toLowerCase() === file.originalname.toLowerCase()
     );
 
     if (duplicate) {      
       throw new BadRequestException('File already exists in the system');
-    }
+    }*/
 
     const metadata = {
       subject: body.subject || '',

@@ -10,6 +10,17 @@ export class DocumentMetadataService {
     @Inject(DYNAMO_CLIENT) private readonly docClient: DocumentClient
   ) {}
 
+  async getMetadataByDocumentId(documentId: string): Promise<DocumentClient.AttributeMap | null> {
+    const result = await this.docClient
+      .get({
+        TableName: this.tableName,
+        Key: { documentId },
+      })
+      .promise();
+
+    return result.Item || null;
+  }
+
   async getAllMetadata(): Promise<DocumentClient.ItemList> {
     const params: DocumentClient.QueryInput = {
       TableName: this.tableName,
