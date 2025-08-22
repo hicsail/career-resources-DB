@@ -37,11 +37,7 @@ export const AdminPage: React.FC = () => {
       setLoading(false);
     }
   };
-
-  const addUpload = (newUpload: UploadedResource) => {
-    setUploads((prev) => [newUpload, ...prev]);
-  };
-
+    
   useEffect(() => {   
     fetchMetadata();
   }, []);
@@ -52,7 +48,7 @@ export const AdminPage: React.FC = () => {
         Admin Resource Upload
       </Typography>
 
-      <UploadForm addUpload={addUpload} />
+      <UploadForm fetchMetadata={fetchMetadata}/>
 
       <Typography variant="h4" gutterBottom sx={{ mt: 6 }} align="center">
         Uploaded Resources

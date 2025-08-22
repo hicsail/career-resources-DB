@@ -18,7 +18,7 @@ import { useApiServices } from "../../services/api";
 import { useSnackbar } from "../../contexts/snackbar.context.tsx";
 
 interface UploadFormProps {
-  addUpload: (upload: any) => void;
+  fetchMetadata: () => void;
 }
 
 interface FormValues {
@@ -51,7 +51,7 @@ const initialValues: FormValues = {
   file: null,
 };
 
-export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
+export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
   const { push } = useSnackbar();
   const { uploadFile } = useApiServices();
 
@@ -71,19 +71,10 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
         subject: values.subject,
         format: values.format,
         source: values.source,
-      });
-
-      addUpload({
-        title: values.title,
-        subject: values.subject,
-        format: values.format,
-        source: values.source,
-        fileName: values.file.name,
-        uploadAt: new Date().toISOString().split("T")[0],
-      });
-
+      });      
       resetForm();
       push({ message: "File uploaded successfully!", type: "success" });
+      fetchMetadata();
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const backendMsg = err.response?.data?.message;
