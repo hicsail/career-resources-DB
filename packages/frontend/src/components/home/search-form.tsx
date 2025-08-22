@@ -6,7 +6,7 @@ import {
   CardContent,
   TextField
 } from '@mui/material';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import { FilterDropdown } from '../filter-dropdown';
 import type { SearchFiltersType } from '../../types/search';
@@ -50,7 +50,7 @@ export const SearchForm: React.FC<Props> = ({
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, setFieldValue, errors, touched }) => (
+          {(formik: FormikProps<FormValues>) => (
             <Form>
               {/* Row 1: Search bar + button */}
               <Box
@@ -66,8 +66,8 @@ export const SearchForm: React.FC<Props> = ({
                   name="phrase"
                   label="Search for a document"
                   variant="outlined"
-                  error={touched.phrase && Boolean(errors.phrase)}
-                  helperText={touched.phrase && errors.phrase}
+                  error={formik.touched.phrase && Boolean(formik.errors.phrase)}
+                  helperText={formik.touched.phrase && formik.errors.phrase}
                 />
                 <Button type="submit" variant="contained" color="primary">
                   Search
@@ -84,22 +84,19 @@ export const SearchForm: React.FC<Props> = ({
                   label="Subject (optional)"
                   name="subject"
                   options={subjects}
-                  value={values.subject || ''}
-                  setFieldValue={setFieldValue}
+                  formik={formik}
                 />
                 <FilterDropdown
                   label="Format (optional)"
                   name="format"
                   options={formats}
-                  value={values.format || ''}
-                  setFieldValue={setFieldValue}
+                  formik={formik}
                 />
                 <FilterDropdown
                   label="Source (optional)"
                   name="source"
                   options={sources}
-                  value={values.source || ''}
-                  setFieldValue={setFieldValue}
+                  formik={formik}
                 />                
               </Box>
             </Form>

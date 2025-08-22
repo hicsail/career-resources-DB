@@ -1,5 +1,5 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   Box,
   Button,
@@ -8,19 +8,17 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import { Formik, Form } from "formik";
-import type { FormikHelpers } from "formik";
+import { Formik, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import { FilterDropdown } from "../filter-dropdown";
 import { subjects } from "../../constants/subjects";
 import { formats } from "../../constants/formats";
 import { sources } from "../../constants/sources";
-//import { uploadFile } from "../../services/api"; 
-import { useApiServices } from '../../services/api';
-import { useSnackbar } from '../../contexts/snackbar.context.tsx'; 
+import { useApiServices } from "../../services/api";
+import { useSnackbar } from "../../contexts/snackbar.context.tsx";
 
 interface UploadFormProps {
-  addUpload: (upload: any) => void; 
+  addUpload: (upload: any) => void;
 }
 
 interface FormValues {
@@ -37,12 +35,12 @@ const validationSchema = Yup.object({
   format: Yup.string().required("Format is required"),
   source: Yup.string().required("Source is required"),
   file: Yup.mixed<File>()
-  .required("A file is required")
-  .test(
-    "fileFormat",
-    "Only PDF files are allowed",
-    (value) => value instanceof File && value.type === "application/pdf"
-  )
+    .required("A file is required")
+    .test(
+      "fileFormat",
+      "Only PDF files are allowed",
+      (value) => value instanceof File && value.type === "application/pdf"
+    ),
 });
 
 const initialValues: FormValues = {
@@ -56,19 +54,14 @@ const initialValues: FormValues = {
 export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
   const { push } = useSnackbar();
   const { uploadFile } = useApiServices();
+
   const handleSubmit = async (
     values: FormValues,
-    { resetForm, setSubmitting }: FormikHelpers<FormValues>
+    { resetForm, setSubmitting }: any
   ) => {
     setSubmitting(true);
 
     try {
-      if (!values.file) {
-        push({ message: 'Please select a file.', type: 'error' });
-        setSubmitting(false);
-        return;
-      }
-
       await uploadFile(values.file, {
         title: values.title,
         subject: values.subject,
@@ -82,18 +75,18 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
         format: values.format,
         source: values.source,
         fileName: values.file.name,
-        uploadDate: new Date().toISOString().split("T")[0],        
+        uploadAt: new Date().toISOString().split("T")[0],
       });
 
       resetForm();
-      push({ message: 'File uploaded successfully!', type: 'success' });
+      push({ message: "File uploaded successfully!", type: "success" });
     } catch (err) {
-        if (axios.isAxiosError(err)) {
-          const backendMsg = err.response?.data?.message;
-          push({ message: backendMsg, type: 'error' });
-        } else {
-          push({ message: 'Unexpected error occurred', type: 'error' });
-        }
+      if (axios.isAxiosError(err)) {
+        const backendMsg = err.response?.data?.message;
+        push({ message: backendMsg, type: "error" });
+      } else {
+        push({ message: "Unexpected error occurred", type: "error" });
+      }
     } finally {
       setSubmitting(false);
     }
@@ -107,35 +100,20 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            setFieldValue,
-            isSubmitting,
-          }) => (
+          {(formik: FormikProps<FormValues>) => (
             <Form>
               {/* Row 1: Title + Choose File */}
-              <Box
-                sx={{
-                  display: "flex",
-                  gap: 2,
-                  alignItems: "center",
-                  mb: 2,
-                }}
-              >
+              <Box sx={{ display: "flex", gap: 2, alignItems: "center", mb: 2 }}>
                 <TextField
                   fullWidth
                   label="Title"
                   name="title"
                   variant="outlined"
-                  value={values.title}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={touched.title && Boolean(errors.title)}
-                  helperText={touched.title && errors.title}
+                  value={formik.values.title}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.title && Boolean(formik.errors.title)}
+                  helperText={formik.touched.title && formik.errors.title}
                   required
                 />
 
@@ -150,51 +128,33 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
                     overflow: "hidden",
                     display: "block",
                   }}
-                  color={errors.file && touched.file ? "error" : "primary"}
+                  color={formik.errors.file && formik.touched.file ? "error" : "primary"}
                 >
-                  {values.file ? values.file.name : "Choose File"}
+                  {formik.values.file ? formik.values.file.name : "Choose File"}
                   <input
                     type="file"
                     hidden
                     accept="application/pdf"
                     onChange={(e) => {
                       if (e.currentTarget.files && e.currentTarget.files.length > 0) {
-                        setFieldValue("file", e.currentTarget.files[0]);
+                        formik.setFieldValue("file", e.currentTarget.files[0]);
                       }
                     }}
                   />
                 </Button>
               </Box>
 
-              {touched.file && errors.file && (
+              {formik.touched.file && formik.errors.file && (
                 <Box sx={{ color: "error.main", mb: 2, fontSize: "0.75rem" }}>
-                  {errors.file}
+                  {formik.errors.file}
                 </Box>
               )}
 
               {/* Row 2: Subject + Format + Source */}
               <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
-                <FilterDropdown
-                  label="Subject"
-                  name="subject"
-                  options={subjects}
-                  value={values.subject || ""}
-                  setFieldValue={setFieldValue}
-                />
-                <FilterDropdown
-                  label="Format"
-                  name="format"
-                  options={formats}
-                  value={values.format || ""}
-                  setFieldValue={setFieldValue}
-                />
-                <FilterDropdown
-                  label="Source"
-                  name="source"
-                  options={sources}
-                  value={values.source || ""}
-                  setFieldValue={setFieldValue}
-                />
+                <FilterDropdown label="Subject" name="subject" options={subjects} formik={formik} />
+                <FilterDropdown label="Format" name="format" options={formats} formik={formik} />
+                <FilterDropdown label="Source" name="source" options={sources} formik={formik} />
               </Box>
 
               {/* Row 3: Upload Button */}
@@ -202,10 +162,10 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={isSubmitting}
+                disabled={formik.isSubmitting}
                 sx={{ mt: 1 }}
               >
-                {isSubmitting ? <CircularProgress size={24} /> : "Upload Resource"}
+                {formik.isSubmitting ? <CircularProgress size={24} /> : "Upload Resource"}
               </Button>
             </Form>
           )}
