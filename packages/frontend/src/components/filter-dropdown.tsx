@@ -7,9 +7,7 @@ interface FilterDropdownProps {
   label: string;
   name: keyof SearchFiltersType;
   options: string[];
-  value: string;
   formik: FormikProps<any>;
-  //setFieldValue: (field: string, value: any) => void;
 }
 
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
@@ -19,21 +17,6 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   formik
 }) => {
   return (
-    /*<Autocomplete
-      fullWidth
-      options={options}
-      value={value || ''}
-      onChange={(_, val) => setFieldValue(name, val || '')}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label={label}
-          name={name}
-          variant="outlined"
-          InputLabelProps={{ shrink: true }}
-        />
-      )}
-    />*/
     <Autocomplete
       fullWidth
       options={options}
