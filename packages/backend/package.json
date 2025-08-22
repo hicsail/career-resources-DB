@@ -28,6 +28,8 @@
     "@nestjs/platform-express": "^10.0.0",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.11.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "dotenv": "^17.2.1",
     "jsonwebtoken": "^9.0.2",
     "keyword-extractor": "^0.0.28",

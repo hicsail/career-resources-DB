@@ -1,3 +1,5 @@
+import * as crypto from 'crypto';
+
 export function toHeaderSafe(value: string, maxLen = 1000): string {
   if (!value) return '';
   return value
@@ -8,4 +10,11 @@ export function toHeaderSafe(value: string, maxLen = 1000): string {
     .replace(/[^\x20-\x7E]/g, '')   // keep only printable ASCII
     .trim()
     .slice(0, maxLen);
+}
+
+export function generateDocumentIdFromContent(buffer: Buffer): string {
+  return crypto
+    .createHash("sha256")
+    .update(buffer)
+    .digest("hex");
 }
