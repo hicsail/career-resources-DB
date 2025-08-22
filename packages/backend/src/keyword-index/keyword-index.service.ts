@@ -11,7 +11,7 @@ export class KeywordIndexService {
     @Inject(DYNAMO_CLIENT) private readonly docClient: DocumentClient
   ) {}
 
-  async getDocumentIdsByKeyword(keyword: string): Promise<string[]> {
+  /*async getDocumentIdsByKeyword(keyword: string): Promise<string[]> {
     const params: DocumentClient.QueryInput = {
       TableName: this.tableName,
       KeyConditionExpression: 'keyword = :kw',
@@ -20,6 +20,29 @@ export class KeywordIndexService {
 
     const result = await this.docClient.query(params).promise();
     return (result.Items || []).map((item) => item.documentId);
+  }*/
+
+  async getDocumentIdsByKeyword(keyword: string): Promise<string[]> {
+    let items: DocumentClient.ItemList = [];
+    let lastEvaluatedKey: DocumentClient.Key | undefined;
+
+    do {
+      const params: DocumentClient.QueryInput = {
+        TableName: this.tableName,
+        KeyConditionExpression: 'keyword = :kw',
+        ExpressionAttributeValues: { ':kw': keyword },
+        ExclusiveStartKey: lastEvaluatedKey,
+      };
+
+      const result = await this.docClient.query(params).promise();
+
+      if (result.Items) {
+        items = items.concat(result.Items);
+      }
+      lastEvaluatedKey = result.LastEvaluatedKey;
+    } while (lastEvaluatedKey);
+
+    return items.map((item) => item.documentId);
   }
 
     /**
