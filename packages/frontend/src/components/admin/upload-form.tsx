@@ -58,7 +58,11 @@ export const UploadForm: React.FC<UploadFormProps> = ({ addUpload }) => {
   const handleSubmit = async (
     values: FormValues,
     { resetForm, setSubmitting }: any
-  ) => {
+  ) => {    
+    if (!values.file) {
+      push({ message: "Please select a file", type: "error" });
+      return;
+    }
     setSubmitting(true);
 
     try {

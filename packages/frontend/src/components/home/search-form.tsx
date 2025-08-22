@@ -50,7 +50,7 @@ export const SearchForm: React.FC<Props> = ({
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {(formik: FormikProps<FormValues>) => (
+          {(formik: FormikProps<SearchFiltersType>) => (
             <Form>
               {/* Row 1: Search bar + button */}
               <Box

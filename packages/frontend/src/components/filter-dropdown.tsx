@@ -1,7 +1,7 @@
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import type { SearchFiltersType } from '../types/search';
-import { FormikProps, Formik } from 'formik';
+import type { FormikProps } from 'formik'; // remove unused Formik import
 
 interface FilterDropdownProps {
   label: string;
@@ -16,6 +16,10 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   options,
   formik
 }) => {
+  // Ensure helperText is a string
+  const errorText = formik.touched[name] && formik.errors[name];
+  const helperText = typeof errorText === 'string' ? errorText : '';
+
   return (
     <Autocomplete
       fullWidth
@@ -30,8 +34,8 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onBlur={formik.handleBlur}
-          error={formik.touched[name] && Boolean(formik.errors[name])}
-          helperText={formik.touched[name] && formik.errors[name]}
+          error={Boolean(helperText)}
+          helperText={helperText}
         />
       )}
     />
