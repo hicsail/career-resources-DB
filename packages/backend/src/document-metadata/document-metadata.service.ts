@@ -10,7 +10,7 @@ export class DocumentMetadataService {
     @Inject(DYNAMO_CLIENT) private readonly docClient: DocumentClient
   ) {}
 
-  /*async getAllMetadata(): Promise<DocumentClient.ItemList> {
+  async getAllMetadata(): Promise<DocumentClient.ItemList> {
     const params: DocumentClient.QueryInput = {
       TableName: this.tableName,
       IndexName: 'queryAll-uploadedAt-index',
@@ -20,11 +20,25 @@ export class DocumentMetadataService {
       ScanIndexForward: false,
     };
 
-    const result = await this.docClient.query(params).promise();
-    return result.Items || [];
-  }*/
+    let items: DocumentClient.ItemList = [];
+    let lastEvaluatedKey: DocumentClient.Key | undefined;
 
-  async getAllMetadata(): Promise<DocumentClient.ItemList> {
+    do {
+      const result = await this.docClient.query({
+        ...params,
+        ExclusiveStartKey: lastEvaluatedKey,
+      }).promise();
+
+      if (result.Items) {
+        items = items.concat(result.Items);
+      }
+      lastEvaluatedKey = result.LastEvaluatedKey;
+    } while (lastEvaluatedKey);
+
+    return items;
+  }
+
+  /*async getAllMetadata(): Promise<DocumentClient.ItemList> {
     let items: DocumentClient.ItemList = [];
     let ExclusiveStartKey: DocumentClient.Key | undefined = undefined;
 
@@ -43,5 +57,14 @@ export class DocumentMetadataService {
     } while (ExclusiveStartKey); // loop until all pages retrieved
 
     return items;
-  }
+  }*/
+
+  /*async deleteMetadata(documentId: string): Promise<void> {
+    await this.docClient
+      .delete({
+        TableName: this.tableName,
+        Key: { documentId },
+      })
+      .promise();
+  }*/
 }

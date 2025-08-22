@@ -34,7 +34,6 @@ export class SearchService {
 
     const matchingDocIds = getDocumentIntersection(keywords, docMatchesPerKeyword);
     const metadata = await this.metadataService.getAllMetadata();
-
     return filterAndFormatResults(metadata, matchingDocIds, docIdToKeywordMap, {
       subject,
       format,
