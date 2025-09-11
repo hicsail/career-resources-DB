@@ -25,7 +25,41 @@ The pipeline for indexing documents consists of the following steps:
 This setup enables scalable, serverless indexing of documents with flexible querying capabilities.  
 
 ---
+## Upload and indexing diagram
+```mermaid
+flowchart TD
+    %% Upload / Indexing Flow
+    A["Admin UI"] -->|Upload document| B["Backend API (Nest.js)"]
+    C["Python Scripts"] --> |Bulk Upload| D
+    B -->|Upload document| D["S3 Bucket"]
+    D --> E["Lambda Indexer (AWS Lambda)"]
 
+    %% DynamoDB Tables
+    subgraph DynamoDB
+        F1[["document-metadata"]]
+        F2[["document-keyword-mapping"]]
+        F3[["keyword-index"]]
+        F4[["document-index-log"]]
+    end
+
+    E --> F1
+    E --> F2
+    E --> F3
+    E --> F4
+```
+---
+## Search and query diagram
+```mermaid
+flowchart TD
+    %% Search / Query Flow with GSI
+    A["Frontend"] -->|Search phrase| B["Backend API (Nest.js)"]
+    B -->|Query keywords| F1[["keyword-index"]]
+    F1 -->|Return matching document IDs| B
+    B -->|Query GSI by queryAll attribute| F2[["document-metadata"]]
+    F2 --> |Return all docs metadata| B
+    B -->|Display results| A
+```
+---
 ## Project Structure  
 
 ```
