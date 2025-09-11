@@ -5,9 +5,10 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 const pdf = require("pdf-parse");
 const keywordExtractor = require("keyword-extractor");
 
-const METADATA_TABLE = "document-metadata"; // Partition key: documentId
-const KEYWORD_INDEX_TABLE = "keyword-index"; // Partition key: keyword, Sort key: documentId
-const LOG_TABLE = "document-index-log"; // Partition key: documentId, Sort key: uploadedAt
+const METADATA_TABLE = "document-metadata";             // Partition key: documentId
+const DOCUMENT_KEYWORD_TABLE = "document-keyword-mapping"; // Partition key: documentId
+const KEYWORD_INDEX_TABLE = "keyword-index";           // Partition key: keyword, Sort key: documentId
+const LOG_TABLE = "document-index-log";               // Partition key: documentId, Sort key: uploadedAt
 
 // Helper function to log status
 async function logStatus(documentId, fileName, status, errorMessage = "") {
@@ -23,9 +24,9 @@ async function logStatus(documentId, fileName, status, errorMessage = "") {
   }).promise();
 }
 
-// Generate deterministic documentId using SHA-256 hash
-function generateDocumentId(s3Key) {
-  return crypto.createHash("sha256").update(s3Key).digest("hex");
+// Generate deterministic documentId using SHA-256 of PDF content
+function generateDocumentIdFromContent(buffer) {
+  return crypto.createHash("sha256").update(buffer).digest("hex");
 }
 
 exports.handler = async (event) => {
@@ -35,17 +36,19 @@ exports.handler = async (event) => {
   const bucket = record.s3.bucket.name;
   const key = decodeURIComponent(record.s3.object.key.replace(/\+/g, " "));
 
+  const title = key.split("/").pop();
+
   if (!key.toLowerCase().endsWith(".pdf")) {
-    await logStatus(generateDocumentId(key), key.split("/").pop(), "failure", "Not a PDF file");
+    await logStatus(title, title, "failure", "Not a PDF file");
     return { statusCode: 400, body: "File is not a PDF." };
   }
 
-  const documentId = generateDocumentId(key);
-  const title = key.split("/").pop();
-  const uploadedAt = new Date().toISOString();
-
   try {
     const { Body, Metadata } = await s3.getObject({ Bucket: bucket, Key: key }).promise();
+
+    // Compute documentId from PDF content
+    const documentId = generateDocumentIdFromContent(Body);
+    const uploadedAt = new Date().toISOString();
 
     // Extract PDF text
     let text;
@@ -70,7 +73,7 @@ exports.handler = async (event) => {
       [word]: (acc[word] || 0) + 1
     }), {});
 
-    // Upsert document metadata
+    // Upsert document metadata (no keywords here)
     await dynamodb.update({
       TableName: METADATA_TABLE,
       Key: { documentId },
@@ -86,8 +89,7 @@ exports.handler = async (event) => {
             publicationYear = :publicationYear,
             countryState = :countryState,
             link = :link,
-            queryAll = :queryAll,
-            keywords = :keywords
+            queryAll = :queryAll
       `,
       ExpressionAttributeNames: {
         "#format": "format",
@@ -106,13 +108,25 @@ exports.handler = async (event) => {
         ":publicationYear": Metadata.publication_year || "",
         ":countryState": Metadata.country_state || "",
         ":link": Metadata.link || "",
-        ":queryAll": "true",
-        ":keywords": keywords.length > 0 ? keywords : []
+        ":queryAll": "true"
       },
       ReturnValues: "ALL_NEW"
     }).promise();
 
-    // Index each keyword in keyword-index table
+    // Store documentId → keywords mapping in separate table
+    await dynamodb.put({
+      TableName: DOCUMENT_KEYWORD_TABLE,
+      Item: {
+        documentId,
+        keywords: keywords,
+        uploadedAt,
+        title,
+        s3Key: key,
+        s3Bucket: bucket
+      }
+    }).promise();
+
+    // index each keyword in keyword-index table
     await Promise.all(
       Object.entries(keywordCounts).map(([keyword, count]) =>
         dynamodb.put({
@@ -140,7 +154,7 @@ exports.handler = async (event) => {
 
   } catch (err) {
     console.error("Error indexing PDF:", err);
-    await logStatus(documentId, title, "failure", err.message);
+    await logStatus("unknown", title, "failure", err.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "PDF indexing failed", details: err.message }),
