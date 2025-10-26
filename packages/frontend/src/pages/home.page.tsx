@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Container, Typography, CircularProgress, Box } from '@mui/material';
 import SearchOffIcon from '@mui/icons-material/SearchOff';
 import { SearchForm } from '../components/home/search-form';
@@ -15,6 +15,8 @@ export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
   const { searchResources } = useApiServices();
+  const { getAllDocumentMetadata } = useApiServices();
+
   const handleSearch = async ({
     phrase,
     subject,
@@ -31,6 +33,23 @@ export const HomePage: FC = () => {
       setLoading(false);
     }
   };
+
+  const fetchMetadata = async () => {
+    try {
+      setLoading(true);
+      const data = await getAllDocumentMetadata();
+      setResults(data); 
+    } catch (err) {
+      console.error(err);
+      setError("Failed to fetch document metadata.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {   
+    fetchMetadata();
+  }, []);
 
   return (
     <Container maxWidth="md" sx={{ pt: 2, pb:2  }}>
