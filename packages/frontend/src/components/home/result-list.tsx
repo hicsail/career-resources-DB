@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const ResultsList: React.FC<Props> = ({ data }) => {
-  const itemsPerPage = 5;
+  const itemsPerPage = 15;
   const [page, setPage] = useState(1);
 
   const pageCount = Math.ceil(data.length / itemsPerPage);
