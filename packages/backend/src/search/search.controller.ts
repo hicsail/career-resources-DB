@@ -9,11 +9,11 @@ export class SearchController {
 
   @Get()
   async search(
-    @Query('phrase') phrase: string,
+    @Query('phrase') phrase?: string,
     @Query('subject') subject?: string,
     @Query('format') format?: string,
     @Query('source') source?: string
   ) {    
-    return this.searchService.searchByKeyword(phrase, subject, format, source);
+    return this.searchService.searchAndFilter(phrase, subject, format, source);
   }
 }

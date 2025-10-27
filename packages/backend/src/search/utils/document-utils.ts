@@ -13,13 +13,14 @@ export function getDocumentIntersection(
 
 export function filterAndFormatResults(
   items: any[],
-  docIdSet: Set<string>,
-  docToKeywordMap: Record<string, Set<string>>,
-  filters: { subject?: string; format?: string; source?: string }
+  docIdSet?: Set<string>,
+  docToKeywordMap?: Record<string, Set<string>>,
+  filters: { subject?: string; format?: string; source?: string } = {}
 ): any[] {
+  const hasDocIdFilter = docIdSet && docIdSet.size > 0;
   return items
     .filter((item) => {
-      if (!docIdSet.has(item.documentId)) return false;
+      if (hasDocIdFilter && !docIdSet!.has(item.documentId)) return false;
       if (filters.subject && item.subject !== filters.subject) return false;
       if (filters.source && item.source !== filters.source) return false;
       if (filters.format && item.format !== filters.format) return false;
@@ -27,7 +28,7 @@ export function filterAndFormatResults(
     })
     .map((item) => ({
       ...item,
-      matchedKeywords: Array.from(docToKeywordMap[item.documentId] || []),
+      matchedKeywords: Array.from(docToKeywordMap?.[item.documentId] ?? []),
     }));
 }
 

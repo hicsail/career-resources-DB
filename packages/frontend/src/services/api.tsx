@@ -55,7 +55,7 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
   };
 
   const searchResources = async (
-    phrase: string,
+    phrase?: string,
     subject?: string,
     format?: string,
     source?: string

@@ -1,5 +1,5 @@
 export interface SearchFiltersType {
-  phrase: string;
+  phrase ?: string;
   subject?: string;
   format?: string;
   source?: string;

@@ -10,8 +10,8 @@ export class SearchService {
     private readonly metadataService: DocumentMetadataService
   ) {}
 
-  async searchByKeyword(
-    phrase: string,
+  async searchAndFilter(
+    phrase?: string,
     subject?: string,
     format?: string,
     source?: string

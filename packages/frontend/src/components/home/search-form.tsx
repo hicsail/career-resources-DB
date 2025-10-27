@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const validationSchema = Yup.object().shape({
-  phrase: Yup.string().trim().required('Please enter a search phrase'),
+  phrase: Yup.string().trim().optional('Please enter a search phrase'),
   subject: Yup.string().optional(),
   format: Yup.string().optional(),
   source: Yup.string().optional(),
