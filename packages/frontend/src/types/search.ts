@@ -1,8 +1,8 @@
 export interface SearchFiltersType {
-  phrase ?: string;
-  subject?: string;
-  format?: string;
-  source?: string;
+  phrase?: string;
+  subjects?: string[];
+  formats?: string[];
+  sources?: string[];
 }
 
 export interface SearchResultType {

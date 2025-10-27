@@ -12,10 +12,10 @@ export class SearchService {
 
   async searchAndFilter(
     phrase?: string,
-    subject?: string,
-    format?: string,
-    source?: string
-  ): Promise<any[]> {    
+    subjects?: string[],
+    formats?: string[],
+    sources?: string[]
+  ): Promise<any[]> {  
     const keywords = Array.from(new Set(extractKeywordsFromPhrase(phrase)));
 
     const docMatchesPerKeyword: Record<string, Set<string>> = {};
@@ -35,9 +35,9 @@ export class SearchService {
     const matchingDocIds = getDocumentIntersection(keywords, docMatchesPerKeyword);
     const metadata = await this.metadataService.getAllMetadata();
     return filterAndFormatResults(metadata, matchingDocIds, docIdToKeywordMap, {
-      subject,
-      format,
-      source,
+      subjects,
+      formats,
+      sources,
     });
   }
 }

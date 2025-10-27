@@ -19,17 +19,17 @@ interface Props {
 }
 
 export const validationSchema = Yup.object().shape({
-  phrase: Yup.string().trim().optional('Please enter a search phrase'),
-  subject: Yup.string().optional(),
-  format: Yup.string().optional(),
-  source: Yup.string().optional(),
+  phrase: Yup.string().trim().optional(),
+  subjects: Yup.array().of(Yup.string()).optional(),
+  formats: Yup.array().of(Yup.string()).optional(),
+  sources: Yup.array().of(Yup.string()).optional(),
 });
 
 export const initialValues: SearchFiltersType = {
   phrase: '',
-  subject: '',
-  format: '',
-  source: '',
+  subjects: [],
+  formats: [],    
+  sources: [],    
 };
 
 export const SearchForm: React.FC<Props> = ({
@@ -82,21 +82,24 @@ export const SearchForm: React.FC<Props> = ({
               >                
                 <FilterDropdown
                   label="Subject (optional)"
-                  name="subject"
+                  name="subjects"
                   options={subjects}
                   formik={formik}
+                  multiple={true}
                 />
                 <FilterDropdown
                   label="Format (optional)"
-                  name="format"
+                  name="formats"
                   options={formats}
                   formik={formik}
+                  multiple={true}
                 />
                 <FilterDropdown
                   label="Source (optional)"
-                  name="source"
+                  name="sources"
                   options={sources}
                   formik={formik}
+                  multiple={true}
                 />                
               </Box>
             </Form>

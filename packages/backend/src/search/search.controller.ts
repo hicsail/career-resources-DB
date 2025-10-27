@@ -10,10 +10,10 @@ export class SearchController {
   @Get()
   async search(
     @Query('phrase') phrase?: string,
-    @Query('subject') subject?: string,
-    @Query('format') format?: string,
-    @Query('source') source?: string
-  ) {    
-    return this.searchService.searchAndFilter(phrase, subject, format, source);
+    @Query('subjects') subjects?: string[],
+    @Query('formats') formats?: string[],
+    @Query('sources') sources?: string[]
+  ) { 
+    return this.searchService.searchAndFilter(phrase, subjects, formats, sources);
   }
 }

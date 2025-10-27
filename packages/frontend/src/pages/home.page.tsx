@@ -14,18 +14,17 @@ import { useApiServices } from '../services/api';
 export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
-  const { searchResources } = useApiServices();
-  const { getAllDocumentMetadata } = useApiServices();
-
+  const { searchResources, getAllDocumentMetadata } = useApiServices();
+  
   const handleSearch = async ({
     phrase,
-    subject,
-    format,
-    source
+    subjects,
+    formats,
+    sources
   }: SearchFiltersType) => {    
     setLoading(true);
     try {
-      const data = await searchResources(phrase, subject, format, source); 
+      const data = await searchResources(phrase, subjects, formats, sources); 
       setResults(data);
     } catch (error) {
       console.error('Search error:', error);

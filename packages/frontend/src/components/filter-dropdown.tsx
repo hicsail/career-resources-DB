@@ -1,36 +1,49 @@
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import type { SearchFiltersType } from '../types/search';
-import type { FormikProps } from 'formik'; // remove unused Formik import
+import type { FormikProps } from 'formik';
 
 interface FilterDropdownProps {
   label: string;
   name: keyof SearchFiltersType;
   options: string[];
   formik: FormikProps<any>;
+  multiple?: boolean;
 }
 
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   label,
   name,
   options,
-  formik
+  formik,
+  multiple = false,
 }) => {
+  // Normalize value based on single vs multi select
+  const value = multiple
+    ? ((formik.values[name] as unknown as string[]) || [])
+    : ((formik.values[name] as unknown as string) || '');
+
   // Ensure helperText is a string
-  const errorText = formik.touched[name] && formik.errors[name];
-  const helperText = typeof errorText === 'string' ? errorText : '';
+  const err = formik.touched[name] && formik.errors[name];
+  const helperText = typeof err === 'string' ? err : '';
 
   return (
     <Autocomplete
       fullWidth
       options={options}
-      value={formik.values[name] || ''}
-      onChange={(_, val) => formik.setFieldValue(name, val || '')}
+      multiple={multiple}
+      disableCloseOnSelect={multiple}
+      filterSelectedOptions={multiple}
+      value={value as any}
+      onChange={(_, val) =>
+        formik.setFieldValue(name, multiple ? (val as string[]) : (val || ''))
+      }
+      getOptionLabel={(opt) => (typeof opt === 'string' ? opt : String(opt))}
       renderInput={(params) => (
         <TextField
           {...params}
           label={label}
-          name={name}
+          name={name as string}
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onBlur={formik.handleBlur}

@@ -15,15 +15,20 @@ export function filterAndFormatResults(
   items: any[],
   docIdSet?: Set<string>,
   docToKeywordMap?: Record<string, Set<string>>,
-  filters: { subject?: string; format?: string; source?: string } = {}
+  filters: { subjects?: string[]; formats?: string[]; sources?: string[] } = {}
 ): any[] {
-  const hasDocIdFilter = docIdSet && docIdSet.size > 0;
+  const hasDocIdFilter = !!docIdSet && docIdSet.size > 0;
+
+  //helper to treat empty arrays as "no filter" and to test membership
+  const inFilter = (value: string | undefined, arr?: string[]) =>
+    !arr || arr.length === 0 || arr.includes(value ?? "");
+
   return items
     .filter((item) => {
       if (hasDocIdFilter && !docIdSet!.has(item.documentId)) return false;
-      if (filters.subject && item.subject !== filters.subject) return false;
-      if (filters.source && item.source !== filters.source) return false;
-      if (filters.format && item.format !== filters.format) return false;
+      if (!inFilter(item.subject, filters.subjects)) return false;
+      if (!inFilter(item.source,  filters.sources))  return false;
+      if (!inFilter(item.format,  filters.formats))  return false;
       return true;
     })
     .map((item) => ({
