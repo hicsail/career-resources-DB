@@ -20,7 +20,8 @@ export function filterAndFormatResults(
     formats?: string[]; 
     sources?: string[], 
     startYear?: number, 
-    endYear?:number 
+    endYear?: number,
+    location?: string //country or state 
   } = {}
 ): any[] {
   const hasDocIdFilter = !!docIdSet && docIdSet.size > 0;
@@ -49,6 +50,13 @@ export function filterAndFormatResults(
         if (yearNum != filters.startYear) return false;
       } else if (filters.startYear && filters.endYear) {
         if (yearNum < filters.startYear || yearNum > filters.endYear) return false;
+      }
+  
+      //Filter by location (country or state)
+      if ( filters.location ) {
+        const filterLoc = filters.location.trim().toLowerCase();
+        const itemLoc = item.location?.trim().toLowerCase();
+        if (!itemLoc || itemLoc !== filterLoc) return false;
       }
 
       return true;

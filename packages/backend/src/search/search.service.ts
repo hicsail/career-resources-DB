@@ -16,7 +16,8 @@ export class SearchService {
     formats?: string[],
     sources?: string[],
     startYear?: number,
-    endYear?: number
+    endYear?: number,
+    location? :string //country or state
   ): Promise<any[]> {  
     const keywords = Array.from(new Set(extractKeywordsFromPhrase(phrase)));
 
@@ -41,7 +42,8 @@ export class SearchService {
       formats,
       sources,
       startYear,
-      endYear
+      endYear,
+      location
     });
   }
 }

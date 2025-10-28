@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'; 
 import {
   Box,
   Button,
@@ -16,6 +16,8 @@ interface Props {
   subjects: string[];
   sources: string[];
   formats: string[];
+  states: string[];
+  countries: stringp[];
 }
 
 export const validationSchema = Yup.object().shape({
@@ -33,15 +35,19 @@ export const validationSchema = Yup.object().shape({
     .max(new Date().getFullYear(), 'Year cannot be in the future')
     .nullable()
     .optional(),
+  state: Yup.string().optional(),
+  country: Yup.string().optional()
 });
 
 export const initialValues: SearchFiltersType = {
   phrase: '',
   subjects: [],
-  formats: [],    
+  formats: [],
   sources: [],
-  startYear: null, 
-  endYear: null
+  startYear: null,
+  endYear: null,
+  state: '',
+  country: ''
 };
 
 export const SearchForm: React.FC<Props> = ({
@@ -49,6 +55,8 @@ export const SearchForm: React.FC<Props> = ({
   subjects,
   formats,
   sources,
+  states,
+  countries
 }) => {
   const handleSubmit = (values: SearchFiltersType) => {
     onSearch(values);
@@ -62,92 +70,150 @@ export const SearchForm: React.FC<Props> = ({
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {(formik: FormikProps<SearchFiltersType>) => (
-            <Form>
-              {/* Row 1: Search bar + button */}
-              <Box
-                display="flex"
-                flexDirection={{ xs: 'column', sm: 'row' }}
-                gap={3}
-                alignItems="center"
-                mb={3}
-              >
-                <Field
-                  as={TextField}
-                  fullWidth
-                  name="phrase"
-                  label="Search for a document"
-                  variant="outlined"
-                  error={formik.touched.phrase && Boolean(formik.errors.phrase)}
-                  helperText={formik.touched.phrase && formik.errors.phrase}
-                />
-                <Button type="submit" variant="contained" color="primary">
-                  Search
-                </Button>
-              </Box>
+          {(formik: FormikProps<SearchFiltersType>) => {
+            // derive International flag directly from Formik
+            const isInternational = formik.values.state === 'International';
 
-              {/* Row 2: Dropdown filters */}
-              <Box
-                display="flex"
-                flexDirection={{ xs: 'column', sm: 'row' }}
-                gap={3}
-                mb={3}
-              >                
-                <FilterDropdown
-                  label="Subject (optional)"
-                  name="subjects"
-                  options={subjects}
-                  formik={formik}
-                  multiple={true}
-                />
-                <FilterDropdown
-                  label="Format (optional)"
-                  name="formats"
-                  options={formats}
-                  formik={formik}
-                  multiple={true}
-                />
-                <FilterDropdown
-                  label="Source (optional)"
-                  name="sources"
-                  options={sources}
-                  formik={formik}
-                  multiple={true}
-                />                
-              </Box>
-              {/* Row 3: Year range fields */}
-              <Box
-                display="flex"
-                flexDirection={{ xs: 'column', sm: 'row' }}
-                gap={3}
-                mb={3}
-              >
-                <Field
-                  as={TextField}
-                  fullWidth
-                  type="number"
-                  name="startYear"
-                  label="From Year"
-                  inputProps={{ min: 1900, max: new Date().getFullYear(), step: 1 }}
-                  variant="outlined"
-                  error={formik.touched.startYear && Boolean(formik.errors.startYear)}
-                  helperText={formik.touched.startYear && formik.errors.startYear}
-                />
+            // automatically clear country when not international
+            useEffect(() => {
+              if (!isInternational && formik.values.country) {
+                formik.setFieldValue('country', '');
+              }
+            }, [isInternational, formik]);
 
-                <Field
-                  as={TextField}
-                  fullWidth
-                  type="number"
-                  name="endYear"
-                  label="To Year"
-                  inputProps={{ min: 1900, max: new Date().getFullYear(), step: 1 }}
-                  variant="outlined"
-                  error={formik.touched.endYear && Boolean(formik.errors.endYear)}
-                  helperText={formik.touched.endYear && formik.errors.endYear}
-                />
-              </Box>
-            </Form>
-          )}
+            return (
+              <Form>
+                {/* Row 1: Search bar + button */}
+                <Box
+                  display="flex"
+                  flexDirection={{ xs: 'column', sm: 'row' }}
+                  gap={3}
+                  alignItems="center"
+                  mb={3}
+                >
+                  <Field
+                    as={TextField}
+                    fullWidth
+                    name="phrase"
+                    label="Search for a document"
+                    variant="outlined"
+                    error={formik.touched.phrase && Boolean(formik.errors.phrase)}
+                    helperText={formik.touched.phrase && formik.errors.phrase}
+                  />
+                  <Button type="submit" variant="contained" color="primary">
+                    Search
+                  </Button>
+                </Box>
+
+                {/* Row 2: Dropdown filters */}
+                <Box
+                  display="flex"
+                  flexDirection={{ xs: 'column', sm: 'row' }}
+                  gap={3}
+                  mb={3}
+                >
+                  <FilterDropdown
+                    label="Subject (optional)"
+                    name="subjects"
+                    options={subjects}
+                    formik={formik}
+                    multiple={true}
+                  />
+                  <FilterDropdown
+                    label="Format (optional)"
+                    name="formats"
+                    options={formats}
+                    formik={formik}
+                    multiple={true}
+                  />
+                  <FilterDropdown
+                    label="Source (optional)"
+                    name="sources"
+                    options={sources}
+                    formik={formik}
+                    multiple={true}
+                  />
+                </Box>
+
+                {/* Row 3: Location filters */}
+                <Box
+                  display="flex"
+                  flexDirection={{ xs: 'column', sm: 'row' }}
+                  gap={3}
+                  mb={3}
+                >
+                  <FilterDropdown
+                    label="State or International"
+                    name="state"
+                    options={[...states, 'International']} // ensure "International" exists
+                    formik={formik}
+                    multiple={false}
+                    onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+                      const selected = event.target.value as string;
+                      formik.setFieldValue('state', selected);
+                    }}
+                  />
+
+                  {/* Show only if International selected */}
+                  {isInternational && (
+                    <FilterDropdown
+                      label="Country"
+                      name="country"
+                      options={countries}
+                      formik={formik}
+                      multiple={false}
+                    />
+                  )}
+                </Box>
+
+                {/* Row 4: Year range fields */}
+                <Box
+                  display="flex"
+                  flexDirection={{ xs: 'column', sm: 'row' }}
+                  gap={3}
+                >
+                  <Field
+                    as={TextField}
+                    fullWidth
+                    type="number"
+                    name="startYear"
+                    label="From Year"
+                    inputProps={{
+                      min: 1900,
+                      max: new Date().getFullYear(),
+                      step: 1
+                    }}
+                    variant="outlined"
+                    error={
+                      formik.touched.startYear &&
+                      Boolean(formik.errors.startYear)
+                    }
+                    helperText={
+                      formik.touched.startYear && formik.errors.startYear
+                    }
+                  />
+
+                  <Field
+                    as={TextField}
+                    fullWidth
+                    type="number"
+                    name="endYear"
+                    label="To Year"
+                    inputProps={{
+                      min: 1900,
+                      max: new Date().getFullYear(),
+                      step: 1
+                    }}
+                    variant="outlined"
+                    error={
+                      formik.touched.endYear && Boolean(formik.errors.endYear)
+                    }
+                    helperText={formik.touched.endYear && formik.errors.endYear}
+                  />
+                </Box>
+              </Form>
+            );
+          }}
         </Formik>
       </CardContent>
     </Card>

@@ -14,8 +14,17 @@ export class SearchController {
     @Query('formats') formats?: string[],
     @Query('sources') sources?: string[],
     @Query('startYear') startYear?: number,
-    @Query('endYear') endYear?: number
+    @Query('endYear') endYear?: number,
+    @Query('location') location?: string //country or state
   ) { 
-    return this.searchService.searchAndFilter(phrase, subjects, formats, sources, startYear, endYear);
+    return this.searchService.searchAndFilter(
+      phrase, 
+      subjects, 
+      formats, 
+      sources, 
+      startYear, 
+      endYear, 
+      location
+    );
   }
 }

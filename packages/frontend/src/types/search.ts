@@ -5,6 +5,7 @@ export interface SearchFiltersType {
   sources?: string[];
   startYear?: number | null; 
   endYear?: number | null;
+  location?: string;
 }
 
 export interface SearchResultType {

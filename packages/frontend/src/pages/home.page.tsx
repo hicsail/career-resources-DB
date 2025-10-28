@@ -7,6 +7,8 @@ import { ResultsList } from '../components/home/result-list';
 import { subjects } from '../constants/subjects';
 import { formats } from '../constants/formats';
 import { sources } from '../constants/sources';
+import { states } from '../constants/states';
+import { countries } from '../constants/countries';
 import type { SearchFiltersType } from '../types/search';
 import type { SearchResultType } from '../types/search';
 import { useApiServices } from '../services/api';
@@ -22,11 +24,14 @@ export const HomePage: FC = () => {
     formats,
     sources,
     startYear,
-    endYear
+    endYear,
+    state,
+    country
   }: SearchFiltersType) => {    
     setLoading(true);
     try {
-      const data = await searchResources(phrase, subjects, formats, sources, startYear, endYear); 
+      const location = country || state;
+      const data = await searchResources(phrase, subjects, formats, sources, startYear, endYear, location); 
       setResults(data);
     } catch (error) {
       console.error('Search error:', error);
@@ -62,7 +67,9 @@ export const HomePage: FC = () => {
         onSearch={handleSearch} 
         subjects={subjects}
         formats={formats}
-        sources={sources} 
+        sources={sources}
+        states={states} 
+        countries={countries} 
       />
 
       {loading && (
