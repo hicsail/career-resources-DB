@@ -31,6 +31,10 @@ export function filterAndFormatResults(
 
   return items
     .filter((item) => {
+      // Exclude missing/null year ONLY if year filter is applied
+      if (filters.startYear && (item.year == null || item.year === '')) {
+        return false;
+      }
       // Filter by docId
       if (hasDocIdFilter && !docIdSet!.has(item.documentId)) return false;
 
@@ -41,12 +45,12 @@ export function filterAndFormatResults(
 
       // Filter by startYear and endYear if provided
       const yearNum = item.year ? parseInt(item.year, 10) : NaN;
-      if (filters.startYear && !isNaN(yearNum) && yearNum >= filters.startYear) {
-        return false;
+      if (filters.startYear && !filters.endYear) {
+        if (yearNum != filters.startYear) return false;
+      } else if (filters.startYear && filters.endYear) {
+        if (yearNum < filters.startYear || yearNum > filters.endYear) return false;
       }
-      if (filters.endYear && !isNaN(yearNum) && yearNum <= filters.endYear) {
-        return false;
-      }
+
       return true;
     })
     .map((item) => ({
