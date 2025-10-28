@@ -20,11 +20,13 @@ export const HomePage: FC = () => {
     phrase,
     subjects,
     formats,
-    sources
+    sources,
+    startYear,
+    endYear
   }: SearchFiltersType) => {    
     setLoading(true);
     try {
-      const data = await searchResources(phrase, subjects, formats, sources); 
+      const data = await searchResources(phrase, subjects, formats, sources, startYear, endYear); 
       setResults(data);
     } catch (error) {
       console.error('Search error:', error);

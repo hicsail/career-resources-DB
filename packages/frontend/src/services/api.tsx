@@ -11,7 +11,7 @@ const API_ENDPOINTS = {
 
 export interface ApiContextProps {
   uploadFile: (file: File, metadata: { title: string; subject: string; format: string; source: string }) => Promise<any>;
-  searchResources: (phrase?: string, subjects?: string[], formats?: string[], sources?: string[]) => Promise<any>;
+  searchResources: (phrase?: string, subjects?: string[], formats?: string[], sources?: string[], startYear?: number, endYear?:number) => Promise<any>;
   getAllDocumentMetadata: () => Promise<any>;
 }
 
@@ -58,14 +58,18 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
     phrase?: string,
     subjects?: string[],
     formats?: string[],
-    sources?: string[]
+    sources?: string[],
+    startYear?: number,
+    endYear?: number
   ): Promise<any> => {
     const params: Record<string, any> = {};
     if (phrase) params.phrase = phrase;
     if (subjects) params.subjects = subjects;
     if (formats) params.formats = formats;
     if (sources) params.sources = sources;
-
+    if (startYear) params.startYear = startYear;
+    if (endYear) params.endYear = endYear;
+   
     const url = `${VITE_API_BASE_URL}/${API_ENDPOINTS.SEARCH_RESOURCES}`;
     const response: AxiosResponse = await axios.get(url, { params });
     return response.data;

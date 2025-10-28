@@ -15,7 +15,13 @@ export function filterAndFormatResults(
   items: any[],
   docIdSet?: Set<string>,
   docToKeywordMap?: Record<string, Set<string>>,
-  filters: { subjects?: string[]; formats?: string[]; sources?: string[] } = {}
+  filters: { 
+    subjects?: string[]; 
+    formats?: string[]; 
+    sources?: string[], 
+    startYear?: number, 
+    endYear?:number 
+  } = {}
 ): any[] {
   const hasDocIdFilter = !!docIdSet && docIdSet.size > 0;
 
@@ -25,10 +31,22 @@ export function filterAndFormatResults(
 
   return items
     .filter((item) => {
+      // Filter by docId
       if (hasDocIdFilter && !docIdSet!.has(item.documentId)) return false;
+
+      // Filter by subject, source, format
       if (!inFilter(item.subject, filters.subjects)) return false;
       if (!inFilter(item.source,  filters.sources))  return false;
       if (!inFilter(item.format,  filters.formats))  return false;
+
+      // Filter by startYear and endYear if provided
+      const yearNum = item.year ? parseInt(item.year, 10) : NaN;
+      if (filters.startYear && !isNaN(yearNum) && yearNum >= filters.startYear) {
+        return false;
+      }
+      if (filters.endYear && !isNaN(yearNum) && yearNum <= filters.endYear) {
+        return false;
+      }
       return true;
     })
     .map((item) => ({

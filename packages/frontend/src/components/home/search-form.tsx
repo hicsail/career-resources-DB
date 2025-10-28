@@ -23,13 +23,25 @@ export const validationSchema = Yup.object().shape({
   subjects: Yup.array().of(Yup.string()).optional(),
   formats: Yup.array().of(Yup.string()).optional(),
   sources: Yup.array().of(Yup.string()).optional(),
+  startYear: Yup.number()
+    .min(1900, 'Year must be after 1900')
+    .max(new Date().getFullYear(), 'Year cannot be in the future')
+    .nullable()
+    .optional(),
+  endYear: Yup.number()
+    .min(Yup.ref('startYear'), 'End year cannot be before start year')
+    .max(new Date().getFullYear(), 'Year cannot be in the future')
+    .nullable()
+    .optional(),
 });
 
 export const initialValues: SearchFiltersType = {
   phrase: '',
   subjects: [],
   formats: [],    
-  sources: [],    
+  sources: [],
+  startYear: null, 
+  endYear: null
 };
 
 export const SearchForm: React.FC<Props> = ({
@@ -79,6 +91,7 @@ export const SearchForm: React.FC<Props> = ({
                 display="flex"
                 flexDirection={{ xs: 'column', sm: 'row' }}
                 gap={3}
+                mb={3}
               >                
                 <FilterDropdown
                   label="Subject (optional)"
@@ -101,6 +114,37 @@ export const SearchForm: React.FC<Props> = ({
                   formik={formik}
                   multiple={true}
                 />                
+              </Box>
+              {/* Row 3: Year range fields */}
+              <Box
+                display="flex"
+                flexDirection={{ xs: 'column', sm: 'row' }}
+                gap={3}
+                mb={3}
+              >
+                <Field
+                  as={TextField}
+                  fullWidth
+                  type="number"
+                  name="startYear"
+                  label="From Year"
+                  inputProps={{ min: 1900, max: new Date().getFullYear(), step: 1 }}
+                  variant="outlined"
+                  error={formik.touched.startYear && Boolean(formik.errors.startYear)}
+                  helperText={formik.touched.startYear && formik.errors.startYear}
+                />
+
+                <Field
+                  as={TextField}
+                  fullWidth
+                  type="number"
+                  name="endYear"
+                  label="To Year"
+                  inputProps={{ min: 1900, max: new Date().getFullYear(), step: 1 }}
+                  variant="outlined"
+                  error={formik.touched.endYear && Boolean(formik.errors.endYear)}
+                  helperText={formik.touched.endYear && formik.errors.endYear}
+                />
               </Box>
             </Form>
           )}
