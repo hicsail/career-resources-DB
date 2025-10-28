@@ -12,9 +12,10 @@ import Badge from '../badge';
 interface ResultItem {
   title?: string;
   subject?: string;
-  source?: string;
+  year?: string;
   format?: string;
   link?: string;
+  summary?: string;
 }
 
 interface Props {
@@ -39,9 +40,28 @@ export const ResultsList: React.FC<Props> = ({ data }) => {
 
             <Box display="flex" flexWrap="wrap" gap={1}>
               <Badge label={item.subject} fallback="No subject available" />
-              <Badge label={item.source} fallback="No source available" />
+              <Badge label={item.year} fallback="No year available" />
               <Badge label={item.format} fallback="No format available" />
             </Box>
+
+            {item.summary && (
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  mt: 1,
+                  mb: 1,
+                  whiteSpace: 'pre-line', 
+                }}
+              >
+                {item.summary}
+              </Typography>
+            )}
+            {!item.summary && (
+              <Typography variant="body2" color="text.disabled" sx={{ mt: 1, mb: 1 }}>
+                No summary available
+              </Typography>
+            )}
 
             {item.link && (
               <Box mt={1}>
