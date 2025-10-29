@@ -3,10 +3,8 @@ import { Container, Typography, CircularProgress, Box } from '@mui/material';
 import SearchOffIcon from '@mui/icons-material/SearchOff';
 import { SearchForm } from '../components/home/search-form';
 import { ResultsList } from '../components/home/result-list';
-//import { searchResources } from '../services/api';
 import { subjects } from '../constants/subjects';
 import { formats } from '../constants/formats';
-import { sources } from '../constants/sources';
 import { states } from '../constants/states';
 import { countries } from '../constants/countries';
 import type { SearchFiltersType } from '../types/search';
@@ -67,7 +65,6 @@ export const HomePage: FC = () => {
         onSearch={handleSearch} 
         subjects={subjects}
         formats={formats}
-        sources={sources}
         states={states} 
         countries={countries} 
       />

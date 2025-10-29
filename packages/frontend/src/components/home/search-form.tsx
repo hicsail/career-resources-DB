@@ -14,7 +14,6 @@ import type { SearchFiltersType } from '../../types/search';
 interface Props {
   onSearch: (filters: SearchFiltersType) => void;
   subjects: string[];
-  sources: string[];
   formats: string[];
   states: string[];
   countries: stringp[];
@@ -24,7 +23,6 @@ export const validationSchema = Yup.object().shape({
   phrase: Yup.string().trim().optional(),
   subjects: Yup.array().of(Yup.string()).optional(),
   formats: Yup.array().of(Yup.string()).optional(),
-  sources: Yup.array().of(Yup.string()).optional(),
   startYear: Yup.number()
     .min(1900, 'Year must be after 1900')
     .max(new Date().getFullYear(), 'Year cannot be in the future')
@@ -43,7 +41,6 @@ export const initialValues: SearchFiltersType = {
   phrase: '',
   subjects: [],
   formats: [],
-  sources: [],
   startYear: null,
   endYear: null,
   state: '',
@@ -54,7 +51,6 @@ export const SearchForm: React.FC<Props> = ({
   onSearch,
   subjects,
   formats,
-  sources,
   states,
   countries
 }) => {
@@ -123,13 +119,6 @@ export const SearchForm: React.FC<Props> = ({
                     label="Format (optional)"
                     name="formats"
                     options={formats}
-                    formik={formik}
-                    multiple={true}
-                  />
-                  <FilterDropdown
-                    label="Source (optional)"
-                    name="sources"
-                    options={sources}
                     formik={formik}
                     multiple={true}
                   />

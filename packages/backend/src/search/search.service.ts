@@ -14,7 +14,6 @@ export class SearchService {
     phrase?: string,
     subjects?: string[],
     formats?: string[],
-    sources?: string[],
     startYear?: number,
     endYear?: number,
     location? :string //country or state
@@ -40,7 +39,6 @@ export class SearchService {
     return filterAndFormatResults(metadata, matchingDocIds, docIdToKeywordMap, {
       subjects,
       formats,
-      sources,
       startYear,
       endYear,
       location

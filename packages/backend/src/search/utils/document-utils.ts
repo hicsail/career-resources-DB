@@ -18,7 +18,6 @@ export function filterAndFormatResults(
   filters: { 
     subjects?: string[]; 
     formats?: string[]; 
-    sources?: string[], 
     startYear?: number, 
     endYear?: number,
     location?: string //country or state 
@@ -41,7 +40,6 @@ export function filterAndFormatResults(
 
       // Filter by subject, source, format
       if (!inFilter(item.subject, filters.subjects)) return false;
-      if (!inFilter(item.source,  filters.sources))  return false;
       if (!inFilter(item.format,  filters.formats))  return false;
 
       // Filter by startYear and endYear if provided

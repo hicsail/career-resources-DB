@@ -12,7 +12,6 @@ export class SearchController {
     @Query('phrase') phrase?: string,
     @Query('subjects') subjects?: string[],
     @Query('formats') formats?: string[],
-    @Query('sources') sources?: string[],
     @Query('startYear') startYear?: number,
     @Query('endYear') endYear?: number,
     @Query('location') location?: string //country or state
@@ -21,7 +20,6 @@ export class SearchController {
       phrase, 
       subjects, 
       formats, 
-      sources, 
       startYear, 
       endYear, 
       location
