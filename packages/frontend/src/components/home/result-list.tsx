@@ -42,7 +42,7 @@ export const ResultsList: React.FC<Props> = ({ data }) => {
               <Badge label={item.subject} fallback="No subject available" />
               <Badge label={item.year} fallback="No year available" />
               <Badge label={item.format} fallback="No format available" />
-              <Badge label={item.location} fallback="No format available" />
+              <Badge label={item.location} fallback="No location available" />
             </Box>
 
             {item.summary && (
