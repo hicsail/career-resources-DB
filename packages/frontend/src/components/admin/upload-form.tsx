@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"; // 🟢 CHANGED: import useEffect
+import React, { useEffect } from "react";
 import axios from "axios";
 import {
   Box,
@@ -8,7 +8,7 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import { Formik, Form, FormikProps } from "formik";
+import { Formik, Form, FormikProps, Field } from "formik";
 import * as Yup from "yup";
 import { FilterDropdown } from "../filter-dropdown";
 import { subjects } from "../../constants/subjects";
@@ -29,8 +29,10 @@ interface FormValues {
   format: string;
   source: string;
   file: File | null;
-  state?: string;    
-  country?: string;  
+  state?: string;
+  country?: string;
+  year?: number;
+  summary: string;
 }
 
 const validationSchema = Yup.object({
@@ -38,7 +40,9 @@ const validationSchema = Yup.object({
   subject: Yup.string().required("Subject is required"),
   format: Yup.string().required("Format is required"),
   source: Yup.string().required("Source is required"),
+  summary: Yup.string().required("Summary is required"),
   state: Yup.string().nullable().optional(),
+  year: Yup.number().nullable().optional(),
   country: Yup.string()
     .nullable()
     .when("state", {
@@ -60,7 +64,9 @@ const initialValues: FormValues = {
   subject: "",
   format: "",
   source: "",
+  summary: "",
   file: null,
+  year: null,
   state: "",
   country: "",
 };
@@ -88,6 +94,8 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
         subject: values.subject,
         format: values.format,
         source: values.source,
+        year: values.year,
+        summary: values.summary,
         location,
       });
 
@@ -115,10 +123,8 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
           onSubmit={handleSubmit}
         >
           {(formik: FormikProps<FormValues>) => {
-            // compute isInternational from current formik values
             const isInternational = formik.values.state === "International";
 
-            // clear country when not International
             useEffect(() => {
               if (!isInternational && formik.values.country) {
                 formik.setFieldValue("country", "");
@@ -175,33 +181,67 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
                   </Box>
                 )}
 
-                {/* Row 2: Subject + Format + Source */}
+                {/* 🆕 Row 2: Summary */}
+                <Box sx={{ mb: 2 }}>
+                  <TextField
+                    fullWidth
+                    multiline
+                    minRows={3}
+                    maxRows={8}
+                    label="Summary"
+                    name="summary"
+                    placeholder="Short description of the document…"
+                    value={formik.values.summary}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.summary && Boolean(formik.errors.summary)}
+                    helperText={formik.touched.summary && formik.errors.summary}
+                    required
+                  />
+                </Box>
+
+                {/* Row 3: Subject + Format + Source */}
                 <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
                   <FilterDropdown label="Subject" name="subject" options={subjects} formik={formik} />
                   <FilterDropdown label="Format" name="format" options={formats} formik={formik} />
                   <FilterDropdown label="Source" name="source" options={sources} formik={formik} />
                 </Box>
 
-                {/* Row 3: Location filters */}
+                {/* Row 4: Location and Year */}
                 <Box
                   display="flex"
                   flexDirection={{ xs: "column", sm: "row" }}
                   gap={3}
                   mb={3}
                 >
+                  <Field
+                    as={TextField}
+                    fullWidth
+                    type="number"
+                    name="year"
+                    label="Year"
+                    inputProps={{
+                      min: 1900,
+                      max: new Date().getFullYear(),
+                      step: 1
+                    }}
+                    variant="outlined"
+                    error={formik.touched.year && Boolean(formik.errors.year)}
+                    helperText={formik.touched.year && formik.errors.year}
+                  />
+
                   <FilterDropdown
                     label="State or International"
                     name="state"
-                    options={[...states, "International"]} 
+                    options={[...states, "International"]}
                     formik={formik}
                     multiple={false}
                     onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
                       const selected = event.target.value as string;
-                      formik.setFieldValue("state", selected); 
+                      formik.setFieldValue("state", selected);
                     }}
                   />
 
-                  {/* Only show Country when International is selected */}
                   {isInternational && (
                     <FilterDropdown
                       label="Country"
@@ -213,7 +253,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
                   )}
                 </Box>
 
-                {/* Row 4: Upload Button */}
+                {/* Row 5: Upload Button */}
                 <Button
                   type="submit"
                   variant="contained"

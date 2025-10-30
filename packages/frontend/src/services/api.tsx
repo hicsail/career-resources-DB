@@ -9,9 +9,27 @@ const API_ENDPOINTS = {
   GET_ALL_METADATA: 'documents-metadata'
 };
 
+type UploadMetadata = {
+  title: string;
+  subject: string;
+  format: string;
+  source: string;
+  summary?: string;
+  location?: string | null;
+  year?: number | null; // will be sent as string if present
+};
+
 export interface ApiContextProps {
-  uploadFile: (file: File, metadata: { title: string; subject: string; format: string; source: string }) => Promise<any>;
-  searchResources: (phrase?: string, subjects?: string[], formats?: string[], sources?: string[], startYear?: number, endYear?:number, location?:string) => Promise<any>;
+  uploadFile: (file: File, metadata: UploadMetadata) => Promise<any>;
+  searchResources: (
+    phrase?: string, 
+    subjects?: string[], 
+    formats?: string[], 
+    sources?: string[], 
+    startYear?: number, 
+    endYear?:number, 
+    location?:string
+  ) => Promise<any>;
   getAllDocumentMetadata: () => Promise<any>;
 }
 
@@ -38,7 +56,7 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
   // -------- API Functions using runtime base URL --------
   const uploadFile = async (
     file: File,
-    metadata: { title: string; subject: string; format: string; source: string }
+    metadata:  UploadMetadata
   ): Promise<any> => {
     const formData = new FormData();
     formData.append('file', file);
@@ -46,6 +64,14 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
     formData.append('subject', metadata.subject);
     formData.append('format', metadata.format);
     formData.append('source', metadata.source);
+
+    formData.append('summary', metadata.summary.trim());
+    if (metadata.location) {
+      formData.append('location', metadata.location);
+    }
+    if (typeof metadata.year === 'number') {
+      formData.append('year', String(metadata.year));
+    }
 
     const url = `${VITE_API_BASE_URL}/${API_ENDPOINTS.UPLOAD_FILE}`;
     const response: AxiosResponse = await axios.post(url, formData, {

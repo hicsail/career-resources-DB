@@ -78,9 +78,13 @@ export class UploadController {
         title: toHeaderSafe(body.title),
         format: body.format,
         source: body.source,
+        summary: body.summary
       };
       if (location) {
         metadata.location = location; 
+      }
+      if (body.year) {
+        metadata.year = String(body.year);  
       }
 
       const filename = file.originalname;
@@ -91,7 +95,7 @@ export class UploadController {
         file.mimetype,
         metadata,
       );
-
+      
       return { message: 'File uploaded successfully', filename, documentId };
     } catch (error) {
       // eslint-disable-next-line no-console
