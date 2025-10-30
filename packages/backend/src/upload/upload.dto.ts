@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
 
 export class UploadDto {
   @IsNotEmpty()
@@ -16,4 +16,14 @@ export class UploadDto {
   @IsNotEmpty()
   @IsString()
   source: string;
+
+  // state can be empty or omitted
+  @IsOptional()
+  @IsString()
+  state?: string;
+
+  // country can be empty or omitted
+  @IsOptional()
+  @IsString()
+  country?: string;
 }
