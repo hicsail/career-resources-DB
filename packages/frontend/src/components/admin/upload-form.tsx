@@ -219,7 +219,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
                     fullWidth
                     type="number"
                     name="year"
-                    label="Year"
+                    label="Publication Year"
                     inputProps={{
                       min: 1900,
                       max: new Date().getFullYear(),

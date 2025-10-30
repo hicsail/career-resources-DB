@@ -25,7 +25,7 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
 
   const handleChangePage = (_: unknown, newPage: number) => setPage(newPage);
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+    setRowsPerPage(parseInt(event.target.value, 10)); // 🔧 fixed typo
     setPage(0);
   };
 
@@ -35,8 +35,8 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
 
   const paginatedUploads = uploads.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
-  // Calculate row height to fix table height
-  const totalTableHeight = 60 * rowsPerPage; // 60px per row as before
+  // Keep table height stable
+  const totalTableHeight = 60 * rowsPerPage;
 
   return (
     <>
@@ -45,7 +45,7 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
         sx={{
           borderRadius: 2,
           boxShadow: 3,
-          maxHeight: totalTableHeight + 56, // add header height ~56px
+          maxHeight: totalTableHeight + 56, // ~56px header
           width: "100%",
           overflowX: "auto",
         }}
@@ -54,24 +54,25 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
           <TableHead>
             <TableRow>
               <TableCell sx={{ minWidth: 200, fontWeight: "bold" }}>Resource Title</TableCell>
-              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Subject Tag</TableCell>
-              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Format Tag</TableCell>
-              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Source Tag</TableCell>
+              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Subject</TableCell>
+              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Format</TableCell>
+              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Source</TableCell>             
+              <TableCell sx={{ minWidth: 220, fontWeight: "bold" }}>Summary</TableCell>
+              <TableCell sx={{ minWidth: 140, fontWeight: "bold" }}>Location</TableCell>
+              <TableCell sx={{ minWidth: 150, fontWeight: "bold" }}>Publication Year</TableCell>
               <TableCell sx={{ minWidth: 180, fontWeight: "bold" }}>File Name</TableCell>
-              <TableCell sx={{ minWidth: 120, fontWeight: "bold" }}>Upload Date</TableCell>
+              <TableCell sx={{ minWidth: 160, fontWeight: "bold" }}>Upload Date</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {paginatedUploads.map((upload, idx) => (
-              <TableRow 
-                key={idx} 
+              <TableRow
+                key={idx}
                 sx={{
                   height: 60,
                   cursor: "pointer",
-                  "&:hover": {
-                    backgroundColor: "action.hover",
-                  },
+                  "&:hover": { backgroundColor: "action.hover" },
                 }}
               >
                 <TableCell sx={{ maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
@@ -81,10 +82,7 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
                         href={upload.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                          color: "inherit",
-                          textDecoration: "none",
-                        }}
+                        style={{ color: "inherit", textDecoration: "none" }}
                       >
                         {upload.title}
                       </a>
@@ -92,14 +90,22 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
                   </Tooltip>
                 </TableCell>
 
-                <TableCell>
-                  <Badge label={upload.subject} fallback="No subject" />
+                <TableCell><Badge label={upload.subject} fallback="No subject" /></TableCell>
+                <TableCell><Badge label={upload.format} fallback="No format" /></TableCell>
+                <TableCell><Badge label={upload.source} fallback="No source" /></TableCell> 
+
+                <TableCell sx={{ maxWidth: 260, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  <Tooltip title={upload.summary || ""} arrow>
+                    <span>{upload.summary || "—"}</span>
+                  </Tooltip>
                 </TableCell>
+
                 <TableCell>
-                  <Badge label={upload.format} fallback="No format" />
+                  <Badge label={upload.location} fallback="—" />
                 </TableCell>
+
                 <TableCell>
-                  <Badge label={upload.source} fallback="No source" />
+                  {upload.year ? String(upload.year) : "—"}
                 </TableCell>
 
                 <TableCell sx={{ maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
@@ -122,10 +128,11 @@ export const ResourcesTable: React.FC<ResourcesTableProps> = ({ uploads }) => {
               </TableRow>
             ))}
 
-            {/* Add an invisible row to keep table height consistent if fewer rows */}
+            {/* Maintain height if fewer rows than the page size */}
             {paginatedUploads.length < rowsPerPage && (
               <TableRow sx={{ height: 60 * (rowsPerPage - paginatedUploads.length), visibility: "hidden" }}>
-                <TableCell colSpan={6} />
+                {/* colSpan updated to total visible columns (9) */}
+                <TableCell colSpan={9} />
               </TableRow>
             )}
           </TableBody>
