@@ -17,6 +17,9 @@ export interface UploadedResource {
   PDFName: string;
   uploadedAt: string;
   link: string;
+  summary: string;
+  location: string;
+  year: string; 
 }
 
 export const AdminPage: React.FC = () => {

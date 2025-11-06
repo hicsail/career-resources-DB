@@ -16,7 +16,7 @@ interface Props {
   subjects: string[];
   formats: string[];
   states: string[];
-  countries: stringp[];
+  countries: string[];
 }
 
 export const validationSchema = Yup.object().shape({

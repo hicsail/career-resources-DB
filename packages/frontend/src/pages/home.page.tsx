@@ -14,6 +14,7 @@ import { useApiServices } from '../services/api';
 export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { searchResources, getAllDocumentMetadata } = useApiServices();
   
   const handleSearch = async ({
@@ -27,6 +28,7 @@ export const HomePage: FC = () => {
     country
   }: SearchFiltersType) => {    
     setLoading(true);
+    setError(null);
     try {
       const location = country || state;
       const data = await searchResources(phrase, subjects, formats, sources, startYear, endYear, location); 
@@ -39,8 +41,9 @@ export const HomePage: FC = () => {
   };
 
   const fetchMetadata = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      setLoading(true);
       const data = await getAllDocumentMetadata();
       setResults(data); 
     } catch (err) {

@@ -4,7 +4,9 @@ export interface SearchFiltersType {
   formats?: string[];
   startYear?: number | null; 
   endYear?: number | null;
-  location?: string;
+  //location?: string;
+  state?: string;
+  country?: string;
 }
 
 export interface SearchResultType {
