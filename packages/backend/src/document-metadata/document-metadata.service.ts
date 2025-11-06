@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { DYNAMO_CLIENT } from '../common/dynamo/dynamo.service';
+import { sortByStringKey } from './utils/sort.utils';
 
 @Injectable()
 export class DocumentMetadataService {
@@ -46,6 +47,8 @@ export class DocumentMetadataService {
       lastEvaluatedKey = result.LastEvaluatedKey;
     } while (lastEvaluatedKey);
 
+    //sort alphabetically by title (case-insensitive), items without title go last
+    items.sort(sortByStringKey('title'));
     return items;
   }
 

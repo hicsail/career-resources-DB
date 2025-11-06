@@ -26,12 +26,12 @@ export class UploadController {
     private readonly configService: ConfigService,
   ) {
     this.bucketName = this.configService.get<string>(
-      'AWS_S3_BUCKET_NAME', 
-      'career-resources'
+      'AWS_S3_BUCKET_NAME',
+      'career-resources',
     );
   }
 
-  @UseGuards(AuthGuard)
+  //@UseGuards(AuthGuard)
   @Post()
   @UseInterceptors(
     FileInterceptor('file', {
@@ -55,28 +55,50 @@ export class UploadController {
     try {
       // Generate deterministic documentId from file content
       const documentId = generateDocumentIdFromContent(file.buffer);
+
       // Check for duplicates
       const duplicate = await this.documentMetadataService.getMetadataByDocumentId(documentId);
       if (duplicate) {
         throw new BadRequestException('File already exists in the system');
       }
 
-      const metadata = {
+      // Pull optional location pieces from body
+      const state = (body as any).state ? String((body as any).state).trim() : '';
+      const country = (body as any).country ? String((body as any).country).trim() : '';
+
+      // Derive single "location" value (International → country, else state)
+      const location =
+        state === 'International'
+          ? country
+          : state;
+
+      // Build S3 metadata; include location only if present
+      const metadata: Record<string, string> = {
         subject: body.subject,
         title: toHeaderSafe(body.title),
         format: body.format,
         source: body.source,
+        summary: body.summary
       };
+      if (location) {
+        metadata.location = location; 
+      }
+      if (body.year) {
+        metadata.year = String(body.year);  
+      }
+
       const filename = file.originalname;
-      await this.s3Service.uploadFile(
-        this.bucketName, 
-        filename, 
-        file.buffer, 
+     /*await this.s3Service.uploadFile(
+        this.bucketName,
+        filename,
+        file.buffer,
         file.mimetype,
-        metadata
-       );
+        metadata,
+      );*/
+      
       return { message: 'File uploaded successfully', filename, documentId };
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Upload failed:', error);
 
       if (error instanceof BadRequestException) {

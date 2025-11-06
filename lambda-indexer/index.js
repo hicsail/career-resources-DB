@@ -86,15 +86,18 @@ exports.handler = async (event) => {
             #subject = :subject,
             #format = :format,
             #source = :source,
-            publicationYear = :publicationYear,
-            countryState = :countryState,
+            #year = :year,
+            #location = :location,   
             link = :link,
+            summary = :summary,
             queryAll = :queryAll
       `,
       ExpressionAttributeNames: {
         "#format": "format",
         "#subject": "subject",
-        "#source": "source"
+        "#source": "source",
+        "#year": "year",
+        "#location": "location",     
       },
       ExpressionAttributeValues: {
         ":pdfName": title,
@@ -105,10 +108,11 @@ exports.handler = async (event) => {
         ":subject": Metadata.subject || "",
         ":format": Metadata.format || "",
         ":source": Metadata.source || "",
-        ":publicationYear": Metadata.publication_year || "",
-        ":countryState": Metadata.country_state || "",
+        ":year": Metadata.year || "",
+        ":location": Metadata.state_country || "", 
         ":link": Metadata.link || "",
-        ":queryAll": "true"
+        ":summary": Metadata.summary || "",
+        ":queryAll": "true",
       },
       ReturnValues: "ALL_NEW"
     }).promise();

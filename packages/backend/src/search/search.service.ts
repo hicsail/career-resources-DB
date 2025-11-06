@@ -10,12 +10,14 @@ export class SearchService {
     private readonly metadataService: DocumentMetadataService
   ) {}
 
-  async searchByKeyword(
-    phrase: string,
-    subject?: string,
-    format?: string,
-    source?: string
-  ): Promise<any[]> {    
+  async searchAndFilter(
+    phrase?: string,
+    subjects?: string[],
+    formats?: string[],
+    startYear?: number,
+    endYear?: number,
+    location? :string //country or state
+  ): Promise<any[]> {  
     const keywords = Array.from(new Set(extractKeywordsFromPhrase(phrase)));
 
     const docMatchesPerKeyword: Record<string, Set<string>> = {};
@@ -35,9 +37,11 @@ export class SearchService {
     const matchingDocIds = getDocumentIntersection(keywords, docMatchesPerKeyword);
     const metadata = await this.metadataService.getAllMetadata();
     return filterAndFormatResults(metadata, matchingDocIds, docIdToKeywordMap, {
-      subject,
-      format,
-      source,
+      subjects,
+      formats,
+      startYear,
+      endYear,
+      location
     });
   }
 }
