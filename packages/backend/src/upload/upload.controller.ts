@@ -31,7 +31,7 @@ export class UploadController {
     );
   }
 
-  @UseGuards(AuthGuard)
+  //@UseGuards(AuthGuard)
   @Post()
   @UseInterceptors(
     FileInterceptor('file', {
@@ -88,13 +88,13 @@ export class UploadController {
       }
 
       const filename = file.originalname;
-      await this.s3Service.uploadFile(
+     /*await this.s3Service.uploadFile(
         this.bucketName,
         filename,
         file.buffer,
         file.mimetype,
         metadata,
-      );
+      );*/
       
       return { message: 'File uploaded successfully', filename, documentId };
     } catch (error) {

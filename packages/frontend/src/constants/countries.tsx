@@ -10,5 +10,6 @@ export const countries = [
   'Australia',
   'Brazil',
   'Other',
-  'United States'
+  'United States',
+  'Asia-Pacific'
 ];
