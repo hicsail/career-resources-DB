@@ -17,21 +17,15 @@ export const HomePage: FC = () => {
   const [error, setError] = useState<string | null>(null);
   const { searchResources, getAllDocumentMetadata } = useApiServices();
   
-  const handleSearch = async ({
-    phrase,
-    subjects,
-    formats,
-    sources,
-    startYear,
-    endYear,
-    state,
-    country
-  }: SearchFiltersType) => {    
+  const handleSearch = async (filters: SearchFiltersType) => {    
     setLoading(true);
     setError(null);
     try {
-      const location = country || state;
-      const data = await searchResources(phrase, subjects, formats, sources, startYear, endYear, location); 
+      const data = await searchResources({
+        ...filters,
+        startYear: filters.startYear ?? undefined,
+        endYear: filters.endYear ?? undefined,
+    });
       setResults(data);
     } catch (error) {
       console.error('Search error:', error);

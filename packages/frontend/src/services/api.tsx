@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import React, { createContext, FC, useContext, useEffect } from 'react';
 import { useSettings } from '../contexts/settings.context';
 import { useAuth } from '../contexts/auth.context';
+import { SearchFiltersType } from '../types/search';
 
 const API_ENDPOINTS = {
   UPLOAD_FILE: 'upload',
@@ -21,15 +22,7 @@ type UploadMetadata = {
 
 export interface ApiContextProps {
   uploadFile: (file: File, metadata: UploadMetadata) => Promise<any>;
-  searchResources: (
-    phrase?: string, 
-    subjects?: string[], 
-    formats?: string[], 
-    sources?: string[], 
-    startYear?: number, 
-    endYear?:number, 
-    location?:string
-  ) => Promise<any>;
+  searchResources: (filters: SearchFiltersType) => Promise<any>;
   getAllDocumentMetadata: () => Promise<any>;
 }
 
@@ -80,24 +73,18 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
     return response.data;
   };
 
-  const searchResources = async (
-    phrase?: string,
-    subjects?: string[],
-    formats?: string[],
-    sources?: string[],
-    startYear?: number,
-    endYear?: number,
-    location?: string
-  ): Promise<any> => {
+  const searchResources = async (filters: SearchFiltersType): Promise<any> => {
+    console.log(filters)
     const params: Record<string, any> = {};
-    if (phrase) params.phrase = phrase;
-    if (subjects) params.subjects = subjects;
-    if (formats) params.formats = formats;
-    if (sources) params.sources = sources;
-    if (startYear) params.startYear = startYear;
-    if (endYear) params.endYear = endYear;
+    const location = filters.country || filters.state;
+    console.log(location)
+    if (filters.phrase) params.phrase = filters.phrase.trim();
+    if (filters.subjects) params.subjects = filters.subjects;
+    if (filters.formats) params.formats = filters.formats;
+    if (filters.startYear) params.startYear = filters.startYear;
+    if (filters.endYear) params.endYear = filters.endYear;
     if (location) params.location = location;
-
+    console.log(params)
     const url = `${VITE_API_BASE_URL}/${API_ENDPOINTS.SEARCH_RESOURCES}`;
     const response: AxiosResponse = await axios.get(url, { params });
     return response.data;
