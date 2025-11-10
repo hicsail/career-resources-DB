@@ -5,7 +5,7 @@ import type { FormikProps } from 'formik';
 
 interface FilterDropdownProps {
   label: string;
-  name: keyof SearchFiltersType;
+  name: string;
   options: string[];
   formik: FormikProps<any>;
   multiple?: boolean;

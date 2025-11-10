@@ -31,7 +31,7 @@ interface FormValues {
   file: File | null;
   state?: string;
   country?: string;
-  year?: number;
+  year?: number | null;
   summary: string;
 }
 
@@ -94,7 +94,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
         subject: values.subject,
         format: values.format,
         source: values.source,
-        year: values.year,
+        year: values.year ?? undefined,
         summary: values.summary,
         location,
       });
@@ -129,7 +129,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
               if (!isInternational && formik.values.country) {
                 formik.setFieldValue("country", "");
               }
-            }, [isInternational]); // eslint-disable-line react-hooks/exhaustive-deps
+            }, [isInternational, formik]); // eslint-disable-line react-hooks/exhaustive-deps
 
             return (
               <Form>
@@ -236,10 +236,6 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
                     options={[...states, "International"]}
                     formik={formik}
                     multiple={false}
-                    onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                      const selected = event.target.value as string;
-                      formik.setFieldValue("state", selected);
-                    }}
                   />
 
                   {isInternational && (
