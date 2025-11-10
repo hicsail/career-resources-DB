@@ -137,10 +137,6 @@ export const SearchForm: React.FC<Props> = ({
                     options={[...states, 'International']} // ensure "International" exists
                     formik={formik}
                     multiple={false}
-                    onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                      const selected = event.target.value as string;
-                      formik.setFieldValue('state', selected);
-                    }}
                   />
 
                   {/* Show only if International selected */}

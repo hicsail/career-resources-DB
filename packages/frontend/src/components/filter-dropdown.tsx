@@ -1,6 +1,5 @@
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
-import type { SearchFiltersType } from '../types/search';
 import type { FormikProps } from 'formik';
 
 interface FilterDropdownProps {

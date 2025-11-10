@@ -16,6 +16,7 @@ interface ResultItem {
   format?: string;
   link?: string;
   summary?: string;
+  location?: string;
 }
 
 interface Props {

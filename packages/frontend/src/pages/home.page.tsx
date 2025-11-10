@@ -14,7 +14,7 @@ import { useApiServices } from '../services/api';
 export const HomePage: FC = () => {
   const [results, setResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_, setError] = useState<string | null>(null);
   const { searchResources, getAllDocumentMetadata } = useApiServices();
   
   const handleSearch = async (filters: SearchFiltersType) => {    

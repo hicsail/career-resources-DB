@@ -57,8 +57,8 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
     formData.append('subject', metadata.subject);
     formData.append('format', metadata.format);
     formData.append('source', metadata.source);
-
-    formData.append('summary', metadata.summary.trim());
+    const summary = metadata.summary?.trim();
+    if (summary) formData.append('summary', summary);
     if (metadata.location) {
       formData.append('location', metadata.location);
     }
@@ -74,17 +74,14 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
   };
 
   const searchResources = async (filters: SearchFiltersType): Promise<any> => {
-    console.log(filters)
     const params: Record<string, any> = {};
     const location = filters.country || filters.state;
-    console.log(location)
     if (filters.phrase) params.phrase = filters.phrase.trim();
     if (filters.subjects) params.subjects = filters.subjects;
     if (filters.formats) params.formats = filters.formats;
     if (filters.startYear) params.startYear = filters.startYear;
     if (filters.endYear) params.endYear = filters.endYear;
     if (location) params.location = location;
-    console.log(params)
     const url = `${VITE_API_BASE_URL}/${API_ENDPOINTS.SEARCH_RESOURCES}`;
     const response: AxiosResponse = await axios.get(url, { params });
     return response.data;
