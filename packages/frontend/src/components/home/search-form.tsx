@@ -68,14 +68,14 @@ export const SearchForm: React.FC<Props> = ({
         >
           {(formik: FormikProps<SearchFiltersType>) => {
             // derive International flag directly from Formik
-            const isInternational = formik.values.state === 'International';
+            /*const isInternational = formik.values.state === 'International';
 
             // automatically clear country when not international
             useEffect(() => {
               if (!isInternational && formik.values.country) {
                 formik.setFieldValue('country', '');
               }
-            }, [isInternational, formik]);
+            }, [isInternational, formik]);*/
 
             return (
               <Form>
@@ -134,13 +134,13 @@ export const SearchForm: React.FC<Props> = ({
                   <FilterDropdown
                     label="State or International"
                     name="state"
-                    options={[...states, 'International']} // ensure "International" exists
+                    options={[...states, 'International', 'United States']} 
                     formik={formik}
                     multiple={false}
                   />
 
                   {/* Show only if International selected */}
-                  {isInternational && (
+                  {/*isInternational && (
                     <FilterDropdown
                       label="Country"
                       name="country"
@@ -148,7 +148,7 @@ export const SearchForm: React.FC<Props> = ({
                       formik={formik}
                       multiple={false}
                     />
-                  )}
+                  )*/}
                 </Box>
 
                 {/* Row 4: Year range fields */}
