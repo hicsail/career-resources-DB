@@ -15,7 +15,7 @@ interface Props {
   onSearch: (filters: SearchFiltersType) => void;
   subjects: string[];
   formats: string[];
-  states: string;
+  states: string[];
 }
 
 export const validationSchema = Yup.object().shape({
