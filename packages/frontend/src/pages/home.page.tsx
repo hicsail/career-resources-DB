@@ -1,21 +1,14 @@
-// ✨ CHANGED: added more MUI components for layout + collapsible UI
 import { FC, useState, useEffect } from 'react';
 import {
   Container,
   Typography,
   CircularProgress,
   Box,
-  Paper,        
-  Button,       
-  Collapse,     
-  Divider,      
-  Link,         
-  Stack,        
+  Paper,
+  Divider,     
 } from '@mui/material';
 import SearchOffIcon from '@mui/icons-material/SearchOff';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'; 
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'; 
-
+import BuLogo from '../assets/logo.png'; 
 import { SearchForm } from '../components/home/search-form';
 import { ResultsList } from '../components/home/result-list';
 import { GettingStartedCollapse } from '../components/home/intro-collapsible';
@@ -70,6 +63,20 @@ export const HomePage: FC = () => {
 
   return (
     <Container maxWidth="md" sx={{ pt: 3, pb: 3 }}>
+      {/* BU logo header pinned to top-left (BU Wheelock style) */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2, backgroundColor: 'grey.100', py: 1.2}}>
+        <Box
+          component="img"
+          src={BuLogo}
+          alt="Boston University"
+          sx={{
+            height: { xs: 34, sm: 48 },
+            maxWidth: '100%',
+            objectFit: 'contain',
+          }}
+        />
+      </Box>
+
       <Typography variant="h4" align="center" gutterBottom>
         Future Readiness Resources Database
       </Typography>
