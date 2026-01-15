@@ -16,10 +16,9 @@ export const HeaderBar: FC<HeaderBarProps> = ({ logoSrc, alt = 'Boston Universit
         left: 0,    
         right: 0,   
         zIndex: (theme) => theme.zIndex.appBar,
-        backgroundColor: 'grey.500',
+        backgroundColor: 'white',
         py: 1.25,
         px: 2,
-        boxShadow: 1,
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
