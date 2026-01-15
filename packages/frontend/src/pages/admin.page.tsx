@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
+  Box,
   Container,
   Typography,
   CircularProgress
 } from "@mui/material";
+import BuLogo from '../assets/logo.png';
+import { HeaderBar } from '../components/layout/header';
 import { UploadForm } from "../components/admin/upload-form";
 import { ResourcesTable } from "../components/admin/resources-table";
 import { useApiServices } from '../services/api';
@@ -46,26 +49,34 @@ export const AdminPage: React.FC = () => {
   }, []);
   
   return (
-    <Container maxWidth="md" sx={{ py: 6 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        Admin Resource Upload
-      </Typography>
+    <>
+      {/* Full-width sticky header bar */}
+      <HeaderBar logoSrc={BuLogo} />
 
-      <UploadForm fetchMetadata={fetchMetadata}/>
+      {/* Container */}
+      <Box sx={{ pt: { xs: 8, sm: 9 } }}>
+        <Container maxWidth="md" sx={{ py: 6 }}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Admin Resource Upload
+          </Typography>
 
-      <Typography variant="h4" gutterBottom sx={{ mt: 6 }} align="center">
-        Uploaded Resources
-      </Typography>
+          <UploadForm fetchMetadata={fetchMetadata}/>
 
-      {loading && (
-        <Typography align="center" mt={4}>
-          <CircularProgress />
-        </Typography>
-      )}
+          <Typography variant="h4" gutterBottom sx={{ mt: 6 }} align="center">
+            Uploaded Resources
+          </Typography>
 
-      {!loading && (
-        <ResourcesTable uploads={uploads} />
-      )}
-    </Container>
+          {loading && (
+            <Typography align="center" mt={4}>
+              <CircularProgress />
+            </Typography>
+          )}
+
+          {!loading && (
+            <ResourcesTable uploads={uploads} />
+          )}
+        </Container>
+      </Box>
+    </>
   );
 };
