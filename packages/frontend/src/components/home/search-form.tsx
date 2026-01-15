@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'; 
+import React from 'react'; 
 import {
   Box,
   Button,
@@ -16,7 +16,6 @@ interface Props {
   subjects: string[];
   formats: string[];
   states: string[];
-  countries: string[];
 }
 
 export const validationSchema = Yup.object().shape({
@@ -51,8 +50,7 @@ export const SearchForm: React.FC<Props> = ({
   onSearch,
   subjects,
   formats,
-  states,
-  countries
+  states
 }) => {
   const handleSubmit = (values: SearchFiltersType) => {
     onSearch(values);
