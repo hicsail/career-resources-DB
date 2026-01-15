@@ -15,7 +15,6 @@ import { GettingStartedCollapse } from '../components/home/intro-collapsible';
 import { subjects } from '../constants/subjects';
 import { formats } from '../constants/formats';
 import { states } from '../constants/states';
-import { countries } from '../constants/countries';
 import type { SearchFiltersType } from '../types/search';
 import type { SearchResultType } from '../types/search';
 import { useApiServices } from '../services/api';
@@ -109,7 +108,6 @@ export const HomePage: FC = () => {
         subjects={subjects}
         formats={formats}
         states={states}
-        countries={countries}
       />
 
       {loading && (

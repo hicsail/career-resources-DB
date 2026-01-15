@@ -75,7 +75,7 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => {
 
   const searchResources = async (filters: SearchFiltersType): Promise<any> => {
     const params: Record<string, any> = {};
-    const location = filters.country || filters.state;
+    const location = filters.location;
     if (filters.phrase) params.phrase = filters.phrase.trim();
     if (filters.subjects) params.subjects = filters.subjects;
     if (filters.formats) params.formats = filters.formats;

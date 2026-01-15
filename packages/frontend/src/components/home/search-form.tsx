@@ -15,7 +15,7 @@ interface Props {
   onSearch: (filters: SearchFiltersType) => void;
   subjects: string[];
   formats: string[];
-  states: string[];
+  location: string[];
 }
 
 export const validationSchema = Yup.object().shape({
@@ -32,8 +32,7 @@ export const validationSchema = Yup.object().shape({
     .max(new Date().getFullYear(), 'Year cannot be in the future')
     .nullable()
     .optional(),
-  state: Yup.string().optional(),
-  country: Yup.string().optional()
+  location: Yup.string().optional()
 });
 
 export const initialValues: SearchFiltersType = {
@@ -42,8 +41,7 @@ export const initialValues: SearchFiltersType = {
   formats: [],
   startYear: null,
   endYear: null,
-  state: '',
-  country: ''
+  location: ''
 };
 
 export const SearchForm: React.FC<Props> = ({
@@ -65,16 +63,6 @@ export const SearchForm: React.FC<Props> = ({
           onSubmit={handleSubmit}
         >
           {(formik: FormikProps<SearchFiltersType>) => {
-            // derive International flag directly from Formik
-            /*const isInternational = formik.values.state === 'International';
-
-            // automatically clear country when not international
-            useEffect(() => {
-              if (!isInternational && formik.values.country) {
-                formik.setFieldValue('country', '');
-              }
-            }, [isInternational, formik]);*/
-
             return (
               <Form>
                 {/* Row 1: Search bar + button */}
@@ -131,22 +119,11 @@ export const SearchForm: React.FC<Props> = ({
                 >
                   <FilterDropdown
                     label="State or International"
-                    name="state"
+                    name="location"
                     options={[...states, 'International', 'United States']} 
                     formik={formik}
                     multiple={false}
                   />
-
-                  {/* Show only if International selected */}
-                  {/*isInternational && (
-                    <FilterDropdown
-                      label="Country"
-                      name="country"
-                      options={countries}
-                      formik={formik}
-                      multiple={false}
-                    />
-                  )*/}
                 </Box>
 
                 {/* Row 4: Year range fields */}

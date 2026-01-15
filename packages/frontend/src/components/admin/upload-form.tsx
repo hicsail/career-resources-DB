@@ -15,7 +15,6 @@ import { subjects } from "../../constants/subjects";
 import { formats } from "../../constants/formats";
 import { sources } from "../../constants/sources";
 import { states } from "../../constants/states";
-import { countries } from "../../constants/countries";
 import { useApiServices } from "../../services/api";
 import { useSnackbar } from "../../contexts/snackbar.context.tsx";
 
@@ -29,8 +28,7 @@ interface FormValues {
   format: string;
   source: string;
   file: File | null;
-  state?: string;
-  country?: string;
+  location?: string;
   year?: number | null;
   summary: string;
 }
@@ -41,15 +39,8 @@ const validationSchema = Yup.object({
   format: Yup.string().required("Format is required"),
   source: Yup.string().required("Source is required"),
   summary: Yup.string().required("Summary is required"),
-  state: Yup.string().nullable().optional(),
+  location: Yup.string().nullable().optional(),
   year: Yup.number().nullable().optional(),
-  country: Yup.string()
-    .nullable()
-    .when("state", {
-      is: (v: string) => v === "International",
-      then: (s) => s.required("Country is required when International is selected"),
-      otherwise: (s) => s.optional(),
-    }),
   file: Yup.mixed<File>()
     .required("A file is required")
     .test(
@@ -67,8 +58,7 @@ const initialValues: FormValues = {
   summary: "",
   file: null,
   year: null,
-  state: "",
-  country: "",
+  location: ""
 };
 
 export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
@@ -85,10 +75,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
     }
     setSubmitting(true);
 
-    try {
-      const location =
-        values.state === "International" ? values.country : values.state || "";
-
+    try {      
       await uploadFile(values.file, {
         title: values.title,
         subject: values.subject,
@@ -96,7 +83,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
         source: values.source,
         year: values.year ?? undefined,
         summary: values.summary,
-        location,
+        location: values.location
       });
 
       resetForm();
@@ -123,14 +110,6 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
           onSubmit={handleSubmit}
         >
           {(formik: FormikProps<FormValues>) => {
-            const isInternational = formik.values.state === "International";
-
-            useEffect(() => {
-              if (!isInternational && formik.values.country) {
-                formik.setFieldValue("country", "");
-              }
-            }, [isInternational, formik]); // eslint-disable-line react-hooks/exhaustive-deps
-
             return (
               <Form>
                 {/* Row 1: Title + Choose File */}
@@ -232,21 +211,11 @@ export const UploadForm: React.FC<UploadFormProps> = ({ fetchMetadata }) => {
 
                   <FilterDropdown
                     label="State or International"
-                    name="state"
-                    options={[...states, "International"]}
+                    name="location"
+                    options={[...states, "International", "United States"]}
                     formik={formik}
                     multiple={false}
                   />
-
-                  {isInternational && (
-                    <FilterDropdown
-                      label="Country"
-                      name="country"
-                      options={countries}
-                      formik={formik}
-                      multiple={false}
-                    />
-                  )}
                 </Box>
 
                 {/* Row 5: Upload Button */}
